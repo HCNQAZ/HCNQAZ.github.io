@@ -247,6 +247,91 @@
 
 
   
+    <article id="post-力扣题-轮转数组" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/12/11/%E5%8A%9B%E6%89%A3%E9%A2%98-%E8%BD%AE%E8%BD%AC%E6%95%B0%E7%BB%84/">力扣题: 删除有序数组中的的重复项</a>
+    </h1>
+  
+
+        
+        <a href="/2021/12/11/%E5%8A%9B%E6%89%A3%E9%A2%98-%E8%BD%AE%E8%BD%AC%E6%95%B0%E7%BB%84/" class="archive-article-date">
+  	<time datetime="2021-12-11T10:49:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#题目<br>给你一个数组，将数组中的元素向右轮转 k 个位置，其中 k 是非负数。</p>
+<p>##题目分析<br>关键词：向右 轮转K K位非负数</p>
+<p>计算出轮转后的指针位置，用数组接收，最后再用所得数组替换原数组</p>
+<p>##代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var rotate = <span class="keyword">function</span>(nums, k) &#123;</span><br><span class="line">    <span class="built_in">let</span> save = new Array(nums.length).join(<span class="string">&#x27;,&#x27;</span>).split(<span class="string">&#x27;,&#x27;</span>) </span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">let</span> n = 0 ; n &lt; nums.length ; n++)&#123;</span><br><span class="line">        <span class="built_in">let</span> m = n ;</span><br><span class="line"></span><br><span class="line">        m = (m+k) % nums.length;</span><br><span class="line">        save[m] = nums[n] ;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="built_in">let</span> n = 0 ; n &lt; nums.length ; n++)&#123;</span><br><span class="line">            nums[n] = save[n] ;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>##测试<br>测试会查看nums，是否符合预期。</p>
+<p>##题后感悟:<br>m = (m+k) % nums.length可以替代</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>( m+k &gt; nums.length-1)&#123;</span><br><span class="line">            m = m+k-nums.length;</span><br><span class="line"></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            m = m+k;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>替换数组需要一个个数替换，而不能令整个数组等于另一个数组</p>
+<p>制造临时数组是需要先制造一个有长度的空数组</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/12/11/%E5%8A%9B%E6%89%A3%E9%A2%98-%E8%BD%AE%E8%BD%AC%E6%95%B0%E7%BB%84/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-力扣题-删除有序数组中的的重复项" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
