@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Vue路由使用--Vue复习日记1 | Hexo</title>
+  <title>几个不错的插件推荐 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言：今日开始在做项目的同时完成对vue知识的整理与复习 #Vue路由使用 ##理解 一个路由就是一组映射关系（Key-Value）Key为路径，Value为function（后端路由）或者component（前端路由），前端路由即浏览器的路径改变时，相应的路径组件就会显示，有助于完成SPA应用（即单页Web应用，点击导航链的时候不刷新页面，而是对页面的局部进行更新） ##在vue中的使用 1、安">
+  <meta name="description" content="前言：今日继续在做项目总结了用到的几个不错的插件 #nprogress进度条插件 打开一个页面时，往往会伴随一些请求，并且会在页面上方出现进度条。它的原理时，在我们发起请求的时候开启进度条，在请求成功后关闭进度条，所以只需要在request.js中进行配置。如下图所示，我们页面加载时发起了一个请求，此时页面上方出现蓝色进度条 1234567891011&#x2F;&#x2F;引入进度条import nprogress">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vue路由使用--Vue复习日记1">
-<meta property="og:url" content="http://example.com/2022/01/22/Vue%E8%B7%AF%E7%94%B1%E4%BD%BF%E7%94%A8--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B01/index.html">
+<meta property="og:title" content="几个不错的插件推荐">
+<meta property="og:url" content="http://example.com/2022/01/26/%E5%87%A0%E4%B8%AA%E4%B8%8D%E9%94%99%E5%BE%97%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="前言：今日开始在做项目的同时完成对vue知识的整理与复习 #Vue路由使用 ##理解 一个路由就是一组映射关系（Key-Value）Key为路径，Value为function（后端路由）或者component（前端路由），前端路由即浏览器的路径改变时，相应的路径组件就会显示，有助于完成SPA应用（即单页Web应用，点击导航链的时候不刷新页面，而是对页面的局部进行更新） ##在vue中的使用 1、安">
+<meta property="og:description" content="前言：今日继续在做项目总结了用到的几个不错的插件 #nprogress进度条插件 打开一个页面时，往往会伴随一些请求，并且会在页面上方出现进度条。它的原理时，在我们发起请求的时候开启进度条，在请求成功后关闭进度条，所以只需要在request.js中进行配置。如下图所示，我们页面加载时发起了一个请求，此时页面上方出现蓝色进度条 1234567891011&#x2F;&#x2F;引入进度条import nprogress">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-01-22T08:25:33.000Z">
-<meta property="article:modified_time" content="2022-01-22T10:10:34.619Z">
+<meta property="article:published_time" content="2022-01-26T09:18:33.000Z">
+<meta property="article:modified_time" content="2022-01-26T10:49:48.304Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="web">
 <meta name="twitter:card" content="summary">
@@ -155,92 +155,38 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Vue路由使用--Vue复习日记1" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-几个不错得插件推荐" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Vue路由使用--Vue复习日记1
+      几个不错的插件推荐
     </h1>
   
 
         
-        <a href="/2022/01/22/Vue%E8%B7%AF%E7%94%B1%E4%BD%BF%E7%94%A8--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B01/" class="archive-article-date">
-  	<time datetime="2022-01-22T08:25:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-22</time>
+        <a href="/2022/01/26/%E5%87%A0%E4%B8%AA%E4%B8%8D%E9%94%99%E5%BE%97%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90/" class="archive-article-date">
+  	<time datetime="2022-01-26T09:18:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-26</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>前言：今日开始在做项目的同时完成对vue知识的整理与复习</p>
-<p>#Vue路由使用</p>
-<p>##理解</p>
-<p>一个路由就是一组映射关系（Key-Value）Key为路径，Value为function（后端路由）或者component（前端路由），前端路由即浏览器的路径改变时，相应的路径组件就会显示，有助于完成SPA应用（即单页Web应用，点击导航链的时候不刷新页面，而是对页面的局部进行更新）</p>
-<p>##在vue中的使用</p>
-<p>1、安装vue-router<br>2、引入库、使用插件、引入路由</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import VueRouter from &#x27;vue-router&#x27;;</span><br><span class="line">Vue.use(VueRouter)</span><br><span class="line"></span><br><span class="line">import router from &#x27;router&#x27;;</span><br><span class="line">router</span><br></pre></td></tr></table></figure>
-<p>3、配置路由文件:</p>
-<p>创建page文件夹，创建路由组件，创建router文件夹，index.js存放路由信息</p>
-<p>index.js:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">//配置路由处</span><br><span class="line">import Vue from &#x27;vue&#x27;</span><br><span class="line">import VueRouter from &#x27;vue-router&#x27;</span><br><span class="line"></span><br><span class="line">//使用插件</span><br><span class="line">Vue.use(VueRouter);</span><br><span class="line"></span><br><span class="line">//引入路由组件</span><br><span class="line">import Home from &#x27;@/pages/Home&#x27;</span><br><span class="line">import Search from &#x27;@/pages/Search&#x27;</span><br><span class="line">import Login from &#x27;@/pages/Login&#x27;</span><br><span class="line">import Register from &#x27;@/pages/Register&#x27;</span><br><span class="line"></span><br><span class="line">export default new VueRouter(&#123;</span><br><span class="line">    routes: [</span><br><span class="line">        &#123;</span><br><span class="line">            path:&quot;/home&quot;,</span><br><span class="line">            component: Home</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            path:&quot;/search&quot;,</span><br><span class="line">            component: Search</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            path:&quot;/login&quot;,</span><br><span class="line">            component: Login </span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            path:&quot;/register&quot;,</span><br><span class="line">            component: Register</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            path:&quot;*&quot;,</span><br><span class="line">            redirect:&quot;/home&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        <p>前言：今日继续在做项目总结了用到的几个不错的插件</p>
+<p>#nprogress进度条插件</p>
+<p>打开一个页面时，往往会伴随一些请求，并且会在页面上方出现进度条。它的原理时，在我们发起请求的时候开启进度条，在请求成功后关闭进度条，所以只需要在request.js中进行配置。<br>如下图所示，我们页面加载时发起了一个请求，此时页面上方出现蓝色进度条</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//引入进度条</span><br><span class="line">import nprogress from &#x27;nprogress&#x27;;</span><br><span class="line">//引入进度条样式</span><br><span class="line">import &quot;nprogress/nprogress.css&quot;;</span><br><span class="line"></span><br><span class="line">//在发送请求时</span><br><span class="line">//开启进度条</span><br><span class="line">nprogress.start();</span><br><span class="line"></span><br><span class="line">//响应成功，关闭进度条</span><br><span class="line">nprogress.done()</span><br></pre></td></tr></table></figure>
 
+<p>#loadsh插件防抖和节流<br>在进行窗口的resize、scroll，输入框内容校验等操作时，如果事件处理函数调用的频率无限制，会加重浏览器的负担，导致用户体验非常糟糕。此时我们可以采用debounce（防抖）和throttle（节流）的方式来减少调用频率，同时又不影响实际效果。<br>安装lodash插件，该插件提供了防抖和节流的函数，我们可以引入js文件，直接调用。当然也可以自己写防抖和节流的函数<br>lodash官网<br>防抖函数<br>节流函数<br>防抖：用户操作很频繁，但是只执行一次，减少业务负担。<br>节流：用户操作很频繁，但是把频繁的操作变为少量的操作，使浏览器有充分时间解析代码<br>防抖和节流简述<br>例如：下面代码就是将changeIndex设置了节流，如果操作很频繁，限制50ms执行一次。这里函数定义采用的键值对形式。throttle的返回值就是一个函数，所以直接键值对赋值就可以，函数的参数在function中传入即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import &#123;throttle&#125; from &#x27;lodash&#x27;</span><br><span class="line"></span><br><span class="line"> methods: &#123;</span><br><span class="line">    //鼠标进入修改响应元素的背景颜色</span><br><span class="line">    //采用键值对形式创建函数，将changeIndex定义为节流函数，该函数触发很频繁时，设置50ms才会执行一次</span><br><span class="line">    changeIndex: throttle(function (index)&#123;</span><br><span class="line">      this.currentIndex = index</span><br><span class="line">    &#125;,50),</span><br><span class="line">    //鼠标移除触发时间</span><br><span class="line">    leaveIndex()&#123;</span><br><span class="line">      this.currentIndex = -1</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>4、在相应结构处使用router-link标签触发更改路径（即展示不同路由组件）,并用to属性存放路径</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-link to=&quot;/home&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;img src=&quot;./images/logo.png&quot; alt=&quot;&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;/router-link&gt;</span><br></pre></td></tr></table></figure>
+<p>#mock插件使用<br>mock用来拦截前端ajax请求，返回我么们自定义的数据用于测试前端接口。<br>将不同的数据类型封装为不同的json文件，创建mockServer.js文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//banner、floor分别为轮播图和页面底部的假数据。</span><br><span class="line"></span><br><span class="line">import Mock  from &#x27;mockjs&#x27;</span><br><span class="line">//webpack默认对外暴露：json、图片</span><br><span class="line">import banner from &#x27;./banner.json&#x27;</span><br><span class="line">import floor from &#x27;./floor.json&#x27;</span><br><span class="line"></span><br><span class="line">//mock数据：第一个参数请求地址、第二个参：请求数据</span><br><span class="line">Mock.mock(&quot;/mock/banner&quot;,&#123;code:200,data:banner&#125;)</span><br><span class="line">Mock.mock(&quot;/mock/floor&quot;,&#123;code:200,data:floor&#125;)</span><br><span class="line">//记得要在main.js中引入一下</span><br><span class="line">//import &#x27;&#x27;@/mock/mockServer</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-
-
-<p>5、在希望展示路由组件处加入代码，执行组件呈现位置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-view&gt;&lt;/router-view&gt;</span><br></pre></td></tr></table></figure>
-
-
-<p>##注意点</p>
-<p>1、一般把路由组件放置于pages文件夹中<br>2、在切换路由组件后，原路由组件被销毁（在默认情况下），现路由组件被挂载<br>3、$route存放每个路由组件中的信息，所有的路由组件都有自己的一个。而$router所有组件共用一个。</p>
-<p>##嵌套路由<br>1、在pages中增加子路由组件<br>2、在router的index.js中调整路由信息</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    path:&quot;/register&quot;,</span><br><span class="line">    component: Register</span><br><span class="line">    children:[</span><br><span class="line">        &#123;   //注意字子路由路径path不加/</span><br><span class="line">            path:&#x27;news&#x27;,</span><br><span class="line">            component:News</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>3、在父组件中使用router-link标签触发更改路径，注意to中得把父组件路径补上</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-link to=&quot;/home/news&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;img src=&quot;./images/logo.png&quot; alt=&quot;&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;/router-link&gt;</span><br></pre></td></tr></table></figure>
-<p>4、在希望展示路由组件处加入代码，执行组件呈现位置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-view&gt;&lt;/router-view&gt;</span><br></pre></td></tr></table></figure>
-
-<p>##携带参数<br>###query参数<br>创建新的组件Hello <code>&lt;template&gt;</code>内结构可以写代有参数的结构:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;li&gt; 消息编号 : &#123;&#123;$route.query.id&#125;&#125;&lt;/li&gt;</span><br></pre></td></tr></table></figure>
-<p>在to路径最后面加上?然后直接写(写死的参数)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-link to=&quot;/home/news?id=1&amp;name=&#x27;王五&#x27;&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;img src=&quot;./images/logo.png&quot; alt=&quot;&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;/router-link&gt;</span><br></pre></td></tr></table></figure>
-<p>活参数(to的字符串写法)：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;li v-for=&quot;m in list&quot; :key=&quot;m.id&quot;&gt;</span><br><span class="line">&lt;router-link :to=&quot;`/home/Hello?id=$&#123;m.id&#125;&amp;name=$&#123;m.name&#125;`&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;img src=&quot;./images/logo.png&quot; alt=&quot;&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;/router-link&gt;</span><br><span class="line">&lt;/li&gt;</span><br></pre></td></tr></table></figure>
-<p>活参数(to的对象写法)：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;li v-for=&quot;m in list&quot; :key=&quot;m.id&quot;&gt;</span><br><span class="line">&lt;router-link :to=&quot;&#123;</span><br><span class="line">    path:/home/Hello,</span><br><span class="line">    query:&#123;</span><br><span class="line">        id:m.id,</span><br><span class="line">        name:m.name</span><br><span class="line">    &#125;</span><br><span class="line">&#125;&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;img src=&quot;./images/logo.png&quot; alt=&quot;&quot;&gt;</span><br><span class="line">&lt;/router-link&gt;</span><br><span class="line">&lt;/li&gt;</span><br></pre></td></tr></table></figure>
-<p>活参数(to的对象写法且使用路由命名)：<br>注意提前在路由配置里写入相关名字</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    path:&quot;/home&quot;,</span><br><span class="line">    component: Home</span><br><span class="line">    children:[</span><br><span class="line">        &#123;   //注意字子路由路径path不加/</span><br><span class="line">            path:&#x27;Hello&#x27;,</span><br><span class="line">            name:&#x27;nihao&#x27;,</span><br><span class="line">            component:Hello</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;li v-for=&quot;m in list&quot; :key=&quot;m.id&quot;&gt;</span><br><span class="line">&lt;router-link :to=&quot;&#123;</span><br><span class="line">    name:&quot;nihao&quot;,</span><br><span class="line">    query:&#123;</span><br><span class="line">        id:m.id</span><br><span class="line">        name:m.name</span><br><span class="line">    &#125;</span><br><span class="line">&#125;&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;img src=&quot;./images/logo.png&quot; alt=&quot;&quot;&gt;</span><br><span class="line">&lt;/router-link&gt;</span><br><span class="line">&lt;/li&gt;</span><br></pre></td></tr></table></figure>
-
-<p>###params参数<br>提前调整路由设置:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    path:&quot;/home&quot;,</span><br><span class="line">    component: Home</span><br><span class="line">    children:[</span><br><span class="line">        &#123;   //注意字子路由路径path不加/</span><br><span class="line">            path:&#x27;Hello/:id/:name&#x27;,</span><br><span class="line">            name:&#x27;nihao&#x27;,</span><br><span class="line">            component:Hello</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>调整父组件中的触发:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;li&gt; 消息编号 : &#123;&#123;$route.params.id&#125;&#125;&lt;/li&gt;</span><br></pre></td></tr></table></figure>
-<p>在router-link字符串写法中</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;li v-for=&quot;m in list&quot; :key=&quot;m.id&quot;&gt;</span><br><span class="line">&lt;router-link :to=&quot;`/home/Hello/$&#123;m.id&#125;/$&#123;m.name&#125;`&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;img src=&quot;./images/logo.png&quot; alt=&quot;&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;/router-link&gt;</span><br><span class="line">&lt;/li&gt;</span><br></pre></td></tr></table></figure>
-<p>但在to对象的router-link写法中中只能使用name</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;li v-for=&quot;m in list&quot; :key=&quot;m.id&quot;&gt;</span><br><span class="line">&lt;router-link :to=&quot;&#123;</span><br><span class="line">    name:&quot;nihao&quot;,</span><br><span class="line">    params:&#123;</span><br><span class="line">        id:m.id</span><br><span class="line">        name:m.name</span><br><span class="line">    &#125;</span><br><span class="line">&#125;&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>##props配置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">   &#123;</span><br><span class="line">       path:&quot;/home&quot;,</span><br><span class="line">       component: Home</span><br><span class="line">       children:[</span><br><span class="line">           &#123;   //注意字子路由路径path不加/</span><br><span class="line">               path:&#x27;Hello/:id/:name&#x27;,</span><br><span class="line">               name:&#x27;nihao&#x27;,</span><br><span class="line">               component:Hello，</span><br><span class="line">               //props的第一种写法，值为对象，该对象中的所有key-value都会以props的形式传给Detail组件。</span><br><span class="line">// props:&#123;a:1,b:&#x27;hello&#x27;&#125;</span><br><span class="line"></span><br><span class="line">//props的第二种写法，值为布尔值，若布尔值为真，就会把该路由组件收到的所有params参数，以props的形式传给Detail组件。</span><br><span class="line">// props:true</span><br><span class="line"></span><br><span class="line">               //props的第三种写法(可以接收到query参数)</span><br><span class="line">               props($route)&#123;</span><br><span class="line">               return &#123;id:$route.query.id&#125;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       ]</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>在相关子组件中：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;ul&gt;</span><br><span class="line">		&lt;li&gt;消息编号：&#123;&#123;id&#125;&#125;&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;消息标题：&#123;&#123;title&#125;&#125;&lt;/li&gt;</span><br><span class="line">	&lt;/ul&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">	export default &#123;</span><br><span class="line">		name:&#x27;Detail&#x27;,</span><br><span class="line">		props:[&#x27;id&#x27;,&#x27;title&#x27;],</span><br><span class="line">		computed: &#123;</span><br><span class="line">			// id()&#123;</span><br><span class="line">			// 	return this.$route.query.id</span><br><span class="line">			// &#125;,</span><br><span class="line">			// title()&#123;</span><br><span class="line">			// 	return this.$route.query.title</span><br><span class="line">			// &#125;,</span><br><span class="line">		&#125;,</span><br><span class="line">		mounted() &#123;</span><br><span class="line">			// console.log(this.$route)</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>##路由导航编程式编写：</p>
-<p>包括$router.push（相当于router-link）$router.replace（覆盖掉前一个网址即不能点网站的后退）$router.back（相当于浏览器的后退）$router.forward（相当于浏览器的前进） $router.go(往前调试多少个参数)自由控制跳转前后端少个网页，参数可以是负数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button @click=&quot;pushShow(m)&quot;&gt;push查看&lt;/button&gt;</span><br></pre></td></tr></table></figure>
-<p>相当于替换to的对象式写法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123;</span><br><span class="line">			pushShow(m)&#123;</span><br><span class="line">				this.$router.push(&#123;</span><br><span class="line">					name:&#x27;xiangqing&#x27;,</span><br><span class="line">					query:&#123;</span><br><span class="line">						id:m.id,</span><br><span class="line">						title:m.title</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;)</span><br><span class="line">			&#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<p>##路由缓存<br>切换时不销毁组件，如果有include就仅不销毁include包含的组件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;keep-alive include=&#x27;News&#x27;&gt;&lt;router-link&gt;&lt;/router-link&gt;&lt;/keep-alive&gt;</span><br></pre></td></tr></table></figure>
+<p>#swiper插件实现轮播图<br>（1）安装swiper<br>（2）在需要使用轮播图的组件内导入swpier和它的css样式<br>（3）在组件中创建swiper需要的dom标签（html代码，参考官网代码）<br>（4）创建swiper实例</p>
 
       
 
@@ -331,7 +277,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/01/22/Vue%E8%B7%AF%E7%94%B1%E4%BD%BF%E7%94%A8--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B01/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/01/26/%E5%87%A0%E4%B8%AA%E4%B8%8D%E9%94%99%E5%BE%97%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -345,18 +291,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/01/23/%E5%87%A0%E4%B8%AA%E4%B8%8D%E9%94%99%E7%9A%84%E6%8F%92%E4%BB%B6/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Vuex的使用--Vue复习日记2
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/12/13/%E5%8A%9B%E6%89%A3%E9%A2%98-%E5%88%A4%E6%96%AD%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9C%89%E6%97%A0%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">力扣题 : 判断数组中有无重复元素</div>
+    <a href="/2022/01/23/Vuex%E4%BD%BF%E7%94%A8--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B02/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Vuex的使用--Vue复习日记2</div>
       <i class="icon-circle-right"></i>
     </a>
   

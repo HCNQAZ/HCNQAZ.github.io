@@ -152,6 +152,91 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-几个不错得插件推荐" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/26/%E5%87%A0%E4%B8%AA%E4%B8%8D%E9%94%99%E5%BE%97%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90/">几个不错的插件推荐</a>
+    </h1>
+  
+
+        
+        <a href="/2022/01/26/%E5%87%A0%E4%B8%AA%E4%B8%8D%E9%94%99%E5%BE%97%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90/" class="archive-article-date">
+  	<time datetime="2022-01-26T09:18:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前言：今日继续在做项目总结了用到的几个不错的插件</p>
+<p>#nprogress进度条插件</p>
+<p>打开一个页面时，往往会伴随一些请求，并且会在页面上方出现进度条。它的原理时，在我们发起请求的时候开启进度条，在请求成功后关闭进度条，所以只需要在request.js中进行配置。<br>如下图所示，我们页面加载时发起了一个请求，此时页面上方出现蓝色进度条</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//引入进度条</span><br><span class="line">import nprogress from &#x27;nprogress&#x27;;</span><br><span class="line">//引入进度条样式</span><br><span class="line">import &quot;nprogress/nprogress.css&quot;;</span><br><span class="line"></span><br><span class="line">//在发送请求时</span><br><span class="line">//开启进度条</span><br><span class="line">nprogress.start();</span><br><span class="line"></span><br><span class="line">//响应成功，关闭进度条</span><br><span class="line">nprogress.done()</span><br></pre></td></tr></table></figure>
+
+<p>#loadsh插件防抖和节流<br>在进行窗口的resize、scroll，输入框内容校验等操作时，如果事件处理函数调用的频率无限制，会加重浏览器的负担，导致用户体验非常糟糕。此时我们可以采用debounce（防抖）和throttle（节流）的方式来减少调用频率，同时又不影响实际效果。<br>安装lodash插件，该插件提供了防抖和节流的函数，我们可以引入js文件，直接调用。当然也可以自己写防抖和节流的函数<br>lodash官网<br>防抖函数<br>节流函数<br>防抖：用户操作很频繁，但是只执行一次，减少业务负担。<br>节流：用户操作很频繁，但是把频繁的操作变为少量的操作，使浏览器有充分时间解析代码<br>防抖和节流简述<br>例如：下面代码就是将changeIndex设置了节流，如果操作很频繁，限制50ms执行一次。这里函数定义采用的键值对形式。throttle的返回值就是一个函数，所以直接键值对赋值就可以，函数的参数在function中传入即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import &#123;throttle&#125; from &#x27;lodash&#x27;</span><br><span class="line"></span><br><span class="line"> methods: &#123;</span><br><span class="line">    //鼠标进入修改响应元素的背景颜色</span><br><span class="line">    //采用键值对形式创建函数，将changeIndex定义为节流函数，该函数触发很频繁时，设置50ms才会执行一次</span><br><span class="line">    changeIndex: throttle(function (index)&#123;</span><br><span class="line">      this.currentIndex = index</span><br><span class="line">    &#125;,50),</span><br><span class="line">    //鼠标移除触发时间</span><br><span class="line">    leaveIndex()&#123;</span><br><span class="line">      this.currentIndex = -1</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>#mock插件使用<br>mock用来拦截前端ajax请求，返回我么们自定义的数据用于测试前端接口。<br>将不同的数据类型封装为不同的json文件，创建mockServer.js文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//banner、floor分别为轮播图和页面底部的假数据。</span><br><span class="line"></span><br><span class="line">import Mock  from &#x27;mockjs&#x27;</span><br><span class="line">//webpack默认对外暴露：json、图片</span><br><span class="line">import banner from &#x27;./banner.json&#x27;</span><br><span class="line">import floor from &#x27;./floor.json&#x27;</span><br><span class="line"></span><br><span class="line">//mock数据：第一个参数请求地址、第二个参：请求数据</span><br><span class="line">Mock.mock(&quot;/mock/banner&quot;,&#123;code:200,data:banner&#125;)</span><br><span class="line">Mock.mock(&quot;/mock/floor&quot;,&#123;code:200,data:floor&#125;)</span><br><span class="line">//记得要在main.js中引入一下</span><br><span class="line">//import &#x27;&#x27;@/mock/mockServer</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>#swiper插件实现轮播图<br>（1）安装swiper<br>（2）在需要使用轮播图的组件内导入swpier和它的css样式<br>（3）在组件中创建swiper需要的dom标签（html代码，参考官网代码）<br>（4）创建swiper实例</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/01/26/%E5%87%A0%E4%B8%AA%E4%B8%8D%E9%94%99%E5%BE%97%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Vuex使用--Vue复习日记2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -224,6 +309,107 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/01/23/Vuex%E4%BD%BF%E7%94%A8--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B02/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-几个不错的插件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/23/%E5%87%A0%E4%B8%AA%E4%B8%8D%E9%94%99%E7%9A%84%E6%8F%92%E4%BB%B6/">Vuex的使用--Vue复习日记2</a>
+    </h1>
+  
+
+        
+        <a href="/2022/01/23/%E5%87%A0%E4%B8%AA%E4%B8%8D%E9%94%99%E7%9A%84%E6%8F%92%E4%BB%B6/" class="archive-article-date">
+  	<time datetime="2022-01-23T09:18:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前言：今日继续在做项目的同时完成对vuex的知识的整理与复习</p>
+<p>#Vuex使用</p>
+<p>##理解</p>
+<p>vuex是专门在Vue中实现集中式状态（数据）管理的一个Vue插件，对vue应用中的多个组件共享状态进行集中式管理（读/写），也是一种组件间通信的方式，且适用于任意组件间的通信</p>
+<p>##原理图</p>
+<p><img src="https://img-blog.csdnimg.cn/20200521181420101.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ1MzE1Njk3,size_16,color_FFFFFF,t_70" alt="avatar"></p>
+<p>##使用前准备，搭建vuex环境（store）</p>
+<p>1、安装vuex<br>2、编写store文件中的index.js<br>（1）引入和使用vuex插件，use插件，<br>（2）定义actions mutations state<br>（3）new一个store对象，把上面定义的三个对象放入store内<br>3、main.js中<br>（1）引入刚才编写的store环境<br>（2) 在VM中使用store</p>
+<p>##vuex的使用<br>1、在某个组件中的按钮触发事件，并在事件中编写调用vuex语句</p>
+<p>(提交action写法)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$store.dispatch(&#x27;jiaOdd&#x27;, 传参)</span><br></pre></td></tr></table></figure>
+<p>（提交mutations写法）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$store.commit(&#x27;JIA&#x27;, 传参)</span><br></pre></td></tr></table></figure>
+<p>2、store环境里应该有我们刚才需要用到的函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">const actions = &#123;</span><br><span class="line">    jiaOdd(context,value)&#123;</span><br><span class="line">		console.log(&#x27;actions中的jiaOdd被调用了&#x27;)</span><br><span class="line">		if(context.state.sum % 2)&#123;</span><br><span class="line">			context.commit(&#x27;JIA&#x27;,value)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const mutations = &#123;</span><br><span class="line">	JIA(state,value)&#123;</span><br><span class="line">		console.log(&#x27;mutations中的JIA被调用了&#x27;)</span><br><span class="line">		state.sum += value</span><br><span class="line">	&#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const state = &#123;</span><br><span class="line">	sum:0 //当前的和</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//创建并暴露store</span><br><span class="line">export default new Vuex.Store(&#123;</span><br><span class="line">	actions,</span><br><span class="line">	mutations,</span><br><span class="line">	state,</span><br><span class="line">	getters</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>3、在我们需要sum（计算出的数据）处</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;当前求和为：&#123;&#123;$store.state.sum&#125;&#125;&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
+
+<p>##getters<br>用于对state中的属性进行处理<br>###用法<br>在定义action mutations state处定义getters</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const getters = &#123;</span><br><span class="line">	bigSum(state)&#123;</span><br><span class="line">		return state.sum*10</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;h3&gt;当前求和放大10倍为：&#123;&#123;$store.getters.bigSum&#125;&#125;&lt;/h3&gt;</span><br></pre></td></tr></table></figure>
+
+<p>##mapState和mapGetters</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//借助mapState生成计算属性，从state中读取数据。（对象写法）</span><br><span class="line"> ...mapState(&#123;he:&#x27;sum&#x27;,xuexiao:&#x27;school&#x27;,xueke:&#x27;subject&#x27;&#125;),</span><br><span class="line"></span><br><span class="line">//借助mapState生成计算属性，从state中读取数据。（数组写法）</span><br><span class="line">	...mapState([&#x27;sum&#x27;,&#x27;school&#x27;,&#x27;subject&#x27;]),</span><br><span class="line"></span><br><span class="line">//借助mapGetters生成计算属性，从getters中读取数据。（数组写法）</span><br><span class="line">	...mapGetters([&#x27;bigSum&#x27;])</span><br></pre></td></tr></table></figure>
+
+<p>##mapMutations和mapActions</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//首先如果需要传参的话，在触发vuex事件的按钮函数处传参，不需要直接调用就好了不用带（）和参数</span><br><span class="line">&lt;button @click=&quot;increment(n)&quot;&gt;+&lt;/button&gt;</span><br><span class="line">&lt;button @click=&quot;decrement(n)&quot;&gt;-&lt;/button&gt;</span><br><span class="line">&lt;button @click=&quot;incrementOdd(n)&quot;&gt;求和为奇数加&lt;/button&gt;</span><br><span class="line">&lt;button @click=&quot;incrementWait(n)&quot;&gt;等一等再加&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">//借助mapMutations生成对应的方法，方法中会调用commit去联系mutations(对象写法)</span><br><span class="line">...mapMutations(&#123;increment:&#x27;JIA&#x27;,decrement:&#x27;JIAN&#x27;&#125;),</span><br><span class="line"></span><br><span class="line">//借助mapActions生成对应的方法，方法中会调用dispatch去联系actions(对象写法)</span><br><span class="line">...mapActions(&#123;incrementOdd:&#x27;jiaOdd&#x27;,incrementWait:&#x27;jiaWait&#x27;&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>##vuex的模块化编码<br>注意复习</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/01/23/%E5%87%A0%E4%B8%AA%E4%B8%8D%E9%94%99%E7%9A%84%E6%8F%92%E4%BB%B6/">展开全文 >></a>
         </p>
       
 
