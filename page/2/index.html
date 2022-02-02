@@ -20,35 +20,28 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="#利用ajax制作一个二十四小时的实时天气预报  主函数: 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869&lt;!DOCTYPE html&gt;&lt;html lang&#x3D;&quot;">
-<meta property="og:type" content="article">
-<meta property="og:title" content="ajax实例:制作一个二十四小时的实时天气预报（学习笔记）">
-<meta property="og:url" content="http://example.com/2021/12/13/ajax%E5%AE%9E%E4%BE%8B-%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E4%BA%8C%E5%8D%81%E5%9B%9B%E5%B0%8F%E6%97%B6%E7%9A%84%E5%AE%9E%E6%97%B6%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="#利用ajax制作一个二十四小时的实时天气预报  主函数: 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869&lt;!DOCTYPE html&gt;&lt;html lang&#x3D;&quot;">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://bdcm02.baidupcs.com/file/173bc2512m94e183fe9b41f072e72403?bkt=en-19901565518762c967ecbcc5b97419d58e8b2322bc90e1a86491561af55d173fddad67e981afffb6ebe15028bdd38f15d41a6300c5f8567e29075934d29fcfb7&fid=4042342758-250528-82830349874450&time=1639401791&sign=FDTAXUbGERLQlBHSKfWqi-DCb740ccc5511e5e8fedcff06b081203-I8iR20B/LBM6/G1j4CQBpvcCYC0=&to=94&size=104820&sta_dx=104820&sta_cs=0&sta_ft=png&sta_ct=0&sta_mt=0&fm2=MH,Baoding,Anywhere,,anhui,cmnet&ctime=1639401625&mtime=1639401625&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=104820&vuk=4042342758&iv=0&htype=&randtype=&tkbind_id=0&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-6398939357d97576f8646dc91ed7820e12a0bb4117fae07e2ec3449a429a534647e8be6957469bca610113ba7e96920cccf056791ac0b9bc305a5e1275657320&sl=76480590&expires=8h&rt=pr&r=594414004&vbdid=1563055239&fin=QQ%E5%9B%BE%E7%89%8720211213211929.png&fn=QQ%E5%9B%BE%E7%89%8720211213211929.png&rtype=1&dp-logid=9198305644935620357&dp-callid=0.1&hps=1&tsl=80&csl=80&fsl=-1&csign=ykD+nCoxDipyIOdfq1RXxDlEeQc=&so=0&ut=6&uter=4&serv=0&uc=2212150414&ti=220620fd8d32b115b34eaa4e02647304667cb108cb5b5b35&hflag=30&from_type=1&adg=c_8026c931624fcb20480c2c4834efddf9&reqlabel=250528_f_b94405ab9fd6a5fcb6a666164a51b79a_-1_aca2c4b31e82adce2bfeb7b13c1506e5&by=themis">
-<meta property="article:published_time" content="2021-12-13T13:08:26.000Z">
-<meta property="article:modified_time" content="2021-12-13T13:25:40.386Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="web">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://bdcm02.baidupcs.com/file/173bc2512m94e183fe9b41f072e72403?bkt=en-19901565518762c967ecbcc5b97419d58e8b2322bc90e1a86491561af55d173fddad67e981afffb6ebe15028bdd38f15d41a6300c5f8567e29075934d29fcfb7&fid=4042342758-250528-82830349874450&time=1639401791&sign=FDTAXUbGERLQlBHSKfWqi-DCb740ccc5511e5e8fedcff06b081203-I8iR20B/LBM6/G1j4CQBpvcCYC0=&to=94&size=104820&sta_dx=104820&sta_cs=0&sta_ft=png&sta_ct=0&sta_mt=0&fm2=MH,Baoding,Anywhere,,anhui,cmnet&ctime=1639401625&mtime=1639401625&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=104820&vuk=4042342758&iv=0&htype=&randtype=&tkbind_id=0&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-6398939357d97576f8646dc91ed7820e12a0bb4117fae07e2ec3449a429a534647e8be6957469bca610113ba7e96920cccf056791ac0b9bc305a5e1275657320&sl=76480590&expires=8h&rt=pr&r=594414004&vbdid=1563055239&fin=QQ%E5%9B%BE%E7%89%8720211213211929.png&fn=QQ%E5%9B%BE%E7%89%8720211213211929.png&rtype=1&dp-logid=9198305644935620357&dp-callid=0.1&hps=1&tsl=80&csl=80&fsl=-1&csign=ykD+nCoxDipyIOdfq1RXxDlEeQc=&so=0&ut=6&uter=4&serv=0&uc=2212150414&ti=220620fd8d32b115b34eaa4e02647304667cb108cb5b5b35&hflag=30&from_type=1&adg=c_8026c931624fcb20480c2c4834efddf9&reqlabel=250528_f_b94405ab9fd6a5fcb6a666164a51b79a_-1_aca2c4b31e82adce2bfeb7b13c1506e5&by=themis">
 
-<link rel="canonical" href="http://example.com/2021/12/13/ajax%E5%AE%9E%E4%BE%8B-%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E4%BA%8C%E5%8D%81%E5%9B%9B%E5%B0%8F%E6%97%B6%E7%9A%84%E5%AE%9E%E6%97%B6%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5/">
+<link rel="canonical" href="http://example.com/page/2/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : false,
-    isPost : true,
+    isHome : true,
+    isPost : false,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>ajax实例:制作一个二十四小时的实时天气预报（学习笔记） | Hexo</title>
+  <title>Hexo</title>
   
 
 
@@ -146,10 +139,9 @@
         <div class="content-wrap">
           
 
-          <div class="content post posts-expand">
+          <div class="content index posts-expand">
             
-
-    
+      
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -165,9 +157,10 @@
       <meta itemprop="name" content="Hexo">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          ajax实例:制作一个二十四小时的实时天气预报（学习笔记）
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/12/13/ajax%E5%AE%9E%E4%BE%8B-%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E4%BA%8C%E5%8D%81%E5%9B%9B%E5%B0%8F%E6%97%B6%E7%9A%84%E5%AE%9E%E6%97%B6%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5/" class="post-title-link" itemprop="url">ajax实例:制作一个二十四小时的实时天气预报（学习笔记）</a>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -191,7 +184,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>#利用ajax制作一个二十四小时的实时天气预报</p>
+          <p>#利用ajax制作一个二十四小时的实时天气预报</p>
 <ul>
 <li><p>主函数:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">&quot;en&quot;</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">&quot;UTF-8&quot;</span>&gt;</span><br><span class="line">    &lt;meta http-equiv=<span class="string">&quot;X-UA-Compatible&quot;</span> content=<span class="string">&quot;IE=edge&quot;</span>&gt;</span><br><span class="line">    &lt;meta name=<span class="string">&quot;viewport&quot;</span> content=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br><span class="line">    &lt;link rel=<span class="string">&quot;stylesheet&quot;</span> href=<span class="string">&quot;https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css&quot;</span>&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    //网页主体</span><br><span class="line">    &lt;div class=<span class="string">&quot;container&quot;</span>&gt;</span><br><span class="line">        &lt;table id=<span class="string">&#x27;box&#x27;</span> class=<span class="string">&quot;table table-striped table-hover&quot;</span> align=<span class="string">&quot;center&quot;</span>&gt;</span><br><span class="line">          </span><br><span class="line">        &lt;/table&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    //引入需要的JS</span><br><span class="line">    &lt;script src=<span class="string">&quot;js/jsonp.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script src=<span class="string">&quot;js/template-web.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script <span class="built_in">type</span>=<span class="string">&quot;text/html&quot;</span> id=<span class="string">&#x27;tpl&#x27;</span>&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;th&gt;时间&lt;/th&gt;</span><br><span class="line">            &lt;th&gt;温度&lt;/th&gt;</span><br><span class="line">            &lt;th&gt;天气&lt;/th&gt;</span><br><span class="line">            &lt;th&gt;风向&lt;/th&gt;</span><br><span class="line">            &lt;th&gt;风力&lt;/th&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &#123;&#123;each info&#125;&#125;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;&#123;&#123;dateFormat(<span class="variable">$value</span>.update_time)&#125;&#125;&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;&#123;&#123;<span class="variable">$value</span>.degree&#125;&#125;&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;&#123;&#123;<span class="variable">$value</span>.weather&#125;&#125;&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;&#123;&#123;<span class="variable">$value</span>.wind_direction&#125;&#125;&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;&#123;&#123;<span class="variable">$value</span>.wind_power&#125;&#125;&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &#123;&#123;/each&#125;&#125;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        //获取元素</span><br><span class="line">        var box = document.getElementById(<span class="string">&#x27;box&#x27;</span>);</span><br><span class="line">        //提取年月日时</span><br><span class="line">        <span class="keyword">function</span> dateFormat(date)&#123;</span><br><span class="line">            var year =date.substr(0,4) ;</span><br><span class="line">            var month =date.substr(4,2) ;</span><br><span class="line">            var day =date.substr(6,2) ;</span><br><span class="line">            var hours =date.substr(8,2) ;</span><br><span class="line">            <span class="built_in">return</span> year + <span class="string">&#x27;年&#x27;</span> + month + <span class="string">&#x27;月&#x27;</span> + day + <span class="string">&#x27;日&#x27;</span> + hours + <span class="string">&#x27;时&#x27;</span> ;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        //向模板开放外部变量</span><br><span class="line">        template.defaults.imports.dateFormat = dateFormat;</span><br><span class="line">        //调用函数,向服务器发出请求调取天气情况</span><br><span class="line">        jsonp(&#123;</span><br><span class="line">            url: <span class="string">&#x27;http://wis.qq.com/weather/common&#x27;</span>,</span><br><span class="line">            data:&#123;</span><br><span class="line">                <span class="built_in">source</span> : <span class="string">&#x27;pc&#x27;</span> ,</span><br><span class="line">                weather_type: <span class="string">&#x27;forecast_1h&#x27;</span>,</span><br><span class="line">                province: <span class="string">&#x27;安徽省&#x27;</span>,</span><br><span class="line">                city: <span class="string">&#x27;合肥市&#x27;</span></span><br><span class="line">            &#125;,</span><br><span class="line"></span><br><span class="line">            success: <span class="keyword">function</span>(data)&#123;</span><br><span class="line">                var html = template(<span class="string">&#x27;tpl&#x27;</span>, &#123;info: data.data.forecast_1h &#125;);</span><br><span class="line">                box.innerHTML = html;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></li>
@@ -206,37 +199,322 @@
 </ul>
 <p>文章重点在于功能实现，而不在网站美化，所以没有对网页进行美化，注释包含大量重要信息，可以解疑答惑，所以不再写更多解释</p>
 
+      
     </div>
 
     
     
     
-
       <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/web/" rel="tag"># web</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2021/12/12/node%E6%90%AD%E5%BB%BAAjax%E7%8E%AF%E5%A2%83/" rel="prev" title="node搭建Ajax环境">
-      <i class="fa fa-chevron-left"></i> node搭建Ajax环境
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/12/13/%E5%8A%9B%E6%89%A3%E9%A2%98-%E5%88%A4%E6%96%AD%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9C%89%E6%97%A0%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/" rel="next" title="力扣题 : 判断数组中有无重复元素">
-      力扣题 : 判断数组中有无重复元素 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
+        <div class="post-eof"></div>
       </footer>
-    
   </article>
   
   
   
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/12/node%E6%90%AD%E5%BB%BAAjax%E7%8E%AF%E5%A2%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/12/12/node%E6%90%AD%E5%BB%BAAjax%E7%8E%AF%E5%A2%83/" class="post-title-link" itemprop="url">node搭建Ajax环境</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-12-12 11:47:24 / 修改时间：12:06:51" itemprop="dateCreated datePublished" datetime="2021-12-12T11:47:24+08:00">2021-12-12</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>#搭建可以的运行Ajax的node服务器</p>
+<ul>
+<li><p>首先我们需要先安装node.js 这里推荐教程 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/liuqiyun/p/8133904.html">https://www.cnblogs.com/liuqiyun/p/8133904.html</a></p>
+</li>
+<li><p>安装完毕后随便创建一个服务器文件夹（名字随意）</p>
+</li>
+<li><p>以管理员身份运行cmd，然后进入到服务器文件夹输入以下代码:</p>
+</li>
+</ul>
+<p>创建package.json文件:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init --yes</span><br></pre></td></tr></table></figure>
+<p>创建package-lock.json文件 和 node_modules 文件夹:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install express --save</span><br></pre></td></tr></table></figure>
+
+<p>-在服务器文件夹下创建app.js:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//引入express框架</span><br><span class="line">const express=require(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"></span><br><span class="line">//引入路径处理模块</span><br><span class="line">const path=require(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"></span><br><span class="line">//创建web服务器</span><br><span class="line">const app=express();</span><br><span class="line"></span><br><span class="line">//静态资源访问服务器功能</span><br><span class="line">app.use(express.static(path.join(__dirname,<span class="string">&#x27;public&#x27;</span>)))</span><br><span class="line"></span><br><span class="line">//监听端口</span><br><span class="line">app.listen(3000);</span><br><span class="line"></span><br><span class="line">//控制台提示输出</span><br><span class="line">console.log(<span class="string">&#x27;服务器启动成功&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在public文件夹中创建index.html输入以下代码:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">&quot;en&quot;</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">&quot;UTF-8&quot;</span>&gt;</span><br><span class="line">    &lt;meta http-equiv=<span class="string">&quot;X-UA-Compatible&quot;</span> content=<span class="string">&quot;IE=edge&quot;</span>&gt;</span><br><span class="line">    &lt;meta name=<span class="string">&quot;viewport&quot;</span> content=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;hello world&lt;/div&gt;</span><br><span class="line">    &lt;button&gt;这里是ajax&lt;/button&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>运行cmd进入到服务器文件夹，输入:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node app.js</span><br></pre></td></tr></table></figure>
+<p>打开浏览器输入:<br><a target="_blank" rel="noopener" href="http://localhost:3000/">http://localhost:3000/</a><br>至此我们的服务器搭建全部完成</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/11/%E5%8A%9B%E6%89%A3%E9%A2%98-%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/12/11/%E5%8A%9B%E6%89%A3%E9%A2%98-%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/" class="post-title-link" itemprop="url">力扣题: 删除有序数组中的的重复项</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-12-11 18:49:33 / 修改时间：19:05:23" itemprop="dateCreated datePublished" datetime="2021-12-11T18:49:33+08:00">2021-12-11</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>#题目<br>给你一个有序数组 nums ，请你 原地 删除重复出现的元素，使每个元素 只出现一次 ，返回删除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。</p>
+<p>数组是升序数组</p>
+<p>##题目分析<br>关键词：有序数组 升序 返回一个整数</p>
+<p>升序代表同一个数不会隔着一个数出现，我们完全可以使用一个头指针判断前面两个数字是否相同，使用一个尾指针接收头指针判断出来的不相同的数字。<br>最后返回尾指针所在位置即可。</p>
+<p>##代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @param &#123;number[]&#125; nums</span><br><span class="line"> * @<span class="built_in">return</span> &#123;number&#125;</span><br><span class="line"> */</span><br><span class="line">var removeDuplicates = <span class="keyword">function</span>(nums) &#123;</span><br><span class="line">    <span class="built_in">let</span> tail = 1 ;</span><br><span class="line">    <span class="keyword">for</span>( <span class="built_in">let</span> head = 0 ; head&lt; nums.length - 1 ; head++ )&#123;</span><br><span class="line">        <span class="keyword">if</span>( nums[ head+1 ] !== nums[head])&#123;</span><br><span class="line">            nums[tail] = nums[ head+1 ];</span><br><span class="line">            tail++ ;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> tail ;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>##测试<br>测试会使用返回的tail整数对nums进行遍历.例如[1 , 1 , 1 , 2]预期返回[1 , 2]</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/11/%E5%8A%9B%E6%89%A3%E9%A2%98-%E8%BD%AE%E8%BD%AC%E6%95%B0%E7%BB%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/12/11/%E5%8A%9B%E6%89%A3%E9%A2%98-%E8%BD%AE%E8%BD%AC%E6%95%B0%E7%BB%84/" class="post-title-link" itemprop="url">力扣题: 轮转数组</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-12-11 18:49:33" itemprop="dateCreated datePublished" datetime="2021-12-11T18:49:33+08:00">2021-12-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-12-12 22:43:11" itemprop="dateModified" datetime="2021-12-12T22:43:11+08:00">2021-12-12</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>#题目<br>给你一个数组，将数组中的元素向右轮转 k 个位置，其中 k 是非负数。</p>
+<p>##题目分析<br>关键词：向右 轮转K K位非负数</p>
+<p>计算出轮转后的指针位置，用数组接收，最后再用所得数组替换原数组</p>
+<p>##代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var rotate = <span class="keyword">function</span>(nums, k) &#123;</span><br><span class="line">    <span class="built_in">let</span> save = new Array(nums.length).join(<span class="string">&#x27;,&#x27;</span>).split(<span class="string">&#x27;,&#x27;</span>) </span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">let</span> n = 0 ; n &lt; nums.length ; n++)&#123;</span><br><span class="line">        <span class="built_in">let</span> m = n ;</span><br><span class="line"></span><br><span class="line">        m = (m+k) % nums.length;</span><br><span class="line">        save[m] = nums[n] ;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="built_in">let</span> n = 0 ; n &lt; nums.length ; n++)&#123;</span><br><span class="line">            nums[n] = save[n] ;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>##测试<br>测试会查看nums，是否符合预期。</p>
+<p>##题后感悟:<br>m = (m+k) % nums.length可以替代</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>( m+k &gt; nums.length-1)&#123;</span><br><span class="line">            m = m+k-nums.length;</span><br><span class="line"></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            m = m+k;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>替换数组需要一个个数替换，而不能令整个数组等于另一个数组</p>
+<p>制造临时数组是需要先制造一个有长度的空数组</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/11/%E7%AC%AC%E4%BA%8C%E7%AF%87%E6%96%87%E7%AB%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/12/11/%E7%AC%AC%E4%BA%8C%E7%AF%87%E6%96%87%E7%AB%A0/" class="post-title-link" itemprop="url">hexo博客上传到github</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-12-11 14:58:36 / 修改时间：16:13:14" itemprop="dateCreated datePublished" datetime="2021-12-11T14:58:36+08:00">2021-12-11</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>#hexo博客上传到github</p>
+<ul>
+<li>进到博客所在文件夹，右键点击Git Bash Here</li>
+<li>输入hexo new “你要输入的标题” 可以新建文章，并且在source/_posts 里对md进行编辑即刻更新我们的博客</li>
+<li>更新完后，输入hexo clean 进行hexo清理</li>
+<li>在输入hexo g 进行页面生成</li>
+<li>输入hexo s ，并在网页内输入localhost:4000查看我们生成的新网页</li>
+<li>输入hexo d 上传，便完成</li>
+</ul>
+<p>###注意：</p>
+<ul>
+<li>如果出现错误128说明是没连上网站，只要继续反复进行hexo d 直到脸上即可</li>
+<li>如果出现错误1则可以尝试输入以下代码，再进行hexo d<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.emain <span class="string">&quot;github中你的邮箱&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;github中你的用户名&quot;</span></span><br></pre></td></tr></table></figure>
+以下就是上传更新后的hexo博客到github的所有内容</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
 
 
 
