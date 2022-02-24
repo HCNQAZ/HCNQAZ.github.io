@@ -115,7 +115,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">10</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">12</span></a>
 
   </li>
   </ul>
@@ -171,13 +171,6 @@
 
               <time title="创建时间：2022-01-26 17:18:33" itemprop="dateCreated datePublished" datetime="2022-01-26T17:18:33+08:00">2022-01-26</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-02 12:17:42" itemprop="dateModified" datetime="2022-02-02T12:17:42+08:00">2022-02-02</time>
-              </span>
 
           
 
@@ -244,13 +237,6 @@
 
               <time title="创建时间：2022-01-23 17:18:33" itemprop="dateCreated datePublished" datetime="2022-01-23T17:18:33+08:00">2022-01-23</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-02 12:17:06" itemprop="dateModified" datetime="2022-02-02T12:17:06+08:00">2022-02-02</time>
-              </span>
 
           
 
@@ -316,13 +302,6 @@
 
               <time title="创建时间：2022-01-22 17:18:33" itemprop="dateCreated datePublished" datetime="2022-01-22T17:18:33+08:00">2022-01-22</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-02 12:16:18" itemprop="dateModified" datetime="2022-02-02T12:16:18+08:00">2022-02-02</time>
-              </span>
 
           
 
@@ -390,13 +369,6 @@
 
               <time title="创建时间：2022-01-22 16:25:33" itemprop="dateCreated datePublished" datetime="2022-01-22T16:25:33+08:00">2022-01-22</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-02 12:17:11" itemprop="dateModified" datetime="2022-02-02T12:17:11+08:00">2022-02-02</time>
-              </span>
 
           
 
@@ -460,9 +432,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-12-13 21:35:47 / 修改时间：21:39:26" itemprop="dateCreated datePublished" datetime="2021-12-13T21:35:47+08:00">2021-12-13</time>
+              <time title="创建时间：2021-12-13 21:35:47" itemprop="dateCreated datePublished" datetime="2021-12-13T21:35:47+08:00">2021-12-13</time>
             </span>
 
           
@@ -476,12 +447,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>#题目<br>给定一个整数数组，判断是否存在重复元素。</p>
+          <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个整数数组，判断是否存在重复元素。</p>
 <p>如果存在一值在数组中出现至少两次，函数返回 true 。如果数组中每个元素都不相同，则返回 false 。</p>
-<p>##代码</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @param &#123;number[]&#125; nums</span><br><span class="line"> * @<span class="built_in">return</span> &#123;boolean&#125;</span><br><span class="line"> */</span><br><span class="line">var containsDuplicate = <span class="keyword">function</span>(nums) &#123;</span><br><span class="line">    nums.sort((a,b) =&gt; a-b)</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">let</span> i = 1; i &lt; nums.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums[i] === nums[i - 1]) <span class="built_in">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @param &#123;number[]&#125; nums</span><br><span class="line"> * @<span class="built_in">return</span> &#123;boolean&#125;</span><br><span class="line"> */</span><br><span class="line">var containsDuplicate = <span class="keyword">function</span>(nums) &#123;</span><br><span class="line">    nums.sort((a,b) =&gt; a-b)</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">let</span> i = 1; i &lt; nums.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums[i] === nums[i - 1]) <span class="built_in">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>##题后感悟:<br>nums.sort((a,b) =&gt; a-b)可将数组从小到大排序</p>
+<h2 id="题后感悟"><a href="#题后感悟" class="headerlink" title="题后感悟:"></a>题后感悟:</h2><p>nums.sort((a,b) =&gt; a-b)可将数组从小到大排序</p>
 <p>排好序后若存在相同数，必定贴在一起，可以一次循环遍历出来。</p>
 
       
@@ -501,7 +471,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -567,7 +537,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
