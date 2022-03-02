@@ -115,7 +115,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">12</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">13</span></a>
 
   </li>
   </ul>
@@ -141,6 +141,69 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/13/%E5%8A%9B%E6%89%A3%E9%A2%98-%E5%88%A4%E6%96%AD%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9C%89%E6%97%A0%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/12/13/%E5%8A%9B%E6%89%A3%E9%A2%98-%E5%88%A4%E6%96%AD%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9C%89%E6%97%A0%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/" class="post-title-link" itemprop="url">力扣题 : 判断数组中有无重复元素</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-12-13 21:35:47" itemprop="dateCreated datePublished" datetime="2021-12-13T21:35:47+08:00">2021-12-13</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个整数数组，判断是否存在重复元素。</p>
+<p>如果存在一值在数组中出现至少两次，函数返回 true 。如果数组中每个元素都不相同，则返回 false 。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @param &#123;number[]&#125; nums</span><br><span class="line"> * @<span class="built_in">return</span> &#123;boolean&#125;</span><br><span class="line"> */</span><br><span class="line">var containsDuplicate = <span class="keyword">function</span>(nums) &#123;</span><br><span class="line">    nums.sort((a,b) =&gt; a-b)</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">let</span> i = 1; i &lt; nums.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums[i] === nums[i - 1]) <span class="built_in">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="题后感悟"><a href="#题后感悟" class="headerlink" title="题后感悟:"></a>题后感悟:</h2><p>nums.sort((a,b) =&gt; a-b)可将数组从小到大排序</p>
+<p>排好序后若存在相同数，必定贴在一起，可以一次循环遍历出来。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -296,75 +359,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/11/%E5%8A%9B%E6%89%A3%E9%A2%98-%E8%BD%AE%E8%BD%AC%E6%95%B0%E7%BB%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/12/11/%E5%8A%9B%E6%89%A3%E9%A2%98-%E8%BD%AE%E8%BD%AC%E6%95%B0%E7%BB%84/" class="post-title-link" itemprop="url">力扣题: 轮转数组</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-12-11 18:49:33" itemprop="dateCreated datePublished" datetime="2021-12-11T18:49:33+08:00">2021-12-11</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>#题目<br>给你一个数组，将数组中的元素向右轮转 k 个位置，其中 k 是非负数。</p>
-<p>##题目分析<br>关键词：向右 轮转K K位非负数</p>
-<p>计算出轮转后的指针位置，用数组接收，最后再用所得数组替换原数组</p>
-<p>##代码</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var rotate = <span class="keyword">function</span>(nums, k) &#123;</span><br><span class="line">    <span class="built_in">let</span> save = new Array(nums.length).join(<span class="string">&#x27;,&#x27;</span>).split(<span class="string">&#x27;,&#x27;</span>) </span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">let</span> n = 0 ; n &lt; nums.length ; n++)&#123;</span><br><span class="line">        <span class="built_in">let</span> m = n ;</span><br><span class="line"></span><br><span class="line">        m = (m+k) % nums.length;</span><br><span class="line">        save[m] = nums[n] ;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="built_in">let</span> n = 0 ; n &lt; nums.length ; n++)&#123;</span><br><span class="line">            nums[n] = save[n] ;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>##测试<br>测试会查看nums，是否符合预期。</p>
-<p>##题后感悟:<br>m = (m+k) % nums.length可以替代</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>( m+k &gt; nums.length-1)&#123;</span><br><span class="line">            m = m+k-nums.length;</span><br><span class="line"></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            m = m+k;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<p>替换数组需要一个个数替换，而不能令整个数组等于另一个数组</p>
-<p>制造临时数组是需要先制造一个有长度的空数组</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/11/%E5%8A%9B%E6%89%A3%E9%A2%98-%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -431,7 +425,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/11/hexo%E5%8D%9A%E5%AE%A2%E4%B8%8A%E4%BC%A0%E5%88%B0github/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/11/%E5%8A%9B%E6%89%A3%E9%A2%98-%E8%BD%AE%E8%BD%AC%E6%95%B0%E7%BB%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -445,7 +439,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/12/11/hexo%E5%8D%9A%E5%AE%A2%E4%B8%8A%E4%BC%A0%E5%88%B0github/" class="post-title-link" itemprop="url">hexo博客上传到github</a>
+            <a href="/2021/12/11/%E5%8A%9B%E6%89%A3%E9%A2%98-%E8%BD%AE%E8%BD%AC%E6%95%B0%E7%BB%84/" class="post-title-link" itemprop="url">力扣题: 轮转数组</a>
         </h2>
 
         <div class="post-meta">
@@ -455,7 +449,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-12-11 14:58:36" itemprop="dateCreated datePublished" datetime="2021-12-11T14:58:36+08:00">2021-12-11</time>
+              <time title="创建时间：2021-12-11 18:49:33" itemprop="dateCreated datePublished" datetime="2021-12-11T18:49:33+08:00">2021-12-11</time>
             </span>
 
           
@@ -469,22 +463,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>#hexo博客上传到github</p>
-<ul>
-<li>进到博客所在文件夹，右键点击Git Bash Here</li>
-<li>输入hexo new “你要输入的标题” 可以新建文章，并且在source/_posts 里对md进行编辑即刻更新我们的博客</li>
-<li>更新完后，输入hexo clean 进行hexo清理</li>
-<li>在输入hexo g 进行页面生成</li>
-<li>输入hexo s ，并在网页内输入localhost:4000查看我们生成的新网页</li>
-<li>输入hexo d 上传，便完成</li>
-</ul>
-<p>###注意：</p>
-<ul>
-<li>如果出现错误128说明是没连上网站，只要继续反复进行hexo d 直到脸上即可</li>
-<li>如果出现错误1则可以尝试输入以下代码，再进行hexo d<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.emain <span class="string">&quot;github中你的邮箱&quot;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;github中你的用户名&quot;</span></span><br></pre></td></tr></table></figure>
-以下就是上传更新后的hexo博客到github的所有内容</li>
-</ul>
+          <p>#题目<br>给你一个数组，将数组中的元素向右轮转 k 个位置，其中 k 是非负数。</p>
+<p>##题目分析<br>关键词：向右 轮转K K位非负数</p>
+<p>计算出轮转后的指针位置，用数组接收，最后再用所得数组替换原数组</p>
+<p>##代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var rotate = <span class="keyword">function</span>(nums, k) &#123;</span><br><span class="line">    <span class="built_in">let</span> save = new Array(nums.length).join(<span class="string">&#x27;,&#x27;</span>).split(<span class="string">&#x27;,&#x27;</span>) </span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">let</span> n = 0 ; n &lt; nums.length ; n++)&#123;</span><br><span class="line">        <span class="built_in">let</span> m = n ;</span><br><span class="line"></span><br><span class="line">        m = (m+k) % nums.length;</span><br><span class="line">        save[m] = nums[n] ;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="built_in">let</span> n = 0 ; n &lt; nums.length ; n++)&#123;</span><br><span class="line">            nums[n] = save[n] ;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>##测试<br>测试会查看nums，是否符合预期。</p>
+<p>##题后感悟:<br>m = (m+k) % nums.length可以替代</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>( m+k &gt; nums.length-1)&#123;</span><br><span class="line">            m = m+k-nums.length;</span><br><span class="line"></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            m = m+k;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>替换数组需要一个个数替换，而不能令整个数组等于另一个数组</p>
+<p>制造临时数组是需要先制造一个有长度的空数组</p>
 
       
     </div>
@@ -569,7 +559,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
