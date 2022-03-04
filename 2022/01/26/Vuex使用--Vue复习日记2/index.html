@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>hexo博客上传到github | Hexo</title>
+  <title>Vuex的使用--Vue复习日记2 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#hexo博客上传到github  进到博客所在文件夹，右键点击Git Bash Here 输入hexo new “你要输入的标题” 可以新建文章，并且在source&#x2F;_posts 里对md进行编辑即刻更新我们的博客 更新完后，输入hexo clean 进行hexo清理 在输入hexo g 进行页面生成 输入hexo s ，并在网页内输入localhost:4000查看我们生成的新网页 输入hex">
+  <meta name="description" content="前言：今日继续在做项目的同时完成对vuex的知识的整理与复习 Vuex使用理解vuex是专门在Vue中实现集中式状态（数据）管理的一个Vue插件，对vue应用中的多个组件共享状态进行集中式管理（读&#x2F;写），也是一种组件间通信的方式，且适用于任意组件间的通信 原理图">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo博客上传到github">
-<meta property="og:url" content="http://example.com/2021/12/11/hexo%E5%8D%9A%E5%AE%A2%E4%B8%8A%E4%BC%A0%E5%88%B0github/index.html">
+<meta property="og:title" content="Vuex的使用--Vue复习日记2">
+<meta property="og:url" content="http://example.com/2022/01/26/Vuex%E4%BD%BF%E7%94%A8--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B02/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="#hexo博客上传到github  进到博客所在文件夹，右键点击Git Bash Here 输入hexo new “你要输入的标题” 可以新建文章，并且在source&#x2F;_posts 里对md进行编辑即刻更新我们的博客 更新完后，输入hexo clean 进行hexo清理 在输入hexo g 进行页面生成 输入hexo s ，并在网页内输入localhost:4000查看我们生成的新网页 输入hex">
+<meta property="og:description" content="前言：今日继续在做项目的同时完成对vuex的知识的整理与复习 Vuex使用理解vuex是专门在Vue中实现集中式状态（数据）管理的一个Vue插件，对vue应用中的多个组件共享状态进行集中式管理（读&#x2F;写），也是一种组件间通信的方式，且适用于任意组件间的通信 原理图">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-12-11T06:58:36.000Z">
-<meta property="article:modified_time" content="2021-12-11T08:13:14.703Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200521181420101.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ1MzE1Njk3,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2022-01-26T09:18:33.000Z">
+<meta property="article:modified_time" content="2022-03-02T11:21:50.033Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="web">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200521181420101.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ1MzE1Njk3,size_16,color_FFFFFF,t_70">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -155,42 +157,49 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hexo博客上传到github" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Vuex使用--Vue复习日记2" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      hexo博客上传到github
+      Vuex的使用--Vue复习日记2
     </h1>
   
 
         
-        <a href="/2021/12/11/hexo%E5%8D%9A%E5%AE%A2%E4%B8%8A%E4%BC%A0%E5%88%B0github/" class="archive-article-date">
-  	<time datetime="2021-12-11T06:58:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-11</time>
+        <a href="/2022/01/26/Vuex%E4%BD%BF%E7%94%A8--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B02/" class="archive-article-date">
+  	<time datetime="2022-01-26T09:18:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-26</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#hexo博客上传到github</p>
-<ul>
-<li>进到博客所在文件夹，右键点击Git Bash Here</li>
-<li>输入hexo new “你要输入的标题” 可以新建文章，并且在source/_posts 里对md进行编辑即刻更新我们的博客</li>
-<li>更新完后，输入hexo clean 进行hexo清理</li>
-<li>在输入hexo g 进行页面生成</li>
-<li>输入hexo s ，并在网页内输入localhost:4000查看我们生成的新网页</li>
-<li>输入hexo d 上传，便完成</li>
-</ul>
-<p>###注意：</p>
-<ul>
-<li>如果出现错误128说明是没连上网站，只要继续反复进行hexo d 直到脸上即可</li>
-<li>如果出现错误1则可以尝试输入以下代码，再进行hexo d<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.emain <span class="string">&quot;github中你的邮箱&quot;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;github中你的用户名&quot;</span></span><br></pre></td></tr></table></figure>
-以下就是上传更新后的hexo博客到github的所有内容</li>
-</ul>
+        <p>前言：今日继续在做项目的同时完成对vuex的知识的整理与复习</p>
+<h1 id="Vuex使用"><a href="#Vuex使用" class="headerlink" title="Vuex使用"></a>Vuex使用</h1><h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><p>vuex是专门在Vue中实现集中式状态（数据）管理的一个Vue插件，对vue应用中的多个组件共享状态进行集中式管理（读/写），也是一种组件间通信的方式，且适用于任意组件间的通信</p>
+<h2 id="原理图"><a href="#原理图" class="headerlink" title="原理图"></a>原理图</h2><p><img src="https://img-blog.csdnimg.cn/20200521181420101.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ1MzE1Njk3,size_16,color_FFFFFF,t_70" alt="avatar"></p>
+<span id="more"></span>
+<h2 id="使用前准备，搭建vuex环境（store）"><a href="#使用前准备，搭建vuex环境（store）" class="headerlink" title="使用前准备，搭建vuex环境（store）"></a>使用前准备，搭建vuex环境（store）</h2><p>1、安装vuex<br>2、编写store文件中的index.js<br>（1）引入和使用vuex插件，use插件，<br>（2）定义actions mutations state<br>（3）new一个store对象，把上面定义的三个对象放入store内<br>3、main.js中<br>（1）引入刚才编写的store环境<br>（2) 在VM中使用store</p>
+<h2 id="vuex的使用"><a href="#vuex的使用" class="headerlink" title="vuex的使用"></a>vuex的使用</h2><p>1、在某个组件中的按钮触发事件，并在事件中编写调用vuex语句</p>
+<p>(提交action写法)</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.$store.dispatch(<span class="string">&#x27;jiaOdd&#x27;</span>, 传参)</span><br></pre></td></tr></table></figure>
+<p>（提交mutations写法）</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.$store.commit(<span class="string">&#x27;JIA&#x27;</span>, 传参)</span><br></pre></td></tr></table></figure>
+<p>2、store环境里应该有我们刚才需要用到的函数</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> actions = &#123;</span><br><span class="line">    jiaOdd(context,value)&#123;</span><br><span class="line">		console.<span class="keyword">log</span>(&#x27;actions中的jiaOdd被调用了&#x27;)</span><br><span class="line">		if(context.<span class="keyword">state</span>.sum % <span class="number">2</span>)&#123;</span><br><span class="line">			context.commit(&#x27;JIA&#x27;,value)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mutations = &#123;</span><br><span class="line">	JIA(<span class="keyword">state</span>,value)&#123;</span><br><span class="line">		console.<span class="keyword">log</span>(&#x27;mutations中的JIA被调用了&#x27;)</span><br><span class="line">		<span class="keyword">state</span>.sum += value</span><br><span class="line">	&#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">state</span> = &#123;</span><br><span class="line">	sum:<span class="number">0</span> //当前的和</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//创建并暴露store</span><br><span class="line">export <span class="keyword">default</span> new Vuex.Store(&#123;</span><br><span class="line">	actions,</span><br><span class="line">	mutations,</span><br><span class="line">	<span class="keyword">state</span>,</span><br><span class="line">	getters</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>3、在我们需要sum（计算出的数据）处</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">&lt;h1&gt;</span>当前求和为：&#123;&#123;<span class="variable">$store</span>.<span class="keyword">state</span>.sum&#125;&#125;&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="getters"><a href="#getters" class="headerlink" title="getters"></a>getters</h2><p>用于对state中的属性进行处理<br>###用法<br>在定义action mutations state处定义getters</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getters = &#123;</span><br><span class="line">	bigSum(<span class="keyword">state</span>)&#123;</span><br><span class="line">		return <span class="keyword">state</span>.sum*<span class="number">10</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">&lt;h3&gt;</span>当前求和放大<span class="number">10</span>倍为：&#123;&#123;<span class="variable">$store</span>.getters.bigSum&#125;&#125;&lt;/h3&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="mapState和mapGetters"><a href="#mapState和mapGetters" class="headerlink" title="mapState和mapGetters"></a>mapState和mapGetters</h2><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//借助mapState生成计算属性，从state中读取数据。（对象写法）</span></span><br><span class="line"> ...map<span class="constructor">State(&#123;<span class="params">he</span>:&#x27;<span class="params">sum</span>&#x27;,<span class="params">xuexiao</span>:&#x27;<span class="params">school</span>&#x27;,<span class="params">xueke</span>:&#x27;<span class="params">subject</span>&#x27;&#125;)</span>,</span><br><span class="line"></span><br><span class="line"><span class="comment">//借助mapState生成计算属性，从state中读取数据。（数组写法）</span></span><br><span class="line">	...map<span class="constructor">State([&#x27;<span class="params">sum</span>&#x27;,&#x27;<span class="params">school</span>&#x27;,&#x27;<span class="params">subject</span>&#x27;])</span>,</span><br><span class="line"></span><br><span class="line"><span class="comment">//借助mapGetters生成计算属性，从getters中读取数据。（数组写法）</span></span><br><span class="line">	...map<span class="constructor">Getters([&#x27;<span class="params">bigSum</span>&#x27;])</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="mapMutations和mapActions"><a href="#mapMutations和mapActions" class="headerlink" title="mapMutations和mapActions"></a>mapMutations和mapActions</h2><figure class="highlight hsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//首先如果需要传参的话，在触发vuex事件的按钮函数处传参，不需要直接调用就好了不用带（）和参数</span></span><br><span class="line">&lt;<span class="keyword">button</span> @click=<span class="string">&quot;increment(n)&quot;</span>&gt;+&lt;/<span class="keyword">button</span>&gt;</span><br><span class="line">&lt;<span class="keyword">button</span> @click=<span class="string">&quot;decrement(n)&quot;</span>&gt;-&lt;/<span class="keyword">button</span>&gt;</span><br><span class="line">&lt;<span class="keyword">button</span> @click=<span class="string">&quot;incrementOdd(n)&quot;</span>&gt;求和为奇数加&lt;/<span class="keyword">button</span>&gt;</span><br><span class="line">&lt;<span class="keyword">button</span> @click=<span class="string">&quot;incrementWait(n)&quot;</span>&gt;等一等再加&lt;/<span class="keyword">button</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//借助mapMutations生成对应的方法，方法中会调用commit去联系mutations(对象写法)</span></span><br><span class="line">...mapMutations(&#123;increment:<span class="string">&#x27;JIA&#x27;</span>,decrement:<span class="string">&#x27;JIAN&#x27;</span>&#125;),</span><br><span class="line"></span><br><span class="line"><span class="comment">//借助mapActions生成对应的方法，方法中会调用dispatch去联系actions(对象写法)</span></span><br><span class="line">...mapActions(&#123;incrementOdd:<span class="string">&#x27;jiaOdd&#x27;</span>,incrementWait:<span class="string">&#x27;jiaWait&#x27;</span>&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="vuex的模块化编码"><a href="#vuex的模块化编码" class="headerlink" title="vuex的模块化编码"></a>vuex的模块化编码</h2><p>注意复习</p>
 
       
 
@@ -281,7 +290,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/12/11/hexo%E5%8D%9A%E5%AE%A2%E4%B8%8A%E4%BC%A0%E5%88%B0github/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/01/26/Vuex%E4%BD%BF%E7%94%A8--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B02/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -295,18 +304,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/12/11/%E5%8A%9B%E6%89%A3%E9%A2%98-%E8%BD%AE%E8%BD%AC%E6%95%B0%E7%BB%84/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/02/01/%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B03/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          力扣题: 轮转数组
+          组件通信方式--Vue复习日记3
         
       </div>
     </a>
   
   
-    <a href="/2021/12/11/%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%980.1+0.2%E7%AD%89%E4%BA%8E%EF%BC%9F/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">经典问题0.1+0.2为什么不等于0.3</div>
+    <a href="/2022/01/22/Vue%E8%B7%AF%E7%94%B1%E4%BD%BF%E7%94%A8--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B01/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Vue路由使用--Vue复习日记1</div>
       <i class="icon-circle-right"></i>
     </a>
   
