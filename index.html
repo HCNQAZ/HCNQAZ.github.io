@@ -152,6 +152,87 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-数据检测和数据代理--Vue复习日记4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/02/25/%E6%95%B0%E6%8D%AE%E6%A3%80%E6%B5%8B%E5%92%8C%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B04/">数据检测和数据代理--Vue复习日记4</a>
+    </h1>
+  
+
+        
+        <a href="/2022/02/25/%E6%95%B0%E6%8D%AE%E6%A3%80%E6%B5%8B%E5%92%8C%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B04/" class="archive-article-date">
+  	<time datetime="2022-02-25T06:58:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="数据检测和数据代理"><a href="#数据检测和数据代理" class="headerlink" title="数据检测和数据代理"></a>数据检测和数据代理</h1><p>数据代理是指通过一个对象去对另一个对象属进行操作，实现原理是 ES6语法中Object对象的defineProperties方法。</p>
+<h2 id="数据代理"><a href="#数据代理" class="headerlink" title="数据代理"></a>数据代理</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj=&#123;&#125;;</span><br><span class="line">    <span class="keyword">let</span> objName=<span class="string">&#x27;lisi&#x27;</span>;</span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(obj,<span class="string">&#x27;name&#x27;</span>,&#123;</span><br><span class="line">       </span><br><span class="line">        <span class="function"><span class="title">get</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;get&#x27;</span>);</span><br><span class="line">            <span class="keyword">return</span> objName;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="function"><span class="title">set</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;set&#x27;</span>);</span><br><span class="line">            objName=val;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">console</span>.log(obj.name);</span><br><span class="line">    obj.name=<span class="string">&#x27;我是新值&#x27;</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(obj.name);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>运行结果:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">get</span></span><br><span class="line">lisi</span><br><span class="line"><span class="builtin-name">set</span></span><br><span class="line"><span class="builtin-name">get</span></span><br><span class="line">我是新值</span><br></pre></td></tr></table></figure>
+
+<p>可以看见上面实现了当有人读取obj.name时会调用get方法，然后通过get方法把objName的值返回回去，而有人更改了obj.name的值时，会调用set方法，并且更改objName的值。当再有人读取obj.name时，get方法又会把set方法新设的objName返回回去。由此完成了通过objName对obj.name的数据代理。</p>
+<h2 id="数据监测"><a href="#数据监测" class="headerlink" title="数据监测"></a>数据监测</h2><p>当数据发生改变被set操作监测到更新值并重新渲染页面时这就是数据监测。当有人更改了值时，set在更改数据的同时会去完成页面的渲染，从而完成数据监测。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/02/25/%E6%95%B0%E6%8D%AE%E6%A3%80%E6%B5%8B%E5%92%8C%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B04/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-css怎么画出一个三角形" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -439,84 +520,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/02/01/%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B03/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Vuex使用--Vue复习日记2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/26/Vuex%E4%BD%BF%E7%94%A8--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B02/">Vuex的使用--Vue复习日记2</a>
-    </h1>
-  
-
-        
-        <a href="/2022/01/26/Vuex%E4%BD%BF%E7%94%A8--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B02/" class="archive-article-date">
-  	<time datetime="2022-01-26T09:18:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前言：今日继续在做项目的同时完成对vuex的知识的整理与复习</p>
-<h1 id="Vuex使用"><a href="#Vuex使用" class="headerlink" title="Vuex使用"></a>Vuex使用</h1><h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><p>vuex是专门在Vue中实现集中式状态（数据）管理的一个Vue插件，对vue应用中的多个组件共享状态进行集中式管理（读/写），也是一种组件间通信的方式，且适用于任意组件间的通信</p>
-<h2 id="原理图"><a href="#原理图" class="headerlink" title="原理图"></a>原理图</h2><p><img src="https://img-blog.csdnimg.cn/20200521181420101.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ1MzE1Njk3,size_16,color_FFFFFF,t_70" alt="avatar"></p>
-        
-          <a class="article-more-a" href="/2022/01/26/Vuex%E4%BD%BF%E7%94%A8--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B02/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/26/Vuex%E4%BD%BF%E7%94%A8--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B02/">展开全文 >></a>
         </p>
       
 
