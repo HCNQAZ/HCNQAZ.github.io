@@ -152,38 +152,48 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-力扣题-轮转数组" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-node搭建Ajax环境" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/12/11/%E5%8A%9B%E6%89%A3%E9%A2%98-%E8%BD%AE%E8%BD%AC%E6%95%B0%E7%BB%84/">力扣题: 轮转数组</a>
+      <a class="article-title" href="/2021/12/12/node%E6%90%AD%E5%BB%BAAjax%E7%8E%AF%E5%A2%83/">node搭建Ajax环境</a>
     </h1>
   
 
         
-        <a href="/2021/12/11/%E5%8A%9B%E6%89%A3%E9%A2%98-%E8%BD%AE%E8%BD%AC%E6%95%B0%E7%BB%84/" class="archive-article-date">
-  	<time datetime="2021-12-11T10:49:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-11</time>
+        <a href="/2021/12/12/node%E6%90%AD%E5%BB%BAAjax%E7%8E%AF%E5%A2%83/" class="archive-article-date">
+  	<time datetime="2021-12-12T03:47:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#题目<br>给你一个数组，将数组中的元素向右轮转 k 个位置，其中 k 是非负数。</p>
-<p>##题目分析<br>关键词：向右 轮转K K位非负数</p>
-<p>计算出轮转后的指针位置，用数组接收，最后再用所得数组替换原数组</p>
-<p>##代码</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var rotate = <span class="keyword">function</span>(nums, k) &#123;</span><br><span class="line">    <span class="built_in">let</span> save = new Array(nums.length).join(<span class="string">&#x27;,&#x27;</span>).split(<span class="string">&#x27;,&#x27;</span>) </span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">let</span> n = 0 ; n &lt; nums.length ; n++)&#123;</span><br><span class="line">        <span class="built_in">let</span> m = n ;</span><br><span class="line"></span><br><span class="line">        m = (m+k) % nums.length;</span><br><span class="line">        save[m] = nums[n] ;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="built_in">let</span> n = 0 ; n &lt; nums.length ; n++)&#123;</span><br><span class="line">            nums[n] = save[n] ;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        <p>#搭建可以的运行Ajax的node服务器</p>
+<ul>
+<li><p>首先我们需要先安装node.js 这里推荐教程 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/liuqiyun/p/8133904.html">https://www.cnblogs.com/liuqiyun/p/8133904.html</a></p>
+</li>
+<li><p>安装完毕后随便创建一个服务器文件夹（名字随意）</p>
+</li>
+<li><p>以管理员身份运行cmd，然后进入到服务器文件夹输入以下代码:</p>
+</li>
+</ul>
+<p>创建package.json文件:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init --yes</span><br></pre></td></tr></table></figure>
+<p>创建package-lock.json文件 和 node_modules 文件夹:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install express --save</span><br></pre></td></tr></table></figure>
 
-<p>##测试<br>测试会查看nums，是否符合预期。</p>
-<p>##题后感悟:<br>m = (m+k) % nums.length可以替代</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>( m+k &gt; nums.length-1)&#123;</span><br><span class="line">            m = m+k-nums.length;</span><br><span class="line"></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            m = m+k;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<p>替换数组需要一个个数替换，而不能令整个数组等于另一个数组</p>
-<p>制造临时数组是需要先制造一个有长度的空数组</p>
+<p>-在服务器文件夹下创建app.js:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//引入express框架</span><br><span class="line">const express=require(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"></span><br><span class="line">//引入路径处理模块</span><br><span class="line">const path=require(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"></span><br><span class="line">//创建web服务器</span><br><span class="line">const app=express();</span><br><span class="line"></span><br><span class="line">//静态资源访问服务器功能</span><br><span class="line">app.use(express.static(path.join(__dirname,<span class="string">&#x27;public&#x27;</span>)))</span><br><span class="line"></span><br><span class="line">//监听端口</span><br><span class="line">app.listen(3000);</span><br><span class="line"></span><br><span class="line">//控制台提示输出</span><br><span class="line">console.log(<span class="string">&#x27;服务器启动成功&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在public文件夹中创建index.html输入以下代码:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">&quot;en&quot;</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">&quot;UTF-8&quot;</span>&gt;</span><br><span class="line">    &lt;meta http-equiv=<span class="string">&quot;X-UA-Compatible&quot;</span> content=<span class="string">&quot;IE=edge&quot;</span>&gt;</span><br><span class="line">    &lt;meta name=<span class="string">&quot;viewport&quot;</span> content=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;hello world&lt;/div&gt;</span><br><span class="line">    &lt;button&gt;这里是ajax&lt;/button&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>运行cmd进入到服务器文件夹，输入:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node app.js</span><br></pre></td></tr></table></figure>
+<p>打开浏览器输入:<br><a target="_blank" rel="noopener" href="http://localhost:3000/">http://localhost:3000/</a><br>至此我们的服务器搭建全部完成</p>
 
       
 
@@ -207,7 +217,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/12/11/%E5%8A%9B%E6%89%A3%E9%A2%98-%E8%BD%AE%E8%BD%AC%E6%95%B0%E7%BB%84/">展开全文 >></a>
+          <a class="article-more-a" href="/2021/12/12/node%E6%90%AD%E5%BB%BAAjax%E7%8E%AF%E5%A2%83/">展开全文 >></a>
         </p>
       
 
@@ -290,6 +300,91 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/12/11/%E5%8A%9B%E6%89%A3%E9%A2%98-%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-力扣题-轮转数组" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/12/11/%E5%8A%9B%E6%89%A3%E9%A2%98-%E8%BD%AE%E8%BD%AC%E6%95%B0%E7%BB%84/">力扣题: 轮转数组</a>
+    </h1>
+  
+
+        
+        <a href="/2021/12/11/%E5%8A%9B%E6%89%A3%E9%A2%98-%E8%BD%AE%E8%BD%AC%E6%95%B0%E7%BB%84/" class="archive-article-date">
+  	<time datetime="2021-12-11T10:49:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#题目<br>给你一个数组，将数组中的元素向右轮转 k 个位置，其中 k 是非负数。</p>
+<p>##题目分析<br>关键词：向右 轮转K K位非负数</p>
+<p>计算出轮转后的指针位置，用数组接收，最后再用所得数组替换原数组</p>
+<p>##代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var rotate = <span class="keyword">function</span>(nums, k) &#123;</span><br><span class="line">    <span class="built_in">let</span> save = new Array(nums.length).join(<span class="string">&#x27;,&#x27;</span>).split(<span class="string">&#x27;,&#x27;</span>) </span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">let</span> n = 0 ; n &lt; nums.length ; n++)&#123;</span><br><span class="line">        <span class="built_in">let</span> m = n ;</span><br><span class="line"></span><br><span class="line">        m = (m+k) % nums.length;</span><br><span class="line">        save[m] = nums[n] ;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="built_in">let</span> n = 0 ; n &lt; nums.length ; n++)&#123;</span><br><span class="line">            nums[n] = save[n] ;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>##测试<br>测试会查看nums，是否符合预期。</p>
+<p>##题后感悟:<br>m = (m+k) % nums.length可以替代</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>( m+k &gt; nums.length-1)&#123;</span><br><span class="line">            m = m+k-nums.length;</span><br><span class="line"></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            m = m+k;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>替换数组需要一个个数替换，而不能令整个数组等于另一个数组</p>
+<p>制造临时数组是需要先制造一个有长度的空数组</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/12/11/%E5%8A%9B%E6%89%A3%E9%A2%98-%E8%BD%AE%E8%BD%AC%E6%95%B0%E7%BB%84/">展开全文 >></a>
         </p>
       
 
