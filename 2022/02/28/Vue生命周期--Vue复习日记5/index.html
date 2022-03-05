@@ -8,18 +8,20 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>Vue生命周期--Vue复习日记5 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Vue生命周期Vue的生命周期可以帮助我们在一些重要的节点（例如dom挂载前或是挂载后）去完成一些我们需要vue去完成的事。 beforeCreate( 创建前 )beforeCreate() 创建前的阶段，这个时候data中的数据，还未定义，所以不能使用。此前主要完成了生命周期和事件的初始化。 created ( 创建后 ）实例已经创建完成之后被调用，在这一步，实例已完成以下配置：数据观测、属性">
+  <meta name="description" content="Vue生命周期Vue的生命周期可以帮助我们在一些重要的节点（例如dom挂载前或是挂载后）去完成一些我们需要vue去完成的事。Vue生命周期包括： 1.beforeCreate2.created3.beforeMount4.mounted5.beforeUpdate6.updated7.beforeDestroy8.destroyed 生命周期流程图：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue生命周期--Vue复习日记5">
 <meta property="og:url" content="http://example.com/2022/02/28/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B05/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Vue生命周期Vue的生命周期可以帮助我们在一些重要的节点（例如dom挂载前或是挂载后）去完成一些我们需要vue去完成的事。 beforeCreate( 创建前 )beforeCreate() 创建前的阶段，这个时候data中的数据，还未定义，所以不能使用。此前主要完成了生命周期和事件的初始化。 created ( 创建后 ）实例已经创建完成之后被调用，在这一步，实例已完成以下配置：数据观测、属性">
+<meta property="og:description" content="Vue生命周期Vue的生命周期可以帮助我们在一些重要的节点（例如dom挂载前或是挂载后）去完成一些我们需要vue去完成的事。Vue生命周期包括： 1.beforeCreate2.created3.beforeMount4.mounted5.beforeUpdate6.updated7.beforeDestroy8.destroyed 生命周期流程图：">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/gH31uF9VIibRnRqr8gjUD4SdU5E0icPJe7SyfqO4YWhaqxTW91ibDialILLAsFGvLaNAo6gTqnqzOP2Bia9YDIaKLCg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
 <meta property="article:published_time" content="2022-02-28T06:58:36.000Z">
-<meta property="article:modified_time" content="2022-03-05T04:42:40.790Z">
+<meta property="article:modified_time" content="2022-03-05T06:00:59.234Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="web">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mmbiz.qpic.cn/mmbiz_png/gH31uF9VIibRnRqr8gjUD4SdU5E0icPJe7SyfqO4YWhaqxTW91ibDialILLAsFGvLaNAo6gTqnqzOP2Bia9YDIaKLCg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -175,10 +177,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Vue生命周期"><a href="#Vue生命周期" class="headerlink" title="Vue生命周期"></a>Vue生命周期</h1><p>Vue的生命周期可以帮助我们在一些重要的节点（例如dom挂载前或是挂载后）去完成一些我们需要vue去完成的事。</p>
+        <h1 id="Vue生命周期"><a href="#Vue生命周期" class="headerlink" title="Vue生命周期"></a>Vue生命周期</h1><p>Vue的生命周期可以帮助我们在一些重要的节点（例如dom挂载前或是挂载后）去完成一些我们需要vue去完成的事。Vue生命周期包括：</p>
+<p>1.beforeCreate<br>2.created<br>3.beforeMount<br>4.mounted<br>5.beforeUpdate<br>6.updated<br>7.beforeDestroy<br>8.destroyed</p>
+<p>生命周期流程图：</p>
+<span id="more"></span>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/gH31uF9VIibRnRqr8gjUD4SdU5E0icPJe7SyfqO4YWhaqxTW91ibDialILLAsFGvLaNAo6gTqnqzOP2Bia9YDIaKLCg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="avatar"></p>
 <h2 id="beforeCreate-创建前"><a href="#beforeCreate-创建前" class="headerlink" title="beforeCreate( 创建前 )"></a>beforeCreate( 创建前 )</h2><p>beforeCreate() 创建前的阶段，这个时候data中的数据，还未定义，所以不能使用。此前主要完成了生命周期和事件的初始化。</p>
 <h2 id="created-创建后-）"><a href="#created-创建后-）" class="headerlink" title="created ( 创建后 ）"></a>created ( 创建后 ）</h2><p>实例已经创建完成之后被调用，在这一步，实例已完成以下配置：数据观测、属性和方法的运算，watch/event事件回调，完成了data 数据的初始化，el没有。 然而，挂载阶段还没有开始, $el属性目前不可见，这是一个常用的生命周期，因为你可以调用methods中的方法，改变data中的数据，并且修改可以通过vue的响应式绑定体现在页面上，获取computed中的计算属性等等，通常我们可以在这里对实例进行预处理，也有一些童鞋喜欢在这里发ajax请求。在此之前，Vue已经完成了数据监测和数据代理。</p>
-<h2 id="beforemountes-挂载前"><a href="#beforemountes-挂载前" class="headerlink" title="beforemountes(挂载前)"></a>beforemountes(挂载前)</h2><p>此时呈现的是未经Vue编译的dom，所有此时对dom的操作的不奏效（之后vue会再执行dom的挂载，把此时所做操作覆盖掉）</p>
+<h2 id="beforemount-挂载前"><a href="#beforemount-挂载前" class="headerlink" title="beforemount(挂载前)"></a>beforemount(挂载前)</h2><p>此时呈现的是未经Vue编译的dom，所有此时对dom的操作的不奏效（之后vue会再执行dom的挂载，把此时所做操作覆盖掉）</p>
 <h2 id="mounted"><a href="#mounted" class="headerlink" title="mounted"></a>mounted</h2><p>挂载完成，也就是dom已经挂载在了页面中，此时对dom的操作是有效的（但不建议去进行），此时一般可以做一些开启定时器、发送网络请求、订阅消息、绑定自定义事件等初始化操作，mounted只会执行一次。</p>
 <h2 id="beforeUpdate"><a href="#beforeUpdate" class="headerlink" title="beforeUpdate"></a>beforeUpdate</h2><p>在数据更新之前被调用，发生在虚拟DOM重新渲染之前（数据是新得页面是旧的），可以在该钩子中进一步地更改状态，不会触发附加地重渲染过程</p>
 <h2 id="updated（更新后）"><a href="#updated（更新后）" class="headerlink" title="updated（更新后）"></a>updated（更新后）</h2><p>在由于数据更改导致地虚拟DOM重新渲染之后调用，调用时，组件DOM已经更新（数据和页面都是新得），所以可以执行依赖于DOM的操作，然后在大多是情况下，应该避免在此期间更改状态，因为这可能会导致更新无限循环，该钩子在服务器端渲染期间不被调用。</p>

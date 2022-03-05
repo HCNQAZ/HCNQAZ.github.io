@@ -172,20 +172,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Vue生命周期"><a href="#Vue生命周期" class="headerlink" title="Vue生命周期"></a>Vue生命周期</h1><p>Vue的生命周期可以帮助我们在一些重要的节点（例如dom挂载前或是挂载后）去完成一些我们需要vue去完成的事。</p>
-<h2 id="beforeCreate-创建前"><a href="#beforeCreate-创建前" class="headerlink" title="beforeCreate( 创建前 )"></a>beforeCreate( 创建前 )</h2><p>beforeCreate() 创建前的阶段，这个时候data中的数据，还未定义，所以不能使用。此前主要完成了生命周期和事件的初始化。</p>
-<h2 id="created-创建后-）"><a href="#created-创建后-）" class="headerlink" title="created ( 创建后 ）"></a>created ( 创建后 ）</h2><p>实例已经创建完成之后被调用，在这一步，实例已完成以下配置：数据观测、属性和方法的运算，watch/event事件回调，完成了data 数据的初始化，el没有。 然而，挂载阶段还没有开始, $el属性目前不可见，这是一个常用的生命周期，因为你可以调用methods中的方法，改变data中的数据，并且修改可以通过vue的响应式绑定体现在页面上，获取computed中的计算属性等等，通常我们可以在这里对实例进行预处理，也有一些童鞋喜欢在这里发ajax请求。在此之前，Vue已经完成了数据监测和数据代理。</p>
-<h2 id="beforemountes-挂载前"><a href="#beforemountes-挂载前" class="headerlink" title="beforemountes(挂载前)"></a>beforemountes(挂载前)</h2><p>此时呈现的是未经Vue编译的dom，所有此时对dom的操作的不奏效（之后vue会再执行dom的挂载，把此时所做操作覆盖掉）</p>
-<h2 id="mounted"><a href="#mounted" class="headerlink" title="mounted"></a>mounted</h2><p>挂载完成，也就是dom已经挂载在了页面中，此时对dom的操作是有效的（但不建议去进行），此时一般可以做一些开启定时器、发送网络请求、订阅消息、绑定自定义事件等初始化操作，mounted只会执行一次。</p>
-<h2 id="beforeUpdate"><a href="#beforeUpdate" class="headerlink" title="beforeUpdate"></a>beforeUpdate</h2><p>在数据更新之前被调用，发生在虚拟DOM重新渲染之前（数据是新得页面是旧的），可以在该钩子中进一步地更改状态，不会触发附加地重渲染过程</p>
-<h2 id="updated（更新后）"><a href="#updated（更新后）" class="headerlink" title="updated（更新后）"></a>updated（更新后）</h2><p>在由于数据更改导致地虚拟DOM重新渲染之后调用，调用时，组件DOM已经更新（数据和页面都是新得），所以可以执行依赖于DOM的操作，然后在大多是情况下，应该避免在此期间更改状态，因为这可能会导致更新无限循环，该钩子在服务器端渲染期间不被调用。</p>
-<h2 id="beforeDestroy（销毁前）"><a href="#beforeDestroy（销毁前）" class="headerlink" title="beforeDestroy（销毁前）"></a>beforeDestroy（销毁前）</h2><p>在实例销毁之前调用，实例仍然完全可用，</p>
-<p>1、这一步还可以用this来获取实例，<br>2、一般在这一步做一些重置的操作，比如清除掉组件中的定时器 和 监听的dom事件</p>
-<h2 id="destroyed（销毁后）"><a href="#destroyed（销毁后）" class="headerlink" title="destroyed（销毁后）"></a>destroyed（销毁后）</h2><p>在实例销毁之后调用，调用后，所有的事件监听器会被移出，所有的子实例也会被销毁。</p>
-<h2 id="activated"><a href="#activated" class="headerlink" title="activated"></a>activated</h2><p>组件激活时调用。</p>
-<h2 id="deactivated"><a href="#deactivated" class="headerlink" title="deactivated"></a>deactivated</h2><p>组件停用时调用。</p>
-<h2 id="errorCaptured"><a href="#errorCaptured" class="headerlink" title="errorCaptured"></a>errorCaptured</h2><p>当捕获一个来自子孙组件的错误时被调用。此钩子会收到三个参数：错误对象、发生错误的组件实例以及一个包含错误来源信息的字符串。此钩子可以返回 false 以阻止该错误继续向上传播。</p>
-
+        <h1 id="Vue生命周期"><a href="#Vue生命周期" class="headerlink" title="Vue生命周期"></a>Vue生命周期</h1><p>Vue的生命周期可以帮助我们在一些重要的节点（例如dom挂载前或是挂载后）去完成一些我们需要vue去完成的事。Vue生命周期包括：</p>
+<p>1.beforeCreate<br>2.created<br>3.beforeMount<br>4.mounted<br>5.beforeUpdate<br>6.updated<br>7.beforeDestroy<br>8.destroyed</p>
+<p>生命周期流程图：</p>
+        
+          <a class="article-more-a" href="/2022/02/28/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B05/#more">more >></a>
+        
       
 
       
