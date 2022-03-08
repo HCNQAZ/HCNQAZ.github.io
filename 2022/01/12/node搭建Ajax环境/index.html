@@ -6,22 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>跨域问题 | Hexo</title>
+  <title>node搭建Ajax环境 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="跨域问题是什么？在了解跨域之前，首先要知道什么是同源策略（same-origin policy）。简单来讲同源策略就是浏览器为了保证用户信息的安全，防止恶意的网站窃取数据，禁止不同域之间的JS进行交互。对于浏览器而言只要域名、协议、端口其中一个不同就会引发同源策略，从而限制他们之间如下的交互行为： 1.Cookie、LocalStorage和IndexDB无法读取； 2.DOM无法获得； 3.AJ">
+  <meta name="description" content="#搭建可以的运行Ajax的node服务器  首先我们需要先安装node.js 这里推荐教程 https:&#x2F;&#x2F;www.cnblogs.com&#x2F;liuqiyun&#x2F;p&#x2F;8133904.html  安装完毕后随便创建一个服务器文件夹（名字随意）  以管理员身份运行cmd，然后进入到服务器文件夹输入以下代码:   创建package.json文件: 1npm init --yes 创建package-loc">
 <meta property="og:type" content="article">
-<meta property="og:title" content="跨域问题">
-<meta property="og:url" content="http://example.com/2022/02/15/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/index.html">
+<meta property="og:title" content="node搭建Ajax环境">
+<meta property="og:url" content="http://example.com/2022/01/12/node%E6%90%AD%E5%BB%BAAjax%E7%8E%AF%E5%A2%83/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="跨域问题是什么？在了解跨域之前，首先要知道什么是同源策略（same-origin policy）。简单来讲同源策略就是浏览器为了保证用户信息的安全，防止恶意的网站窃取数据，禁止不同域之间的JS进行交互。对于浏览器而言只要域名、协议、端口其中一个不同就会引发同源策略，从而限制他们之间如下的交互行为： 1.Cookie、LocalStorage和IndexDB无法读取； 2.DOM无法获得； 3.AJ">
+<meta property="og:description" content="#搭建可以的运行Ajax的node服务器  首先我们需要先安装node.js 这里推荐教程 https:&#x2F;&#x2F;www.cnblogs.com&#x2F;liuqiyun&#x2F;p&#x2F;8133904.html  安装完毕后随便创建一个服务器文件夹（名字随意）  以管理员身份运行cmd，然后进入到服务器文件夹输入以下代码:   创建package.json文件: 1npm init --yes 创建package-loc">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20181207113432227.png">
-<meta property="article:published_time" content="2022-02-15T07:18:33.000Z">
-<meta property="article:modified_time" content="2022-03-03T09:25:42.829Z">
+<meta property="article:published_time" content="2022-01-12T03:47:24.000Z">
+<meta property="article:modified_time" content="2022-03-05T08:03:59.704Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="web">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20181207113432227.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -157,59 +155,48 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-跨域问题解决方案" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-node搭建Ajax环境" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      跨域问题
+      node搭建Ajax环境
     </h1>
   
 
         
-        <a href="/2022/02/15/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="archive-article-date">
-  	<time datetime="2022-02-15T07:18:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-15</time>
+        <a href="/2022/01/12/node%E6%90%AD%E5%BB%BAAjax%E7%8E%AF%E5%A2%83/" class="archive-article-date">
+  	<time datetime="2022-01-12T03:47:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="跨域问题是什么？"><a href="#跨域问题是什么？" class="headerlink" title="跨域问题是什么？"></a>跨域问题是什么？</h2><p>在了解跨域之前，首先要知道什么是同源策略（same-origin policy）。简单来讲同源策略就是浏览器为了保证用户信息的安全，防止恶意的网站窃取数据，禁止不同域之间的JS进行交互。对于浏览器而言只要域名、协议、端口其中一个不同就会引发同源策略，从而限制他们之间如下的交互行为：</p>
-<p>1.Cookie、LocalStorage和IndexDB无法读取；</p>
-<p>2.DOM无法获得；</p>
-<p>3.AJAX请求不能发送。</p>
-<p>跨域的严格一点的定义是：只要协议，域名，端口有任何一个的不同，就被当作是跨域。</p>
-<h2 id="解决跨域问题办法"><a href="#解决跨域问题办法" class="headerlink" title="解决跨域问题办法"></a>解决跨域问题办法</h2><p>解决跨域的三种方法: jsonp、cors 、代理</p>
-<h3 id="jsonp方法"><a href="#jsonp方法" class="headerlink" title="jsonp方法"></a>jsonp方法</h3><p>jsonp是前端解决跨域最实用的方法，原理是src属性是不受跨域影响</p>
-<p>前台请求代码：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="function"><span class="keyword">function</span> <span class="title">func1</span>(<span class="params">ret</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">			<span class="built_in">console</span>.log(ret)</span></span><br><span class="line"><span class="javascript">		&#125;</span></span><br><span class="line"><span class="javascript">		</span></span><br><span class="line"><span class="javascript">	</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;http://192.168.100.150:8081/zhxZone/webmana/dict/jsonp?callback=func1&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+        <p>#搭建可以的运行Ajax的node服务器</p>
+<ul>
+<li><p>首先我们需要先安装node.js 这里推荐教程 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/liuqiyun/p/8133904.html">https://www.cnblogs.com/liuqiyun/p/8133904.html</a></p>
+</li>
+<li><p>安装完毕后随便创建一个服务器文件夹（名字随意）</p>
+</li>
+<li><p>以管理员身份运行cmd，然后进入到服务器文件夹输入以下代码:</p>
+</li>
+</ul>
+<p>创建package.json文件:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init --yes</span><br></pre></td></tr></table></figure>
+<p>创建package-lock.json文件 和 node_modules 文件夹:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install express --save</span><br></pre></td></tr></table></figure>
 
-<span id="more"></span>
-
-<p>后台参考代码:</p>
-<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//jsonp测试</span></span><br><span class="line">@ResponseBody</span><br><span class="line">@<span class="constructor">RequestMapping(<span class="params">value</span> = <span class="string">&quot;jsonp&quot;</span>, <span class="params">produces</span> = <span class="string">&quot;text/plain;charset=UTF-8&quot;</span>)</span></span><br><span class="line">public void jsonp(String callback, HttpServletRequest req, HttpServletResponse res) &#123;</span><br><span class="line">    List&lt;Map&lt;String,Object&gt;&gt; <span class="built_in">list</span> = <span class="keyword">new</span> ArrayList&lt;Map&lt;String,Object&gt;&gt;<span class="literal">()</span>;</span><br><span class="line">    RetBase ret=<span class="keyword">new</span> <span class="constructor">RetBase()</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        res.set<span class="constructor">ContentType(<span class="string">&quot;text/plain&quot;</span>)</span>;</span><br><span class="line">        res.set<span class="constructor">Header(<span class="string">&quot;Pragma&quot;</span>, <span class="string">&quot;No-cache&quot;</span>)</span>;</span><br><span class="line">        res.set<span class="constructor">Header(<span class="string">&quot;Cache-Control&quot;</span>, <span class="string">&quot;no-cache&quot;</span>)</span>;</span><br><span class="line">        res.set<span class="constructor">DateHeader(<span class="string">&quot;Expires&quot;</span>, 0)</span>;</span><br><span class="line">        Map&lt;String,Object&gt; params = <span class="keyword">new</span> HashMap&lt;String,Object&gt;<span class="literal">()</span>;</span><br><span class="line">        <span class="built_in">list</span> = dictService.get<span class="constructor">DictList(<span class="params">params</span>)</span>;</span><br><span class="line">        ret.set<span class="constructor">Data(<span class="params">list</span>)</span>;</span><br><span class="line">        ret.set<span class="constructor">Success(<span class="params">true</span>)</span>;</span><br><span class="line">        ret.set<span class="constructor">Msg(<span class="string">&quot;获取成功&quot;</span>)</span>;</span><br><span class="line">        PrintWriter out = res.get<span class="constructor">Writer()</span>;</span><br><span class="line">        <span class="comment">//JSONObject resultJSON = JSONObject.fromObject(ret); //根据需要拼装json</span></span><br><span class="line">        out.println(callback+<span class="string">&quot;(&quot;</span>+<span class="module-access"><span class="module"><span class="identifier">JSON</span>.</span></span><span class="keyword">to</span><span class="constructor">JSONString(<span class="params">ret</span>)</span>+<span class="string">&quot;)&quot;</span>);<span class="comment">//返回jsonp格式数据</span></span><br><span class="line">        out.flush<span class="literal">()</span>;</span><br><span class="line">        out.close<span class="literal">()</span>;</span><br><span class="line">    &#125; catch (Exception e) &#123;</span><br><span class="line">        e.print<span class="constructor">StackTrace()</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样我们即可完成跨域<br><img src="https://img-blog.csdnimg.cn/20181207113432227.png" alt="avatar"></p>
-<h3 id="jqury封装的jsonp方法"><a href="#jqury封装的jsonp方法" class="headerlink" title="jqury封装的jsonp方法"></a>jqury封装的jsonp方法</h3><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    <span class="built_in">type</span>: <span class="string">&#x27;get&#x27;</span>,</span><br><span class="line">    url: <span class="string">&quot;http://192.168.100.150:8081/zhxZone/webmana/dict/jsonp&quot;</span>,</span><br><span class="line">    dataType: <span class="string">&#x27;jsonp&#x27;</span>,</span><br><span class="line">    jsonp:<span class="string">&quot;callback&quot;</span>,</span><br><span class="line">    async:<span class="literal">true</span>,</span><br><span class="line">    data:&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;,</span><br><span class="line">    success: <span class="function"><span class="keyword">function</span><span class="params">(ret)</span></span>&#123;</span><br><span class="line">        console.<span class="built_in">log</span>(ret)</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="built_in">error</span>:<span class="function"><span class="keyword">function</span><span class="params">(data)</span></span> &#123;</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>jsonp的简洁写法</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$.getJSON(<span class="string">&quot;http://192.168.100.150:8081/zhxZone/webmana/dict/jsonp?callback=?&quot;</span>,<span class="function"><span class="keyword">function</span>(<span class="params">ret</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(ret)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="通过CORS解决跨域问题"><a href="#通过CORS解决跨域问题" class="headerlink" title="通过CORS解决跨域问题"></a>通过CORS解决跨域问题</h3><p>CORS背后的基本思想是使用自定义的HTTP头部允许浏览器和服务器相互了解对方，从而决定请求或响应成功与否.</p>
-<p>Access-Control-Allow-Origin: 后面接我们希望能正常访问的来源<br>Access-Control-Allow-Methods: 授权请求的方法（GET, POST, PUT, DELETE，OPTIONS等)</p>
-<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">CORSFilter</span> <span class="keyword">extends</span> <span class="title">OncePerRequestFilter</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> void doFilterInternal(<span class="type">HttpServletRequest</span> request, <span class="type">HttpServletResponse</span> response, <span class="type">FilterChain</span> filterChain) <span class="keyword">throws</span> <span class="type">ServletException</span>, <span class="type">IOException</span> &#123;</span><br><span class="line">        response.addHeader(<span class="string">&quot;Access-Control-Allow-Origin&quot;</span>, <span class="string">&quot;http://192.168.100.150:8020&quot;</span>);</span><br><span class="line">        <span class="comment">//response.addHeader(&quot;Access-Control-Allow-Origin&quot;,  &quot;*&quot;);</span></span><br><span class="line">        response.addHeader(<span class="string">&quot;Access-Control-Allow-Methods&quot;</span>, <span class="string">&quot;GET, POST, PUT, DELETE&quot;</span>);</span><br><span class="line">        response.addHeader(<span class="string">&quot;Access-Control-Allow-Headers&quot;</span>, <span class="string">&quot;Content-Type&quot;</span>);</span><br><span class="line">        response.addHeader(<span class="string">&quot;Access-Control-Max-Age&quot;</span>, <span class="string">&quot;1800&quot;</span>);<span class="comment">//30 min</span></span><br><span class="line">        filterChain.doFilter(request, response);</span><br></pre></td></tr></table></figure>
-
-<h3 id="使用代理来解决跨域问题"><a href="#使用代理来解决跨域问题" class="headerlink" title="使用代理来解决跨域问题"></a>使用代理来解决跨域问题</h3><p>代理（Proxy）也称网络代理，是一种特殊的网络服务，允许一个（一般为客户端）通过这个服务与另一个网络终端（一般为服务器）进行非直接的连接。一些网关、路由器等网络设备具备网络代理功能。一般认为代理服务有利于保障网络终端的隐私或安全，防止攻击</p>
-<p>方法一:<br>在vue.config.js文件，新增以下代码</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">    devServer: &#123;</span><br><span class="line">        proxy: &#123;</span><br><span class="line">            <span class="string">&#x27;/api&#x27;</span>: &#123; <span class="regexp">//</span> <span class="string">&#x27;/api&#x27;</span>是代理标识，用于告诉node，url前面是/api的就是使用代理的</span><br><span class="line">                target: <span class="string">&quot;http://xxx.xxx.xx.xx:8080&quot;</span>, <span class="regexp">//</span>目标地址，一般是指后台服务器地址</span><br><span class="line">                changeOrigin: true, <span class="regexp">//</span>是否跨域</span><br><span class="line">                pathRewrite: &#123; <span class="regexp">//</span> pathRewrite 的作用是把实际Request Url中的<span class="string">&#x27;/api&#x27;</span>用<span class="string">&quot;&quot;</span>代替</span><br><span class="line">                    <span class="string">&#x27;^/api&#x27;</span>: <span class="string">&quot;&quot;</span> </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>通过axios发送请求中，配置请求的根路径</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">axios.defaults.baseURL</span> = <span class="string">&#x27;/api&#x27;</span></span><br></pre></td></tr></table></figure>
-
+<p>-在服务器文件夹下创建app.js:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//引入express框架</span><br><span class="line">const express=require(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"></span><br><span class="line">//引入路径处理模块</span><br><span class="line">const path=require(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"></span><br><span class="line">//创建web服务器</span><br><span class="line">const app=express();</span><br><span class="line"></span><br><span class="line">//静态资源访问服务器功能</span><br><span class="line">app.use(express.static(path.join(__dirname,<span class="string">&#x27;public&#x27;</span>)))</span><br><span class="line"></span><br><span class="line">//监听端口</span><br><span class="line">app.listen(3000);</span><br><span class="line"></span><br><span class="line">//控制台提示输出</span><br><span class="line">console.log(<span class="string">&#x27;服务器启动成功&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在public文件夹中创建index.html输入以下代码:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">&quot;en&quot;</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">&quot;UTF-8&quot;</span>&gt;</span><br><span class="line">    &lt;meta http-equiv=<span class="string">&quot;X-UA-Compatible&quot;</span> content=<span class="string">&quot;IE=edge&quot;</span>&gt;</span><br><span class="line">    &lt;meta name=<span class="string">&quot;viewport&quot;</span> content=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;hello world&lt;/div&gt;</span><br><span class="line">    &lt;button&gt;这里是ajax&lt;/button&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>运行cmd进入到服务器文件夹，输入:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node app.js</span><br></pre></td></tr></table></figure>
+<p>打开浏览器输入:<br><a target="_blank" rel="noopener" href="http://localhost:3000/">http://localhost:3000/</a><br>至此我们的服务器搭建全部完成</p>
 
       
 
@@ -300,7 +287,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/02/15/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/01/12/node%E6%90%AD%E5%BB%BAAjax%E7%8E%AF%E5%A2%83/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -314,18 +301,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/02/17/Vue%E8%B7%AF%E7%94%B1%E4%BD%BF%E7%94%A8--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B01/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/01/18/ajax%E5%AE%9E%E4%BE%8B-%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E4%BA%8C%E5%8D%81%E5%9B%9B%E5%B0%8F%E6%97%B6%E7%9A%84%E5%AE%9E%E6%97%B6%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Vue路由使用--Vue复习日记1
+          ajax实例:制作一个二十四小时的实时天气预报（学习笔记）
         
       </div>
     </a>
   
   
-    <a href="/2022/02/10/%E5%87%A0%E4%B8%AA%E4%B8%8D%E9%94%99%E5%BE%97%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">几个不错的插件推荐</div>
+    <a href="/2022/01/01/hexo%E5%8D%9A%E5%AE%A2%E4%B8%8A%E4%BC%A0%E5%88%B0github/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hexo博客上传到github</div>
       <i class="icon-circle-right"></i>
     </a>
   

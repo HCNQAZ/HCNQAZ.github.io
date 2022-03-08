@@ -6,22 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>跨域问题 | Hexo</title>
+  <title>css画出一个三角形 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="跨域问题是什么？在了解跨域之前，首先要知道什么是同源策略（same-origin policy）。简单来讲同源策略就是浏览器为了保证用户信息的安全，防止恶意的网站窃取数据，禁止不同域之间的JS进行交互。对于浏览器而言只要域名、协议、端口其中一个不同就会引发同源策略，从而限制他们之间如下的交互行为： 1.Cookie、LocalStorage和IndexDB无法读取； 2.DOM无法获得； 3.AJ">
+  <meta name="description" content="css如何画出一个三角形首先先观察加粗边框会是什么效果 123456789.triangle&amp;#123;	width: 50px;	height: 50px;	border-top: 200px solid #00a497;	border-bottom: 200px solid #cc7eb1;	border-left: 200px solid #165e83;	border-right: 200">
 <meta property="og:type" content="article">
-<meta property="og:title" content="跨域问题">
-<meta property="og:url" content="http://example.com/2022/02/15/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/index.html">
+<meta property="og:title" content="css画出一个三角形">
+<meta property="og:url" content="http://example.com/2022/02/01/css%E6%80%8E%E4%B9%88%E7%94%BB%E5%87%BA%E4%B8%80%E4%B8%AA%E4%B8%89%E8%A7%92%E5%BD%A2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="跨域问题是什么？在了解跨域之前，首先要知道什么是同源策略（same-origin policy）。简单来讲同源策略就是浏览器为了保证用户信息的安全，防止恶意的网站窃取数据，禁止不同域之间的JS进行交互。对于浏览器而言只要域名、协议、端口其中一个不同就会引发同源策略，从而限制他们之间如下的交互行为： 1.Cookie、LocalStorage和IndexDB无法读取； 2.DOM无法获得； 3.AJ">
+<meta property="og:description" content="css如何画出一个三角形首先先观察加粗边框会是什么效果 123456789.triangle&amp;#123;	width: 50px;	height: 50px;	border-top: 200px solid #00a497;	border-bottom: 200px solid #cc7eb1;	border-left: 200px solid #165e83;	border-right: 200">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20181207113432227.png">
-<meta property="article:published_time" content="2022-02-15T07:18:33.000Z">
-<meta property="article:modified_time" content="2022-03-03T09:25:42.829Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019080911563118.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zNjI3MDkwOA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190809115916987.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zNjI3MDkwOA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190809135811324.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zNjI3MDkwOA==,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2022-02-01T07:18:33.000Z">
+<meta property="article:modified_time" content="2022-03-05T08:10:10.988Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="web">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20181207113432227.png">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2019080911563118.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zNjI3MDkwOA==,size_16,color_FFFFFF,t_70">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -157,59 +159,38 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-跨域问题解决方案" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-css怎么画出一个三角形" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      跨域问题
+      css画出一个三角形
     </h1>
   
 
         
-        <a href="/2022/02/15/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="archive-article-date">
-  	<time datetime="2022-02-15T07:18:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-15</time>
+        <a href="/2022/02/01/css%E6%80%8E%E4%B9%88%E7%94%BB%E5%87%BA%E4%B8%80%E4%B8%AA%E4%B8%89%E8%A7%92%E5%BD%A2/" class="archive-article-date">
+  	<time datetime="2022-02-01T07:18:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="跨域问题是什么？"><a href="#跨域问题是什么？" class="headerlink" title="跨域问题是什么？"></a>跨域问题是什么？</h2><p>在了解跨域之前，首先要知道什么是同源策略（same-origin policy）。简单来讲同源策略就是浏览器为了保证用户信息的安全，防止恶意的网站窃取数据，禁止不同域之间的JS进行交互。对于浏览器而言只要域名、协议、端口其中一个不同就会引发同源策略，从而限制他们之间如下的交互行为：</p>
-<p>1.Cookie、LocalStorage和IndexDB无法读取；</p>
-<p>2.DOM无法获得；</p>
-<p>3.AJAX请求不能发送。</p>
-<p>跨域的严格一点的定义是：只要协议，域名，端口有任何一个的不同，就被当作是跨域。</p>
-<h2 id="解决跨域问题办法"><a href="#解决跨域问题办法" class="headerlink" title="解决跨域问题办法"></a>解决跨域问题办法</h2><p>解决跨域的三种方法: jsonp、cors 、代理</p>
-<h3 id="jsonp方法"><a href="#jsonp方法" class="headerlink" title="jsonp方法"></a>jsonp方法</h3><p>jsonp是前端解决跨域最实用的方法，原理是src属性是不受跨域影响</p>
-<p>前台请求代码：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="function"><span class="keyword">function</span> <span class="title">func1</span>(<span class="params">ret</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">			<span class="built_in">console</span>.log(ret)</span></span><br><span class="line"><span class="javascript">		&#125;</span></span><br><span class="line"><span class="javascript">		</span></span><br><span class="line"><span class="javascript">	</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;http://192.168.100.150:8081/zhxZone/webmana/dict/jsonp?callback=func1&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
+        <h2 id="css如何画出一个三角形"><a href="#css如何画出一个三角形" class="headerlink" title="css如何画出一个三角形"></a>css如何画出一个三角形</h2><p>首先先观察加粗边框会是什么效果</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.triangle</span>&#123;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">50px</span>;</span><br><span class="line">	<span class="attribute">height</span>: <span class="number">50px</span>;</span><br><span class="line">	<span class="attribute">border-top</span>: <span class="number">200px</span> solid <span class="number">#00a497</span>;</span><br><span class="line">	<span class="attribute">border-bottom</span>: <span class="number">200px</span> solid <span class="number">#cc7eb1</span>;</span><br><span class="line">	<span class="attribute">border-left</span>: <span class="number">200px</span> solid <span class="number">#165e83</span>;</span><br><span class="line">	<span class="attribute">border-right</span>: <span class="number">200px</span> solid <span class="number">#c85179</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 
-<p>后台参考代码:</p>
-<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//jsonp测试</span></span><br><span class="line">@ResponseBody</span><br><span class="line">@<span class="constructor">RequestMapping(<span class="params">value</span> = <span class="string">&quot;jsonp&quot;</span>, <span class="params">produces</span> = <span class="string">&quot;text/plain;charset=UTF-8&quot;</span>)</span></span><br><span class="line">public void jsonp(String callback, HttpServletRequest req, HttpServletResponse res) &#123;</span><br><span class="line">    List&lt;Map&lt;String,Object&gt;&gt; <span class="built_in">list</span> = <span class="keyword">new</span> ArrayList&lt;Map&lt;String,Object&gt;&gt;<span class="literal">()</span>;</span><br><span class="line">    RetBase ret=<span class="keyword">new</span> <span class="constructor">RetBase()</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        res.set<span class="constructor">ContentType(<span class="string">&quot;text/plain&quot;</span>)</span>;</span><br><span class="line">        res.set<span class="constructor">Header(<span class="string">&quot;Pragma&quot;</span>, <span class="string">&quot;No-cache&quot;</span>)</span>;</span><br><span class="line">        res.set<span class="constructor">Header(<span class="string">&quot;Cache-Control&quot;</span>, <span class="string">&quot;no-cache&quot;</span>)</span>;</span><br><span class="line">        res.set<span class="constructor">DateHeader(<span class="string">&quot;Expires&quot;</span>, 0)</span>;</span><br><span class="line">        Map&lt;String,Object&gt; params = <span class="keyword">new</span> HashMap&lt;String,Object&gt;<span class="literal">()</span>;</span><br><span class="line">        <span class="built_in">list</span> = dictService.get<span class="constructor">DictList(<span class="params">params</span>)</span>;</span><br><span class="line">        ret.set<span class="constructor">Data(<span class="params">list</span>)</span>;</span><br><span class="line">        ret.set<span class="constructor">Success(<span class="params">true</span>)</span>;</span><br><span class="line">        ret.set<span class="constructor">Msg(<span class="string">&quot;获取成功&quot;</span>)</span>;</span><br><span class="line">        PrintWriter out = res.get<span class="constructor">Writer()</span>;</span><br><span class="line">        <span class="comment">//JSONObject resultJSON = JSONObject.fromObject(ret); //根据需要拼装json</span></span><br><span class="line">        out.println(callback+<span class="string">&quot;(&quot;</span>+<span class="module-access"><span class="module"><span class="identifier">JSON</span>.</span></span><span class="keyword">to</span><span class="constructor">JSONString(<span class="params">ret</span>)</span>+<span class="string">&quot;)&quot;</span>);<span class="comment">//返回jsonp格式数据</span></span><br><span class="line">        out.flush<span class="literal">()</span>;</span><br><span class="line">        out.close<span class="literal">()</span>;</span><br><span class="line">    &#125; catch (Exception e) &#123;</span><br><span class="line">        e.print<span class="constructor">StackTrace()</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样我们即可完成跨域<br><img src="https://img-blog.csdnimg.cn/20181207113432227.png" alt="avatar"></p>
-<h3 id="jqury封装的jsonp方法"><a href="#jqury封装的jsonp方法" class="headerlink" title="jqury封装的jsonp方法"></a>jqury封装的jsonp方法</h3><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    <span class="built_in">type</span>: <span class="string">&#x27;get&#x27;</span>,</span><br><span class="line">    url: <span class="string">&quot;http://192.168.100.150:8081/zhxZone/webmana/dict/jsonp&quot;</span>,</span><br><span class="line">    dataType: <span class="string">&#x27;jsonp&#x27;</span>,</span><br><span class="line">    jsonp:<span class="string">&quot;callback&quot;</span>,</span><br><span class="line">    async:<span class="literal">true</span>,</span><br><span class="line">    data:&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;,</span><br><span class="line">    success: <span class="function"><span class="keyword">function</span><span class="params">(ret)</span></span>&#123;</span><br><span class="line">        console.<span class="built_in">log</span>(ret)</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="built_in">error</span>:<span class="function"><span class="keyword">function</span><span class="params">(data)</span></span> &#123;</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>jsonp的简洁写法</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$.getJSON(<span class="string">&quot;http://192.168.100.150:8081/zhxZone/webmana/dict/jsonp?callback=?&quot;</span>,<span class="function"><span class="keyword">function</span>(<span class="params">ret</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(ret)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="通过CORS解决跨域问题"><a href="#通过CORS解决跨域问题" class="headerlink" title="通过CORS解决跨域问题"></a>通过CORS解决跨域问题</h3><p>CORS背后的基本思想是使用自定义的HTTP头部允许浏览器和服务器相互了解对方，从而决定请求或响应成功与否.</p>
-<p>Access-Control-Allow-Origin: 后面接我们希望能正常访问的来源<br>Access-Control-Allow-Methods: 授权请求的方法（GET, POST, PUT, DELETE，OPTIONS等)</p>
-<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">CORSFilter</span> <span class="keyword">extends</span> <span class="title">OncePerRequestFilter</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> void doFilterInternal(<span class="type">HttpServletRequest</span> request, <span class="type">HttpServletResponse</span> response, <span class="type">FilterChain</span> filterChain) <span class="keyword">throws</span> <span class="type">ServletException</span>, <span class="type">IOException</span> &#123;</span><br><span class="line">        response.addHeader(<span class="string">&quot;Access-Control-Allow-Origin&quot;</span>, <span class="string">&quot;http://192.168.100.150:8020&quot;</span>);</span><br><span class="line">        <span class="comment">//response.addHeader(&quot;Access-Control-Allow-Origin&quot;,  &quot;*&quot;);</span></span><br><span class="line">        response.addHeader(<span class="string">&quot;Access-Control-Allow-Methods&quot;</span>, <span class="string">&quot;GET, POST, PUT, DELETE&quot;</span>);</span><br><span class="line">        response.addHeader(<span class="string">&quot;Access-Control-Allow-Headers&quot;</span>, <span class="string">&quot;Content-Type&quot;</span>);</span><br><span class="line">        response.addHeader(<span class="string">&quot;Access-Control-Max-Age&quot;</span>, <span class="string">&quot;1800&quot;</span>);<span class="comment">//30 min</span></span><br><span class="line">        filterChain.doFilter(request, response);</span><br></pre></td></tr></table></figure>
-
-<h3 id="使用代理来解决跨域问题"><a href="#使用代理来解决跨域问题" class="headerlink" title="使用代理来解决跨域问题"></a>使用代理来解决跨域问题</h3><p>代理（Proxy）也称网络代理，是一种特殊的网络服务，允许一个（一般为客户端）通过这个服务与另一个网络终端（一般为服务器）进行非直接的连接。一些网关、路由器等网络设备具备网络代理功能。一般认为代理服务有利于保障网络终端的隐私或安全，防止攻击</p>
-<p>方法一:<br>在vue.config.js文件，新增以下代码</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">    devServer: &#123;</span><br><span class="line">        proxy: &#123;</span><br><span class="line">            <span class="string">&#x27;/api&#x27;</span>: &#123; <span class="regexp">//</span> <span class="string">&#x27;/api&#x27;</span>是代理标识，用于告诉node，url前面是/api的就是使用代理的</span><br><span class="line">                target: <span class="string">&quot;http://xxx.xxx.xx.xx:8080&quot;</span>, <span class="regexp">//</span>目标地址，一般是指后台服务器地址</span><br><span class="line">                changeOrigin: true, <span class="regexp">//</span>是否跨域</span><br><span class="line">                pathRewrite: &#123; <span class="regexp">//</span> pathRewrite 的作用是把实际Request Url中的<span class="string">&#x27;/api&#x27;</span>用<span class="string">&quot;&quot;</span>代替</span><br><span class="line">                    <span class="string">&#x27;^/api&#x27;</span>: <span class="string">&quot;&quot;</span> </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>通过axios发送请求中，配置请求的根路径</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">axios.defaults.baseURL</span> = <span class="string">&#x27;/api&#x27;</span></span><br></pre></td></tr></table></figure>
-
+<p><img src="https://img-blog.csdnimg.cn/2019080911563118.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zNjI3MDkwOA==,size_16,color_FFFFFF,t_70" alt="avatar"></p>
+<p>当我们把长和宽都变为零时：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.triangle</span>&#123;</span><br><span class="line">   <span class="attribute">width</span>: <span class="number">0px</span>;</span><br><span class="line">   <span class="attribute">height</span>: <span class="number">0px</span>;</span><br><span class="line">   <span class="attribute">border-top</span>: <span class="number">200px</span> solid <span class="number">#00a497</span>;</span><br><span class="line">   <span class="attribute">border-bottom</span>: <span class="number">200px</span> solid <span class="number">#cc7eb1</span>;</span><br><span class="line">   <span class="attribute">border-left</span>: <span class="number">200px</span> solid <span class="number">#165e83</span>;</span><br><span class="line">   <span class="attribute">border-right</span>: <span class="number">200px</span> solid <span class="number">#c85179</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20190809115916987.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zNjI3MDkwOA==,size_16,color_FFFFFF,t_70" alt="avatar"></p>
+<p>这样我们就很容易画出三角形，并且根据我们的需求调整三角形的大小颜色等</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.triangle</span>&#123;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">0px</span>;</span><br><span class="line">	<span class="attribute">height</span>: <span class="number">0px</span>;</span><br><span class="line">	<span class="attribute">border-bottom</span>: <span class="number">200px</span> solid <span class="number">#cc7eb1</span>;</span><br><span class="line">    <span class="attribute">border-left</span>: <span class="number">200px</span> solid transparent;</span><br><span class="line">    <span class="attribute">border-right</span>: <span class="number">200px</span> solid transparent;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20190809135811324.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zNjI3MDkwOA==,size_16,color_FFFFFF,t_70" alt="avatar"></p>
+<p>其中各个边框的大小分别决定各个三角形的高，同时三角形的底由其他两个三角形的高构成，这也就意味着如果上下两个三角形的高（即上下两条边的边框大小变为0）其他两个三角形的底变为0，那么造成的结果是四个三角形都会消失（三角形需要由底和高构成）</p>
 
       
 
@@ -300,7 +281,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/02/15/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/02/01/css%E6%80%8E%E4%B9%88%E7%94%BB%E5%87%BA%E4%B8%80%E4%B8%AA%E4%B8%89%E8%A7%92%E5%BD%A2/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -314,18 +295,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/02/17/Vue%E8%B7%AF%E7%94%B1%E4%BD%BF%E7%94%A8--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B01/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/02/10/%E5%87%A0%E4%B8%AA%E4%B8%8D%E9%94%99%E5%BE%97%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Vue路由使用--Vue复习日记1
+          几个不错的插件推荐
         
       </div>
     </a>
   
   
-    <a href="/2022/02/10/%E5%87%A0%E4%B8%AA%E4%B8%8D%E9%94%99%E5%BE%97%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">几个不错的插件推荐</div>
+    <a href="/2022/01/25/css%E4%B8%A4%E6%A0%8F%E5%B8%83%E5%B1%80%EF%BC%8C%E4%B8%89%E6%A0%8F%E5%B8%83%E5%B1%80/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">css双栏布局、三栏布局</div>
       <i class="icon-circle-right"></i>
     </a>
   

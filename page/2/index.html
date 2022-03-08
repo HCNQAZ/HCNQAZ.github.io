@@ -152,159 +152,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-组件通信方式--Vue复习日记3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/02/01/%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B03/">组件通信方式--Vue复习日记3</a>
-    </h1>
-  
-
-        
-        <a href="/2022/02/01/%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B03/" class="archive-article-date">
-  	<time datetime="2022-02-01T09:18:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="总结一下学习过的组件间通信方式"><a href="#总结一下学习过的组件间通信方式" class="headerlink" title="总结一下学习过的组件间通信方式"></a>总结一下学习过的组件间通信方式</h1><p>一.prop传递一个参数，<br>二、通过prop传递一个函数，<br>三.通过$emit触发自定义事件，<br>四、全局事件总线，<br>五.vuex，<br>六.provide inject，<br>七.$ref<br>八.$attrs 与 $listeners<br>九.$parent 与 $children</p>
-        
-          <a class="article-more-a" href="/2022/02/01/%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B03/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/02/01/%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B03/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Vuex使用--Vue复习日记2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/26/Vuex%E4%BD%BF%E7%94%A8--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B02/">Vuex的使用--Vue复习日记2</a>
-    </h1>
-  
-
-        
-        <a href="/2022/01/26/Vuex%E4%BD%BF%E7%94%A8--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B02/" class="archive-article-date">
-  	<time datetime="2022-01-26T09:18:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Vuex使用"><a href="#Vuex使用" class="headerlink" title="Vuex使用"></a>Vuex使用</h1><h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><p>vuex是专门在Vue中实现集中式状态（数据）管理的一个Vue插件，对vue应用中的多个组件共享状态进行集中式管理（读/写），也是一种组件间通信的方式，且适用于任意组件间的通信</p>
-<h2 id="原理图"><a href="#原理图" class="headerlink" title="原理图"></a>原理图</h2><p><img src="https://img-blog.csdnimg.cn/20200521181420101.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ1MzE1Njk3,size_16,color_FFFFFF,t_70" alt="avatar"></p>
-        
-          <a class="article-more-a" href="/2022/01/26/Vuex%E4%BD%BF%E7%94%A8--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B02/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/26/Vuex%E4%BD%BF%E7%94%A8--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B02/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-Vue路由使用--Vue复习日记1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -312,13 +159,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/22/Vue%E8%B7%AF%E7%94%B1%E4%BD%BF%E7%94%A8--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B01/">Vue路由使用--Vue复习日记1</a>
+      <a class="article-title" href="/2022/02/17/Vue%E8%B7%AF%E7%94%B1%E4%BD%BF%E7%94%A8--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B01/">Vue路由使用--Vue复习日记1</a>
     </h1>
   
 
         
-        <a href="/2022/01/22/Vue%E8%B7%AF%E7%94%B1%E4%BD%BF%E7%94%A8--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B01/" class="archive-article-date">
-  	<time datetime="2022-01-22T08:25:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-22</time>
+        <a href="/2022/02/17/Vue%E8%B7%AF%E7%94%B1%E4%BD%BF%E7%94%A8--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B01/" class="archive-article-date">
+  	<time datetime="2022-02-17T08:25:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-17</time>
 </a>
         
       </header>
@@ -327,7 +174,7 @@
       
         <h1 id="Vue路由使用"><a href="#Vue路由使用" class="headerlink" title="Vue路由使用"></a>Vue路由使用</h1><h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><p>一个路由就是一组映射关系（Key-Value）Key为路径，Value为function（后端路由）或者component（前端路由），前端路由即浏览器的路径改变时，相应的路径组件就会显示，有助于完成SPA应用（即单页Web应用，点击导航链的时候不刷新页面，而是对页面的局部进行更新）</p>
         
-          <a class="article-more-a" href="/2022/01/22/Vue%E8%B7%AF%E7%94%B1%E4%BD%BF%E7%94%A8--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B01/#more">more >></a>
+          <a class="article-more-a" href="/2022/02/17/Vue%E8%B7%AF%E7%94%B1%E4%BD%BF%E7%94%A8--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B01/#more">more >></a>
         
       
 
@@ -351,7 +198,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/22/Vue%E8%B7%AF%E7%94%B1%E4%BD%BF%E7%94%A8--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B01/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/02/17/Vue%E8%B7%AF%E7%94%B1%E4%BD%BF%E7%94%A8--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B01/">展开全文 >></a>
         </p>
       
 
@@ -381,33 +228,38 @@
 
 
   
-    <article id="post-力扣题-判断数组中有无重复元素" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-跨域问题解决方案" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/12/13/%E5%8A%9B%E6%89%A3%E9%A2%98-%E5%88%A4%E6%96%AD%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9C%89%E6%97%A0%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/">力扣题 : 判断数组中有无重复元素</a>
+      <a class="article-title" href="/2022/02/15/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">跨域问题</a>
     </h1>
   
 
         
-        <a href="/2021/12/13/%E5%8A%9B%E6%89%A3%E9%A2%98-%E5%88%A4%E6%96%AD%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9C%89%E6%97%A0%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/" class="archive-article-date">
-  	<time datetime="2021-12-13T13:35:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-13</time>
+        <a href="/2022/02/15/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="archive-article-date">
+  	<time datetime="2022-02-15T07:18:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-15</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个整数数组，判断是否存在重复元素。</p>
-<p>如果存在一值在数组中出现至少两次，函数返回 true 。如果数组中每个元素都不相同，则返回 false 。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @param &#123;number[]&#125; nums</span><br><span class="line"> * @<span class="built_in">return</span> &#123;boolean&#125;</span><br><span class="line"> */</span><br><span class="line">var containsDuplicate = <span class="keyword">function</span>(nums) &#123;</span><br><span class="line">    nums.sort((a,b) =&gt; a-b)</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">let</span> i = 1; i &lt; nums.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums[i] === nums[i - 1]) <span class="built_in">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="题后感悟"><a href="#题后感悟" class="headerlink" title="题后感悟:"></a>题后感悟:</h2><p>nums.sort((a,b) =&gt; a-b)可将数组从小到大排序</p>
-<p>排好序后若存在相同数，必定贴在一起，可以一次循环遍历出来。</p>
-
+        <h2 id="跨域问题是什么？"><a href="#跨域问题是什么？" class="headerlink" title="跨域问题是什么？"></a>跨域问题是什么？</h2><p>在了解跨域之前，首先要知道什么是同源策略（same-origin policy）。简单来讲同源策略就是浏览器为了保证用户信息的安全，防止恶意的网站窃取数据，禁止不同域之间的JS进行交互。对于浏览器而言只要域名、协议、端口其中一个不同就会引发同源策略，从而限制他们之间如下的交互行为：</p>
+<p>1.Cookie、LocalStorage和IndexDB无法读取；</p>
+<p>2.DOM无法获得；</p>
+<p>3.AJAX请求不能发送。</p>
+<p>跨域的严格一点的定义是：只要协议，域名，端口有任何一个的不同，就被当作是跨域。</p>
+<h2 id="解决跨域问题办法"><a href="#解决跨域问题办法" class="headerlink" title="解决跨域问题办法"></a>解决跨域问题办法</h2><p>解决跨域的三种方法: jsonp、cors 、代理</p>
+<h3 id="jsonp方法"><a href="#jsonp方法" class="headerlink" title="jsonp方法"></a>jsonp方法</h3><p>jsonp是前端解决跨域最实用的方法，原理是src属性是不受跨域影响</p>
+<p>前台请求代码：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="function"><span class="keyword">function</span> <span class="title">func1</span>(<span class="params">ret</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">			<span class="built_in">console</span>.log(ret)</span></span><br><span class="line"><span class="javascript">		&#125;</span></span><br><span class="line"><span class="javascript">		</span></span><br><span class="line"><span class="javascript">	</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;http://192.168.100.150:8081/zhxZone/webmana/dict/jsonp?callback=func1&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2022/02/15/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/#more">more >></a>
+        
       
 
       
@@ -430,7 +282,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/12/13/%E5%8A%9B%E6%89%A3%E9%A2%98-%E5%88%A4%E6%96%AD%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9C%89%E6%97%A0%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/02/15/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">展开全文 >></a>
         </p>
       
 
@@ -460,42 +312,31 @@
 
 
   
-    <article id="post-ajax实例-制作一个二十四小时的实时天气预报" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-几个不错得插件推荐" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/12/13/ajax%E5%AE%9E%E4%BE%8B-%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E4%BA%8C%E5%8D%81%E5%9B%9B%E5%B0%8F%E6%97%B6%E7%9A%84%E5%AE%9E%E6%97%B6%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5/">ajax实例:制作一个二十四小时的实时天气预报（学习笔记）</a>
+      <a class="article-title" href="/2022/02/10/%E5%87%A0%E4%B8%AA%E4%B8%8D%E9%94%99%E5%BE%97%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90/">几个不错的插件推荐</a>
     </h1>
   
 
         
-        <a href="/2021/12/13/ajax%E5%AE%9E%E4%BE%8B-%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E4%BA%8C%E5%8D%81%E5%9B%9B%E5%B0%8F%E6%97%B6%E7%9A%84%E5%AE%9E%E6%97%B6%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5/" class="archive-article-date">
-  	<time datetime="2021-12-13T13:08:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-13</time>
+        <a href="/2022/02/10/%E5%87%A0%E4%B8%AA%E4%B8%8D%E9%94%99%E5%BE%97%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90/" class="archive-article-date">
+  	<time datetime="2022-02-10T09:18:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <span id="more"></span>
-<p>#利用ajax制作一个二十四小时的实时天气预报</p>
-<ul>
-<li><p>主函数:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">&quot;en&quot;</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">&quot;UTF-8&quot;</span>&gt;</span><br><span class="line">    &lt;meta http-equiv=<span class="string">&quot;X-UA-Compatible&quot;</span> content=<span class="string">&quot;IE=edge&quot;</span>&gt;</span><br><span class="line">    &lt;meta name=<span class="string">&quot;viewport&quot;</span> content=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br><span class="line">    &lt;link rel=<span class="string">&quot;stylesheet&quot;</span> href=<span class="string">&quot;https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css&quot;</span>&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    //网页主体</span><br><span class="line">    &lt;div class=<span class="string">&quot;container&quot;</span>&gt;</span><br><span class="line">        &lt;table id=<span class="string">&#x27;box&#x27;</span> class=<span class="string">&quot;table table-striped table-hover&quot;</span> align=<span class="string">&quot;center&quot;</span>&gt;</span><br><span class="line">          </span><br><span class="line">        &lt;/table&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    //引入需要的JS</span><br><span class="line">    &lt;script src=<span class="string">&quot;js/jsonp.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script src=<span class="string">&quot;js/template-web.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script <span class="built_in">type</span>=<span class="string">&quot;text/html&quot;</span> id=<span class="string">&#x27;tpl&#x27;</span>&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;th&gt;时间&lt;/th&gt;</span><br><span class="line">            &lt;th&gt;温度&lt;/th&gt;</span><br><span class="line">            &lt;th&gt;天气&lt;/th&gt;</span><br><span class="line">            &lt;th&gt;风向&lt;/th&gt;</span><br><span class="line">            &lt;th&gt;风力&lt;/th&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &#123;&#123;each info&#125;&#125;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;&#123;&#123;dateFormat(<span class="variable">$value</span>.update_time)&#125;&#125;&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;&#123;&#123;<span class="variable">$value</span>.degree&#125;&#125;&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;&#123;&#123;<span class="variable">$value</span>.weather&#125;&#125;&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;&#123;&#123;<span class="variable">$value</span>.wind_direction&#125;&#125;&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;&#123;&#123;<span class="variable">$value</span>.wind_power&#125;&#125;&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &#123;&#123;/each&#125;&#125;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        //获取元素</span><br><span class="line">        var box = document.getElementById(<span class="string">&#x27;box&#x27;</span>);</span><br><span class="line">        //提取年月日时</span><br><span class="line">        <span class="keyword">function</span> dateFormat(date)&#123;</span><br><span class="line">            var year =date.substr(0,4) ;</span><br><span class="line">            var month =date.substr(4,2) ;</span><br><span class="line">            var day =date.substr(6,2) ;</span><br><span class="line">            var hours =date.substr(8,2) ;</span><br><span class="line">            <span class="built_in">return</span> year + <span class="string">&#x27;年&#x27;</span> + month + <span class="string">&#x27;月&#x27;</span> + day + <span class="string">&#x27;日&#x27;</span> + hours + <span class="string">&#x27;时&#x27;</span> ;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        //向模板开放外部变量</span><br><span class="line">        template.defaults.imports.dateFormat = dateFormat;</span><br><span class="line">        //调用函数,向服务器发出请求调取天气情况</span><br><span class="line">        jsonp(&#123;</span><br><span class="line">            url: <span class="string">&#x27;http://wis.qq.com/weather/common&#x27;</span>,</span><br><span class="line">            data:&#123;</span><br><span class="line">                <span class="built_in">source</span> : <span class="string">&#x27;pc&#x27;</span> ,</span><br><span class="line">                weather_type: <span class="string">&#x27;forecast_1h&#x27;</span>,</span><br><span class="line">                province: <span class="string">&#x27;安徽省&#x27;</span>,</span><br><span class="line">                city: <span class="string">&#x27;合肥市&#x27;</span></span><br><span class="line">            &#125;,</span><br><span class="line"></span><br><span class="line">            success: <span class="keyword">function</span>(data)&#123;</span><br><span class="line">                var html = template(<span class="string">&#x27;tpl&#x27;</span>, &#123;info: data.data.forecast_1h &#125;);</span><br><span class="line">                box.innerHTML = html;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></li>
-<li><p>jsonp.js的封装:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> jsonp(options)&#123;</span><br><span class="line">    //动态创建script标签</span><br><span class="line">    var script = document.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    //拼接字符串</span><br><span class="line">    var params=<span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="keyword">for</span>(var attr <span class="keyword">in</span> options.data)&#123;</span><br><span class="line">        params += <span class="string">&#x27;&amp;&#x27;</span> + attr + <span class="string">&#x27;=&#x27;</span> + options.data[attr];</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    //动态创建函数名，避免上一个数据没来得及更改就被下一个数据覆盖</span><br><span class="line">    var fnName = <span class="string">&#x27;myJsonp&#x27;</span> + Math.random().toString().replace(<span class="string">&#x27;.&#x27;</span>,<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">    </span><br><span class="line">    //将fnName变成全局变量</span><br><span class="line">    window[fnName] = options.success;</span><br><span class="line"></span><br><span class="line">    //在Script标签中添加src属性</span><br><span class="line">    script.src = options.url + <span class="string">&#x27;?callback=&#x27;</span> + fnName + params ;</span><br><span class="line">    document.body.appendChild(script);</span><br><span class="line"></span><br><span class="line">    //添加onload事件</span><br><span class="line">    script.onload = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">        //删除标签,避免反复提交让页面多出冗余的标签</span><br><span class="line">        document.body.removeChild(script);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>template需要自己到art-template官网下载</p>
-</li>
-<li><p>截图:<br><img src="https://bdcm02.baidupcs.com/file/173bc2512m94e183fe9b41f072e72403?bkt=en-19901565518762c967ecbcc5b97419d58e8b2322bc90e1a86491561af55d173fddad67e981afffb6ebe15028bdd38f15d41a6300c5f8567e29075934d29fcfb7&fid=4042342758-250528-82830349874450&time=1639401791&sign=FDTAXUbGERLQlBHSKfWqi-DCb740ccc5511e5e8fedcff06b081203-I8iR20B/LBM6/G1j4CQBpvcCYC0=&to=94&size=104820&sta_dx=104820&sta_cs=0&sta_ft=png&sta_ct=0&sta_mt=0&fm2=MH,Baoding,Anywhere,,anhui,cmnet&ctime=1639401625&mtime=1639401625&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=104820&vuk=4042342758&iv=0&htype=&randtype=&tkbind_id=0&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-6398939357d97576f8646dc91ed7820e12a0bb4117fae07e2ec3449a429a534647e8be6957469bca610113ba7e96920cccf056791ac0b9bc305a5e1275657320&sl=76480590&expires=8h&rt=pr&r=594414004&vbdid=1563055239&fin=QQ%E5%9B%BE%E7%89%8720211213211929.png&fn=QQ%E5%9B%BE%E7%89%8720211213211929.png&rtype=1&dp-logid=9198305644935620357&dp-callid=0.1&hps=1&tsl=80&csl=80&fsl=-1&csign=ykD+nCoxDipyIOdfq1RXxDlEeQc=&so=0&ut=6&uter=4&serv=0&uc=2212150414&ti=220620fd8d32b115b34eaa4e02647304667cb108cb5b5b35&hflag=30&from_type=1&adg=c_8026c931624fcb20480c2c4834efddf9&reqlabel=250528_f_b94405ab9fd6a5fcb6a666164a51b79a_-1_aca2c4b31e82adce2bfeb7b13c1506e5&by=themis"></p>
-</li>
-<li><p>注意:</p>
-</li>
-</ul>
-<p>文章重点在于功能实现，而不在网站美化，所以没有对网页进行美化，注释包含大量重要信息，可以解疑答惑，所以不再写更多解释</p>
-
+        <p>前言：今日继续在做项目总结了用到的几个不错的插件</p>
+<h1 id="nprogress进度条插件"><a href="#nprogress进度条插件" class="headerlink" title="nprogress进度条插件"></a>nprogress进度条插件</h1><p>打开一个页面时，往往会伴随一些请求，并且会在页面上方出现进度条。它的原理时，在我们发起请求的时候开启进度条，在请求成功后关闭进度条，所以只需要在request.js中进行配置。<br>如下图所示，我们页面加载时发起了一个请求，此时页面上方出现蓝色进度条</p>
+        
+          <a class="article-more-a" href="/2022/02/10/%E5%87%A0%E4%B8%AA%E4%B8%8D%E9%94%99%E5%BE%97%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90/#more">more >></a>
+        
       
 
       
@@ -518,7 +359,163 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/12/13/ajax%E5%AE%9E%E4%BE%8B-%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E4%BA%8C%E5%8D%81%E5%9B%9B%E5%B0%8F%E6%97%B6%E7%9A%84%E5%AE%9E%E6%97%B6%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/02/10/%E5%87%A0%E4%B8%AA%E4%B8%8D%E9%94%99%E5%BE%97%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-css怎么画出一个三角形" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/02/01/css%E6%80%8E%E4%B9%88%E7%94%BB%E5%87%BA%E4%B8%80%E4%B8%AA%E4%B8%89%E8%A7%92%E5%BD%A2/">css画出一个三角形</a>
+    </h1>
+  
+
+        
+        <a href="/2022/02/01/css%E6%80%8E%E4%B9%88%E7%94%BB%E5%87%BA%E4%B8%80%E4%B8%AA%E4%B8%89%E8%A7%92%E5%BD%A2/" class="archive-article-date">
+  	<time datetime="2022-02-01T07:18:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="css如何画出一个三角形"><a href="#css如何画出一个三角形" class="headerlink" title="css如何画出一个三角形"></a>css如何画出一个三角形</h2><p>首先先观察加粗边框会是什么效果</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.triangle</span>&#123;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">50px</span>;</span><br><span class="line">	<span class="attribute">height</span>: <span class="number">50px</span>;</span><br><span class="line">	<span class="attribute">border-top</span>: <span class="number">200px</span> solid <span class="number">#00a497</span>;</span><br><span class="line">	<span class="attribute">border-bottom</span>: <span class="number">200px</span> solid <span class="number">#cc7eb1</span>;</span><br><span class="line">	<span class="attribute">border-left</span>: <span class="number">200px</span> solid <span class="number">#165e83</span>;</span><br><span class="line">	<span class="attribute">border-right</span>: <span class="number">200px</span> solid <span class="number">#c85179</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2022/02/01/css%E6%80%8E%E4%B9%88%E7%94%BB%E5%87%BA%E4%B8%80%E4%B8%AA%E4%B8%89%E8%A7%92%E5%BD%A2/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/02/01/css%E6%80%8E%E4%B9%88%E7%94%BB%E5%87%BA%E4%B8%80%E4%B8%AA%E4%B8%89%E8%A7%92%E5%BD%A2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-css两栏布局，三栏布局" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/25/css%E4%B8%A4%E6%A0%8F%E5%B8%83%E5%B1%80%EF%BC%8C%E4%B8%89%E6%A0%8F%E5%B8%83%E5%B1%80/">css双栏布局、三栏布局</a>
+    </h1>
+  
+
+        
+        <a href="/2022/01/25/css%E4%B8%A4%E6%A0%8F%E5%B8%83%E5%B1%80%EF%BC%8C%E4%B8%89%E6%A0%8F%E5%B8%83%E5%B1%80/" class="archive-article-date">
+  	<time datetime="2022-01-25T07:18:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="双栏布局"><a href="#双栏布局" class="headerlink" title="双栏布局"></a>双栏布局</h2><p>双栏布局非常常见，往往是以一个定宽栏和一个自适应的栏并排展示存在</p>
+<p>实现思路也非常的简单：</p>
+<p>使用 float 左浮左边栏<br>右边模块使用 margin-left 撑出内容块做内容展示<br>为父级元素添加BFC，防止下方元素飞到上方内容</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">    <span class="selector-class">.box</span> &#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">overflow</span>: hidden;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css"></span></span><br><span class="line"><span class="css">    <span class="selector-class">.left</span> &#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">float</span>: left;</span></span><br><span class="line"><span class="css">        <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">background-color</span>: gray;</span></span><br><span class="line"><span class="css">        <span class="attribute">height</span>: <span class="number">400px</span>;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css"></span></span><br><span class="line"><span class="css">    <span class="selector-class">.right</span> &#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">margin-left</span>: <span class="number">210px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">background-color</span>: lightgray;</span></span><br><span class="line"><span class="css">        <span class="attribute">height</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;left&quot;</span>&gt;</span>左边<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;right&quot;</span>&gt;</span>右边<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2022/01/25/css%E4%B8%A4%E6%A0%8F%E5%B8%83%E5%B1%80%EF%BC%8C%E4%B8%89%E6%A0%8F%E5%B8%83%E5%B1%80/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/01/25/css%E4%B8%A4%E6%A0%8F%E5%B8%83%E5%B1%80%EF%BC%8C%E4%B8%89%E6%A0%8F%E5%B8%83%E5%B1%80/">展开全文 >></a>
         </p>
       
 
