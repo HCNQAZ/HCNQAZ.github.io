@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Hexo</title>
+  <title>Vuex的使用--Vue复习日记2 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="Vuex使用理解vuex是专门在Vue中实现集中式状态（数据）管理的一个Vue插件，对vue应用中的多个组件共享状态进行集中式管理（读&#x2F;写），也是一种组件间通信的方式，且适用于任意组件间的通信 原理图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vuex的使用--Vue复习日记2">
+<meta property="og:url" content="http://example.com/2022/02/20/vue/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Vuex使用理解vuex是专门在Vue中实现集中式状态（数据）管理的一个Vue插件，对vue应用中的多个组件共享状态进行集中式管理（读&#x2F;写），也是一种组件间通信的方式，且适用于任意组件间的通信 原理图">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200521181420101.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ1MzE1Njk3,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2022-02-20T09:18:33.000Z">
+<meta property="article:modified_time" content="2022-03-05T07:43:46.266Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="web">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200521181420101.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ1MzE1Njk3,size_16,color_FFFFFF,t_70">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,36 +157,72 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-vue响应式原理 Observer 、 Dep 、 Watcher" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-vue" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/06/28/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86%20Observer%20%E3%80%81%20Dep%20%E3%80%81%20Watcher/">vue响应式原理 Observer 、 Dep 、 Watcher</a>
+    <h1 class="article-title" itemprop="name">
+      Vuex的使用--Vue复习日记2
     </h1>
   
 
         
-        <a href="/2022/06/28/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86%20Observer%20%E3%80%81%20Dep%20%E3%80%81%20Watcher/" class="archive-article-date">
-  	<time datetime="2022-06-28T06:58:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-28</time>
+        <a href="/2022/02/20/vue/" class="archive-article-date">
+  	<time datetime="2022-02-20T09:18:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="vue响应式原理-Observer-、-Dep-、-Watcher"><a href="#vue响应式原理-Observer-、-Dep-、-Watcher" class="headerlink" title="vue响应式原理 Observer 、 Dep 、 Watcher"></a>vue响应式原理 Observer 、 Dep 、 Watcher</h2><p><img src="https://s2.loli.net/2022/06/18/TbIZDMcEj5XBvRu.png" alt="_@U9Q@69PGD9YZEODH@B_NA.png"></p>
-<h3 id="1、Observer"><a href="#1、Observer" class="headerlink" title="1、Observer"></a>1、Observer</h3><p>​        Observer主要是对data对象中的数据进行了劫持监听，利用Object.defineProperty，一个属性对应一个dep对象，name有一个dep对象，age有一个dep对象，他们是一一对应的关系。    </p>
-<p>​        每个dep对象里面都 有他的观察者对象，观察者1，观察者2…当属性值发生变化的时候就会去调用dep中的notify，通知watcher，利用watcher去更新视图。</p>
-        
-          <a class="article-more-a" href="/2022/06/28/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86%20Observer%20%E3%80%81%20Dep%20%E3%80%81%20Watcher/#more">more >></a>
-        
+        <h1 id="Vuex使用"><a href="#Vuex使用" class="headerlink" title="Vuex使用"></a>Vuex使用</h1><h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><p>vuex是专门在Vue中实现集中式状态（数据）管理的一个Vue插件，对vue应用中的多个组件共享状态进行集中式管理（读/写），也是一种组件间通信的方式，且适用于任意组件间的通信</p>
+<h2 id="原理图"><a href="#原理图" class="headerlink" title="原理图"></a>原理图</h2><p><img src="https://img-blog.csdnimg.cn/20200521181420101.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ1MzE1Njk3,size_16,color_FFFFFF,t_70" alt="avatar"></p>
+<span id="more"></span>
+<h2 id="使用前准备，搭建vuex环境（store）"><a href="#使用前准备，搭建vuex环境（store）" class="headerlink" title="使用前准备，搭建vuex环境（store）"></a>使用前准备，搭建vuex环境（store）</h2><p>1、安装vuex<br>2、编写store文件中的index.js<br>（1）引入和使用vuex插件，use插件，<br>（2）定义actions mutations state<br>（3）new一个store对象，把上面定义的三个对象放入store内<br>3、main.js中<br>（1）引入刚才编写的store环境<br>（2) 在VM中使用store</p>
+<h2 id="vuex的使用"><a href="#vuex的使用" class="headerlink" title="vuex的使用"></a>vuex的使用</h2><p>1、在某个组件中的按钮触发事件，并在事件中编写调用vuex语句</p>
+<p>(提交action写法)</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.$store.dispatch(<span class="string">&#x27;jiaOdd&#x27;</span>, 传参)</span><br></pre></td></tr></table></figure>
+<p>（提交mutations写法）</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.$store.commit(<span class="string">&#x27;JIA&#x27;</span>, 传参)</span><br></pre></td></tr></table></figure>
+<p>2、store环境里应该有我们刚才需要用到的函数</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> actions = &#123;</span><br><span class="line">    jiaOdd(context,value)&#123;</span><br><span class="line">		console.<span class="keyword">log</span>(&#x27;actions中的jiaOdd被调用了&#x27;)</span><br><span class="line">		if(context.<span class="keyword">state</span>.sum % <span class="number">2</span>)&#123;</span><br><span class="line">			context.commit(&#x27;JIA&#x27;,value)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mutations = &#123;</span><br><span class="line">	JIA(<span class="keyword">state</span>,value)&#123;</span><br><span class="line">		console.<span class="keyword">log</span>(&#x27;mutations中的JIA被调用了&#x27;)</span><br><span class="line">		<span class="keyword">state</span>.sum += value</span><br><span class="line">	&#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">state</span> = &#123;</span><br><span class="line">	sum:<span class="number">0</span> //当前的和</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//创建并暴露store</span><br><span class="line">export <span class="keyword">default</span> new Vuex.Store(&#123;</span><br><span class="line">	actions,</span><br><span class="line">	mutations,</span><br><span class="line">	<span class="keyword">state</span>,</span><br><span class="line">	getters</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>3、在我们需要sum（计算出的数据）处</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">&lt;h1&gt;</span>当前求和为：&#123;&#123;<span class="variable">$store</span>.<span class="keyword">state</span>.sum&#125;&#125;&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="getters"><a href="#getters" class="headerlink" title="getters"></a>getters</h2><p>用于对state中的属性进行处理<br>###用法<br>在定义action mutations state处定义getters</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getters = &#123;</span><br><span class="line">	bigSum(<span class="keyword">state</span>)&#123;</span><br><span class="line">		return <span class="keyword">state</span>.sum*<span class="number">10</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">&lt;h3&gt;</span>当前求和放大<span class="number">10</span>倍为：&#123;&#123;<span class="variable">$store</span>.getters.bigSum&#125;&#125;&lt;/h3&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="mapState和mapGetters"><a href="#mapState和mapGetters" class="headerlink" title="mapState和mapGetters"></a>mapState和mapGetters</h2><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//借助mapState生成计算属性，从state中读取数据。（对象写法）</span></span><br><span class="line"> ...map<span class="constructor">State(&#123;<span class="params">he</span>:&#x27;<span class="params">sum</span>&#x27;,<span class="params">xuexiao</span>:&#x27;<span class="params">school</span>&#x27;,<span class="params">xueke</span>:&#x27;<span class="params">subject</span>&#x27;&#125;)</span>,</span><br><span class="line"></span><br><span class="line"><span class="comment">//借助mapState生成计算属性，从state中读取数据。（数组写法）</span></span><br><span class="line">	...map<span class="constructor">State([&#x27;<span class="params">sum</span>&#x27;,&#x27;<span class="params">school</span>&#x27;,&#x27;<span class="params">subject</span>&#x27;])</span>,</span><br><span class="line"></span><br><span class="line"><span class="comment">//借助mapGetters生成计算属性，从getters中读取数据。（数组写法）</span></span><br><span class="line">	...map<span class="constructor">Getters([&#x27;<span class="params">bigSum</span>&#x27;])</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="mapMutations和mapActions"><a href="#mapMutations和mapActions" class="headerlink" title="mapMutations和mapActions"></a>mapMutations和mapActions</h2><figure class="highlight hsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//首先如果需要传参的话，在触发vuex事件的按钮函数处传参，不需要直接调用就好了不用带（）和参数</span></span><br><span class="line">&lt;<span class="keyword">button</span> @click=<span class="string">&quot;increment(n)&quot;</span>&gt;+&lt;/<span class="keyword">button</span>&gt;</span><br><span class="line">&lt;<span class="keyword">button</span> @click=<span class="string">&quot;decrement(n)&quot;</span>&gt;-&lt;/<span class="keyword">button</span>&gt;</span><br><span class="line">&lt;<span class="keyword">button</span> @click=<span class="string">&quot;incrementOdd(n)&quot;</span>&gt;求和为奇数加&lt;/<span class="keyword">button</span>&gt;</span><br><span class="line">&lt;<span class="keyword">button</span> @click=<span class="string">&quot;incrementWait(n)&quot;</span>&gt;等一等再加&lt;/<span class="keyword">button</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//借助mapMutations生成对应的方法，方法中会调用commit去联系mutations(对象写法)</span></span><br><span class="line">...mapMutations(&#123;increment:<span class="string">&#x27;JIA&#x27;</span>,decrement:<span class="string">&#x27;JIAN&#x27;</span>&#125;),</span><br><span class="line"></span><br><span class="line"><span class="comment">//借助mapActions生成对应的方法，方法中会调用dispatch去联系actions(对象写法)</span></span><br><span class="line">...mapActions(&#123;incrementOdd:<span class="string">&#x27;jiaOdd&#x27;</span>,incrementWait:<span class="string">&#x27;jiaWait&#x27;</span>&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="vuex的模块化编码"><a href="#vuex的模块化编码" class="headerlink" title="vuex的模块化编码"></a>vuex的模块化编码</h2><p>注意复习</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -199,16 +242,84 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/06/28/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86%20Observer%20%E3%80%81%20Dep%20%E3%80%81%20Watcher/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/02/20/vue/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2022/02/20/Vuex%E4%BD%BF%E7%94%A8--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B02/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Vuex的使用--Vue复习日记2
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/02/17/Vue%E8%B7%AF%E7%94%B1%E4%BD%BF%E7%94%A8--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B01/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Vue路由使用--Vue复习日记1</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -228,326 +339,14 @@
 
 
 
-
-  
-    <article id="post-回文问题总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/04/01/%E5%9B%9E%E6%96%87%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/">回文问题总结</a>
-    </h1>
-  
-
-        
-        <a href="/2022/04/01/%E5%9B%9E%E6%96%87%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/" class="archive-article-date">
-  	<time datetime="2022-04-01T06:58:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="回文问题总结"><a href="#回文问题总结" class="headerlink" title="回文问题总结"></a>回文问题总结</h1><p>1、字符串<br>2、数字<br>3、链表</p>
-<h2 id="1、字符串："><a href="#1、字符串：" class="headerlink" title="1、字符串："></a>1、字符串：</h2><p>直接前后对比就可以：</p>
-<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="built_in">let</span> i = <span class="number">0</span>; i &lt; (res.<span class="built_in">length</span> &gt;&gt; <span class="number">1</span>); i++) &#123;</span><br><span class="line">  <span class="keyword">if</span> (res[i] !== res[res.<span class="built_in">length</span> - <span class="number">1</span> - i]) &#123;</span><br><span class="line">    <span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2022/04/01/%E5%9B%9E%E6%96%87%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/04/01/%E5%9B%9E%E6%96%87%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-经典问题0.1+0.2等于？" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/01/%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%980.1+0.2%E7%AD%89%E4%BA%8E%EF%BC%9F/">经典问题0.1+0.2为什么不等于0.3</a>
-    </h1>
-  
-
-        
-        <a href="/2022/03/01/%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%980.1+0.2%E7%AD%89%E4%BA%8E%EF%BC%9F/" class="archive-article-date">
-  	<time datetime="2022-03-01T06:58:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>经典问题0.1+0.2为什么不等于0.3</p>
-<h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><p>在正常的数学逻辑思维中，0.1+0.2=0.3这个逻辑是正确的.但是在JavaScript中0.1+0.2！==0.3，在JavaScript中的二进制的浮点数0.1和0.2并不是十分精确，在他们相加的结果并非正好等于0.3，而是一个比较接近的数字 0.30000000000000004 ，所以条件判断结果为false。</p>
-        
-          <a class="article-more-a" href="/2022/03/01/%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%980.1+0.2%E7%AD%89%E4%BA%8E%EF%BC%9F/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/01/%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%980.1+0.2%E7%AD%89%E4%BA%8E%EF%BC%9F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Vue生命周期--Vue复习日记5" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/02/28/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B05/">Vue生命周期--Vue复习日记5</a>
-    </h1>
-  
-
-        
-        <a href="/2022/02/28/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B05/" class="archive-article-date">
-  	<time datetime="2022-02-28T06:58:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Vue生命周期"><a href="#Vue生命周期" class="headerlink" title="Vue生命周期"></a>Vue生命周期</h1><p>Vue的生命周期可以帮助我们在一些重要的节点（例如dom挂载前或是挂载后）去完成一些我们需要vue去完成的事。Vue生命周期包括：</p>
-<p>1.beforeCreate<br>2.created<br>3.beforeMount<br>4.mounted<br>5.beforeUpdate<br>6.updated<br>7.beforeDestroy<br>8.destroyed<br>9.activated<br>10.deactivated<br>11.errorCaptured</p>
-<p>生命周期流程图：</p>
-        
-          <a class="article-more-a" href="/2022/02/28/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B05/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/02/28/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B05/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-数据检测和数据代理--Vue复习日记4 - 副本" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/02/25/%E6%95%B0%E6%8D%AE%E6%A3%80%E6%B5%8B%E5%92%8C%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B04%20-%20%E5%89%AF%E6%9C%AC/">数据检测和数据代理--Vue复习日记4</a>
-    </h1>
-  
-
-        
-        <a href="/2022/02/25/%E6%95%B0%E6%8D%AE%E6%A3%80%E6%B5%8B%E5%92%8C%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B04%20-%20%E5%89%AF%E6%9C%AC/" class="archive-article-date">
-  	<time datetime="2022-02-25T06:58:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="数据检测和数据代理"><a href="#数据检测和数据代理" class="headerlink" title="数据检测和数据代理"></a>数据检测和数据代理</h1><p>数据代理是指通过一个对象去对另一个对象属进行操作，实现原理是 ES6语法中Object对象的defineProperties方法。</p>
-<h2 id="数据代理"><a href="#数据代理" class="headerlink" title="数据代理"></a>数据代理</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj=&#123;&#125;;</span><br><span class="line">    <span class="keyword">let</span> objName=<span class="string">&#x27;lisi&#x27;</span>;</span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(obj,<span class="string">&#x27;name&#x27;</span>,&#123;</span><br><span class="line">       </span><br><span class="line">        <span class="function"><span class="title">get</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;get&#x27;</span>);</span><br><span class="line">            <span class="keyword">return</span> objName;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="function"><span class="title">set</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;set&#x27;</span>);</span><br><span class="line">            objName=val;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">console</span>.log(obj.name);</span><br><span class="line">    obj.name=<span class="string">&#x27;我是新值&#x27;</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(obj.name);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>运行结果:</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">get</span></span><br><span class="line">lisi</span><br><span class="line"><span class="builtin-name">set</span></span><br><span class="line"><span class="builtin-name">get</span></span><br><span class="line">我是新值</span><br></pre></td></tr></table></figure>
-
-<p>可以看见上面实现了当有人读取obj.name时会调用get方法，然后通过get方法把objName的值返回回去，而有人更改了obj.name的值时，会调用set方法，并且更改objName的值。当再有人读取obj.name时，get方法又会把set方法新设的objName返回回去。由此完成了通过objName对obj.name的数据代理。</p>
-<h2 id="数据监测"><a href="#数据监测" class="headerlink" title="数据监测"></a>数据监测</h2><p>当数据发生改变被set操作监测到更新值并重新渲染页面时这就是数据监测。当有人更改了值时，set在更改数据的同时会去完成页面的渲染，从而完成数据监测。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/02/25/%E6%95%B0%E6%8D%AE%E6%A3%80%E6%B5%8B%E5%92%8C%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B04%20-%20%E5%89%AF%E6%9C%AC/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -570,8 +369,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

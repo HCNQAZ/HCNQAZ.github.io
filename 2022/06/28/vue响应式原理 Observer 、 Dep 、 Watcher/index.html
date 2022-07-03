@@ -6,15 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Hexo</title>
+  <title>vue响应式原理 Observer 、 Dep 、 Watcher | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="vue响应式原理 Observer 、 Dep 、 Watcher 1、Observer​        Observer主要是对data对象中的数据进行了劫持监听，利用Object.defineProperty，一个属性对应一个dep对象，name有一个dep对象，age有一个dep对象，他们是一一对应的关系。     ​        每个dep对象里面都 有他的观察者对象，观察者1，观察者2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue响应式原理 Observer 、 Dep 、 Watcher">
+<meta property="og:url" content="http://example.com/2022/06/28/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86%20Observer%20%E3%80%81%20Dep%20%E3%80%81%20Watcher/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="vue响应式原理 Observer 、 Dep 、 Watcher 1、Observer​        Observer主要是对data对象中的数据进行了劫持监听，利用Object.defineProperty，一个属性对应一个dep对象，name有一个dep对象，age有一个dep对象，他们是一一对应的关系。     ​        每个dep对象里面都 有他的观察者对象，观察者1，观察者2">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/06/18/TbIZDMcEj5XBvRu.png">
+<meta property="og:image" content="https://s2.loli.net/2022/06/18/XFdupiHV3Ck6ves.png">
+<meta property="og:image" content="https://s2.loli.net/2022/06/18/LyPu1DqAJCjrOZU.png">
+<meta property="article:published_time" content="2022-06-28T06:58:36.000Z">
+<meta property="article:modified_time" content="2022-07-03T08:22:44.469Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="web">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/06/18/TbIZDMcEj5XBvRu.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,16 +159,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-vue响应式原理 Observer 、 Dep 、 Watcher" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-vue响应式原理 Observer 、 Dep 、 Watcher" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/06/28/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86%20Observer%20%E3%80%81%20Dep%20%E3%80%81%20Watcher/">vue响应式原理 Observer 、 Dep 、 Watcher</a>
+    <h1 class="article-title" itemprop="name">
+      vue响应式原理 Observer 、 Dep 、 Watcher
     </h1>
   
 
@@ -175,11 +182,64 @@
         <h2 id="vue响应式原理-Observer-、-Dep-、-Watcher"><a href="#vue响应式原理-Observer-、-Dep-、-Watcher" class="headerlink" title="vue响应式原理 Observer 、 Dep 、 Watcher"></a>vue响应式原理 Observer 、 Dep 、 Watcher</h2><p><img src="https://s2.loli.net/2022/06/18/TbIZDMcEj5XBvRu.png" alt="_@U9Q@69PGD9YZEODH@B_NA.png"></p>
 <h3 id="1、Observer"><a href="#1、Observer" class="headerlink" title="1、Observer"></a>1、Observer</h3><p>​        Observer主要是对data对象中的数据进行了劫持监听，利用Object.defineProperty，一个属性对应一个dep对象，name有一个dep对象，age有一个dep对象，他们是一一对应的关系。    </p>
 <p>​        每个dep对象里面都 有他的观察者对象，观察者1，观察者2…当属性值发生变化的时候就会去调用dep中的notify，通知watcher，利用watcher去更新视图。</p>
-        
-          <a class="article-more-a" href="/2022/06/28/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86%20Observer%20%E3%80%81%20Dep%20%E3%80%81%20Watcher/#more">more >></a>
-        
+<span id="more"></span>
+
+
+<h3 id="2、Dep管理依赖"><a href="#2、Dep管理依赖" class="headerlink" title="2、Dep管理依赖"></a>2、Dep管理依赖</h3><p>Dep就是帮我们收集依赖（要通知哪里）：</p>
+<p>1.虽然data中有text和message属性，但是只有message被渲染到页面上，至于text无论怎么变化都影响不到视图的展示，因此我们仅仅对message进行收集即可，可以避免一些无用的工作。<br>2.当使用watch属性时，也就是开发者自定义的监听某个data中属性的变化。比如监听message的变化,message变化时我们就要通知到<br>watch这个钩子，让它去执行回调函数。第二个依赖就是用来管理watch中message变化的。<br>3.这个时候message的Dep就收集到了两个依赖</p>
+<ul>
+<li>依赖1: data中message的变化</li>
+<li>依赖2: watch监听message的变化</li>
+</ul>
+<p>4、开发者自定义computed计算属性时，如下 messageTransfer 属性，是依赖message的变化的。因此message变化时我们也要通知到computed，让它去执行回调函数。 这个时候message的Dep就收集到了三个依赖，这个依赖就是用来管理computed中message变化的。</p>
+<p>5、图示如下：一个属性可能有多个依赖，每个响应式数据都有一个Dep来管理它的依赖</p>
+<p><img src="https://s2.loli.net/2022/06/18/XFdupiHV3Ck6ves.png" alt="X0293C_C86M@~0_D3PM_X_3.png"></p>
+<h3 id="3、Watcher"><a href="#3、Watcher" class="headerlink" title="3、Watcher"></a>3、Watcher</h3><ul>
+<li>Watcher是连接Observer和Compile的桥梁，Compile解析指令时会创建一个对应的Watcher并绑定update方法 , 添加到Dep对象上。</li>
+</ul>
+<h2 id="Dep如何收集依赖"><a href="#Dep如何收集依赖" class="headerlink" title="Dep如何收集依赖"></a>Dep如何收集依赖</h2><p>1、Object.defineProperty</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">defineReactive</span> (<span class="params">obj, key, val</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> Dep; <span class="comment">// 依赖</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">Object</span>.defineProperty(obj, key, &#123;</span><br><span class="line">    <span class="attr">enumerable</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">configurable</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">get</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&#x27;我被读了，我要不要做点什么好?&#x27;</span>);</span><br><span class="line">      <span class="comment">// 被读取了，将这个依赖收集起来</span></span><br><span class="line">      Dep.depend(); <span class="comment">// 本次新增</span></span><br><span class="line">      <span class="keyword">return</span> val;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">set</span>: <span class="function"><span class="params">newVal</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (val === newVal) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      val = newVal;</span><br><span class="line">      <span class="comment">// 被改变了，通知依赖去更新</span></span><br><span class="line">      Dep.notify(); <span class="comment">// 本次新增</span></span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&quot;数据被改变了，通知所有的wather去调用update!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="什么是依赖-Watcher"><a href="#什么是依赖-Watcher" class="headerlink" title="什么是依赖 ? (Watcher)"></a>什么是依赖 ? (Watcher)</h4><p>Watcher就是类似观察者的角色，比如message就有三个观察者，当message变化，就通知这三个观察者，他们就去执行各自需要做的变化 watcher.update()。</p>
+<p>可以推测出，Watcher必须要有的2个方法。一个就是通知变化，另一个就是被收集起来到Dep中去。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Watcher</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">addDep</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="comment">// 我这个Watcher要被Observer塞到Dep里去了~~</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">update</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="comment">// Dep通知我更新呢~~</span></span><br><span class="line">  &#125;, </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://s2.loli.net/2022/06/18/LyPu1DqAJCjrOZU.png" alt="W_WILVV6NSL70~_I___KG_W.png"></p>
+<h2 id="watcher的三种分类"><a href="#watcher的三种分类" class="headerlink" title="watcher的三种分类"></a>watcher的三种分类</h2><p>normal-watcher</p>
+<p>我们在 watch 中定义的，都属于这种类型，即只要监听的属性改变了，都会触发定义好的回调函数</p>
+<p>computed-watcher</p>
+<p>每一个 computed 属性，最后都会生成一个对应的 watcher 对象，但是这类 watcher 有个特点，我们拿上面的 b 举例：</p>
+<p>属性 b 依赖 a，当 a 改变的时候，b 并不会立即重新计算，只有之后其他地方需要读取 b 的时候，它才会真正计算，即具备 lazy（懒计算）特性</p>
+<p>render-watcher</p>
+<p>每一个组件都会有一个 render-watcher, function () {↵ vm._update(vm._render(), hydrating);↵ }, 当 data/computed中的属性改变的时候，会调用该 render-watcher 来更新组件的视图</p>
+<p>注意者三种watcher的执行顺序为computed watcher、user watcher、render watcher</p>
+<p>Dep扮演着调度中心/用户的角色，它的主要作用是收集观察者（watcher）并通知观察者目标的更新。每个属性都有自己的消息订阅者dep，用于存储订阅该属性的所有观察者对象。当数据改变时，它将遍历观察者列表(dep.subs)，通知所有的观察者，并让订阅者执行他们自己的更新逻辑。</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -199,16 +259,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/06/28/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86%20Observer%20%E3%80%81%20Dep%20%E3%80%81%20Watcher/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/06/28/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86%20Observer%20%E3%80%81%20Dep%20%E3%80%81%20Watcher/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2022/04/01/%E5%9B%9E%E6%96%87%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">回文问题总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -228,326 +347,14 @@
 
 
 
-
-  
-    <article id="post-回文问题总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/04/01/%E5%9B%9E%E6%96%87%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/">回文问题总结</a>
-    </h1>
-  
-
-        
-        <a href="/2022/04/01/%E5%9B%9E%E6%96%87%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/" class="archive-article-date">
-  	<time datetime="2022-04-01T06:58:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="回文问题总结"><a href="#回文问题总结" class="headerlink" title="回文问题总结"></a>回文问题总结</h1><p>1、字符串<br>2、数字<br>3、链表</p>
-<h2 id="1、字符串："><a href="#1、字符串：" class="headerlink" title="1、字符串："></a>1、字符串：</h2><p>直接前后对比就可以：</p>
-<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="built_in">let</span> i = <span class="number">0</span>; i &lt; (res.<span class="built_in">length</span> &gt;&gt; <span class="number">1</span>); i++) &#123;</span><br><span class="line">  <span class="keyword">if</span> (res[i] !== res[res.<span class="built_in">length</span> - <span class="number">1</span> - i]) &#123;</span><br><span class="line">    <span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2022/04/01/%E5%9B%9E%E6%96%87%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/04/01/%E5%9B%9E%E6%96%87%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-经典问题0.1+0.2等于？" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/01/%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%980.1+0.2%E7%AD%89%E4%BA%8E%EF%BC%9F/">经典问题0.1+0.2为什么不等于0.3</a>
-    </h1>
-  
-
-        
-        <a href="/2022/03/01/%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%980.1+0.2%E7%AD%89%E4%BA%8E%EF%BC%9F/" class="archive-article-date">
-  	<time datetime="2022-03-01T06:58:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>经典问题0.1+0.2为什么不等于0.3</p>
-<h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><p>在正常的数学逻辑思维中，0.1+0.2=0.3这个逻辑是正确的.但是在JavaScript中0.1+0.2！==0.3，在JavaScript中的二进制的浮点数0.1和0.2并不是十分精确，在他们相加的结果并非正好等于0.3，而是一个比较接近的数字 0.30000000000000004 ，所以条件判断结果为false。</p>
-        
-          <a class="article-more-a" href="/2022/03/01/%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%980.1+0.2%E7%AD%89%E4%BA%8E%EF%BC%9F/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/01/%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%980.1+0.2%E7%AD%89%E4%BA%8E%EF%BC%9F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Vue生命周期--Vue复习日记5" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/02/28/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B05/">Vue生命周期--Vue复习日记5</a>
-    </h1>
-  
-
-        
-        <a href="/2022/02/28/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B05/" class="archive-article-date">
-  	<time datetime="2022-02-28T06:58:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Vue生命周期"><a href="#Vue生命周期" class="headerlink" title="Vue生命周期"></a>Vue生命周期</h1><p>Vue的生命周期可以帮助我们在一些重要的节点（例如dom挂载前或是挂载后）去完成一些我们需要vue去完成的事。Vue生命周期包括：</p>
-<p>1.beforeCreate<br>2.created<br>3.beforeMount<br>4.mounted<br>5.beforeUpdate<br>6.updated<br>7.beforeDestroy<br>8.destroyed<br>9.activated<br>10.deactivated<br>11.errorCaptured</p>
-<p>生命周期流程图：</p>
-        
-          <a class="article-more-a" href="/2022/02/28/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B05/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/02/28/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B05/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-数据检测和数据代理--Vue复习日记4 - 副本" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/02/25/%E6%95%B0%E6%8D%AE%E6%A3%80%E6%B5%8B%E5%92%8C%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B04%20-%20%E5%89%AF%E6%9C%AC/">数据检测和数据代理--Vue复习日记4</a>
-    </h1>
-  
-
-        
-        <a href="/2022/02/25/%E6%95%B0%E6%8D%AE%E6%A3%80%E6%B5%8B%E5%92%8C%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B04%20-%20%E5%89%AF%E6%9C%AC/" class="archive-article-date">
-  	<time datetime="2022-02-25T06:58:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="数据检测和数据代理"><a href="#数据检测和数据代理" class="headerlink" title="数据检测和数据代理"></a>数据检测和数据代理</h1><p>数据代理是指通过一个对象去对另一个对象属进行操作，实现原理是 ES6语法中Object对象的defineProperties方法。</p>
-<h2 id="数据代理"><a href="#数据代理" class="headerlink" title="数据代理"></a>数据代理</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj=&#123;&#125;;</span><br><span class="line">    <span class="keyword">let</span> objName=<span class="string">&#x27;lisi&#x27;</span>;</span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(obj,<span class="string">&#x27;name&#x27;</span>,&#123;</span><br><span class="line">       </span><br><span class="line">        <span class="function"><span class="title">get</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;get&#x27;</span>);</span><br><span class="line">            <span class="keyword">return</span> objName;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="function"><span class="title">set</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;set&#x27;</span>);</span><br><span class="line">            objName=val;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">console</span>.log(obj.name);</span><br><span class="line">    obj.name=<span class="string">&#x27;我是新值&#x27;</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(obj.name);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>运行结果:</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">get</span></span><br><span class="line">lisi</span><br><span class="line"><span class="builtin-name">set</span></span><br><span class="line"><span class="builtin-name">get</span></span><br><span class="line">我是新值</span><br></pre></td></tr></table></figure>
-
-<p>可以看见上面实现了当有人读取obj.name时会调用get方法，然后通过get方法把objName的值返回回去，而有人更改了obj.name的值时，会调用set方法，并且更改objName的值。当再有人读取obj.name时，get方法又会把set方法新设的objName返回回去。由此完成了通过objName对obj.name的数据代理。</p>
-<h2 id="数据监测"><a href="#数据监测" class="headerlink" title="数据监测"></a>数据监测</h2><p>当数据发生改变被set操作监测到更新值并重新渲染页面时这就是数据监测。当有人更改了值时，set在更改数据的同时会去完成页面的渲染，从而完成数据监测。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/02/25/%E6%95%B0%E6%8D%AE%E6%A3%80%E6%B5%8B%E5%92%8C%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B04%20-%20%E5%89%AF%E6%9C%AC/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -570,8 +377,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
