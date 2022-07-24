@@ -152,6 +152,340 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-HTTPS通信（握⼿）过程（ ECDHE算法）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/05/16/HTTPS%E9%80%9A%E4%BF%A1%EF%BC%88%E6%8F%A1%E2%BC%BF%EF%BC%89%E8%BF%87%E7%A8%8B%EF%BC%88%20ECDHE%E7%AE%97%E6%B3%95%EF%BC%89/">HTTPS通信（握⼿）过程（ ECDHE算法）</a>
+    </h1>
+  
+
+        
+        <a href="/2022/05/16/HTTPS%E9%80%9A%E4%BF%A1%EF%BC%88%E6%8F%A1%E2%BC%BF%EF%BC%89%E8%BF%87%E7%A8%8B%EF%BC%88%20ECDHE%E7%AE%97%E6%B3%95%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2022-05-16T05:22:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>ECDHE 算法</p>
+<p>ECDHE 算法是利⽤了 ECC 椭圆曲线特性，⽤更少的计算量计算出公钥，以及最终的会话密钥。</p>
+<p>⼩红和⼩明使⽤ ECDHE 密钥交换算法的过程：</p>
+<p>双⽅事先确定好使⽤哪种椭圆曲线，和曲线上的基点 G，这两个参数都是公开的；</p>
+<p>双⽅各⾃随机⽣成⼀个随机数作为私钥d，并与基点G相乘得到公钥Q（Q = dG），此时⼩红的公私钥为 Q1和 d1，⼩明的公私钥为 Q2 和 d2；</p>
+<p>双⽅交换各⾃的公钥，最后⼩红计算点（x1，y1） = d1Q2，⼩明计算点（x2，y2） = d2Q1，由于椭圆曲线上是可以满⾜乘法交换和结合律，所以 d1Q2 = d1d2G = d2d1G = d2Q1 ，因此双⽅的 x 坐标是⼀样的，所以它是共享密钥，也就是会话密钥。</p>
+<p>这个过程中，双⽅的私钥都是随机、临时⽣成的，都是不公开的，即使根据公开的信息（椭圆曲线、公钥、基点G）也是很难计算出椭圆曲线上的离散对数（私钥）。</p>
+        
+          <a class="article-more-a" href="/2022/05/16/HTTPS%E9%80%9A%E4%BF%A1%EF%BC%88%E6%8F%A1%E2%BC%BF%EF%BC%89%E8%BF%87%E7%A8%8B%EF%BC%88%20ECDHE%E7%AE%97%E6%B3%95%EF%BC%89/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/05/16/HTTPS%E9%80%9A%E4%BF%A1%EF%BC%88%E6%8F%A1%E2%BC%BF%EF%BC%89%E8%BF%87%E7%A8%8B%EF%BC%88%20ECDHE%E7%AE%97%E6%B3%95%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-HTTPS通信（握⼿）过程（RSA 算法）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/05/08/HTTPS%E9%80%9A%E4%BF%A1%EF%BC%88%E6%8F%A1%E2%BC%BF%EF%BC%89%E8%BF%87%E7%A8%8B%EF%BC%88RSA%20%E7%AE%97%E6%B3%95%EF%BC%89/">HTTPS通信（握⼿）过程（RSA 算法）</a>
+    </h1>
+  
+
+        
+        <a href="/2022/05/08/HTTPS%E9%80%9A%E4%BF%A1%EF%BC%88%E6%8F%A1%E2%BC%BF%EF%BC%89%E8%BF%87%E7%A8%8B%EF%BC%88RSA%20%E7%AE%97%E6%B3%95%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2022-05-08T05:22:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>事实上，不同的密钥交换算法，TLS 的握⼿过程可能会有⼀些区别。</p>
+<p>密钥交换算法-RSA 算法</p>
+<p>SSL/TLS 的「握⼿阶段」涉及四次通信（ SSL/TLS1.2版本为如下的四次握手， SSL/TLS 1.3 优化了过程，只需要 3 次握⼿）</p>
+<ol>
+<li>ClientHello</li>
+</ol>
+<p>⾸先，由客户端向服务器发起加密通信请求，也就是 ClientHello 请求。在这⼀步，客户端主要向服务器发送以下信息：</p>
+<p>（1）客户端⽀持的 SSL/TLS 协议版本，如 TLS 1.2 版本。</p>
+<p>（2）客户端⽣产的随机数（ Client Random ），后⾯⽤于⽣产「会话秘钥」。</p>
+<p>（3）客户端⽀持的密码套件列表，如 RSA 加密算法。</p>
+        
+          <a class="article-more-a" href="/2022/05/08/HTTPS%E9%80%9A%E4%BF%A1%EF%BC%88%E6%8F%A1%E2%BC%BF%EF%BC%89%E8%BF%87%E7%A8%8B%EF%BC%88RSA%20%E7%AE%97%E6%B3%95%EF%BC%89/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/05/08/HTTPS%E9%80%9A%E4%BF%A1%EF%BC%88%E6%8F%A1%E2%BC%BF%EF%BC%89%E8%BF%87%E7%A8%8B%EF%BC%88RSA%20%E7%AE%97%E6%B3%95%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-HTTP缺点和HTTPS如何改进" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/04/30/HTTP%E7%BC%BA%E7%82%B9%E5%92%8CHTTPS%E5%A6%82%E4%BD%95%E6%94%B9%E8%BF%9B/">HTTP缺点和HTTPS如何改进</a>
+    </h1>
+  
+
+        
+        <a href="/2022/04/30/HTTP%E7%BC%BA%E7%82%B9%E5%92%8CHTTPS%E5%A6%82%E4%BD%95%E6%94%B9%E8%BF%9B/" class="archive-article-date">
+  	<time datetime="2022-04-30T05:22:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>HTTP 由于是明⽂传输，所以安全上存在以下三个⻛险:窃听风险、篡改风险、冒充风险</p>
+<p>HTTPS 在 HTTP 与 TCP 层之间加⼊了 SSL/TLS 协议，可以很好的解决了上述的⻛险：</p>
+<p>1.HTTPS 采⽤的是对称加密和⾮对称加密结合的「混合加密」⽅式，解决了窃听的⻛险。</p>
+<p>在通信建⽴前采⽤⾮对称加密的⽅式交换「会话秘钥」，后续就不再使⽤⾮对称加密。</p>
+<p>在通信过程中全部使⽤对称加密的「会话秘钥」的⽅式加密明⽂数据。</p>
+<p>采⽤「混合加密」的⽅式的原因：</p>
+<p>对称加密只使⽤⼀个密钥，运算速度快，密钥必须保密，⽆法做到安全的密钥交换。</p>
+<p>⾮对称加密使⽤两个密钥：公钥和私钥，公钥可以任意分发⽽私钥保密，解决了密钥交换问题但速度慢。</p>
+        
+          <a class="article-more-a" href="/2022/04/30/HTTP%E7%BC%BA%E7%82%B9%E5%92%8CHTTPS%E5%A6%82%E4%BD%95%E6%94%B9%E8%BF%9B/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/04/30/HTTP%E7%BC%BA%E7%82%B9%E5%92%8CHTTPS%E5%A6%82%E4%BD%95%E6%94%B9%E8%BF%9B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-HTTP状态码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/04/25/HTTP%E7%8A%B6%E6%80%81%E7%A0%81/">HTTP 状态码总结</a>
+    </h1>
+  
+
+        
+        <a href="/2022/04/25/HTTP%E7%8A%B6%E6%80%81%E7%A0%81/" class="archive-article-date">
+  	<time datetime="2022-04-25T05:22:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="HTTP状态码总结："><a href="#HTTP状态码总结：" class="headerlink" title="HTTP状态码总结："></a>HTTP状态码总结：</h2><p>1xx 类状态码表示接受的请求正在处理，还需要后续的操作。</p>
+<p>「100  Continue」这个状态码是用来通知客户端它的部分请求已经被服务器接收，且仍未被拒绝，客户端应当继续发送请求的剩余部分。</p>
+<p>「101 Switching Protocols」：服务器根据客户端的请求切换协议，例如http2升级</p>
+<p>2xx 类状态码表示服务器成功处理了客户端的请求，也是我们最愿意看到的状态。</p>
+<p>「200 OK」表示⼀切正常。如果是⾮ HEAD 请求，服务器返回的响应头都会有 body数据。</p>
+<p>201（已创建）：请求成功并且服务器创建了新的资源</p>
+<p>202（已创建）：服务器已经接收请求，但尚未处理</p>
+<p>203（第三方）：服务器成功处理请求但将信息从另一个资源返回给请求的客户端</p>
+<p>「204 No Content」与 200 OK 基本相同，但响应头没有 body 数据。</p>
+        
+          <a class="article-more-a" href="/2022/04/25/HTTP%E7%8A%B6%E6%80%81%E7%A0%81/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/04/25/HTTP%E7%8A%B6%E6%80%81%E7%A0%81/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-http1.0 1.1 2.0" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -233,321 +567,9 @@
 
 
   
-    <article id="post-经典问题0.1+0.2等于？" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/04/10/%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%980.1+0.2%E7%AD%89%E4%BA%8E%EF%BC%9F/">经典问题0.1+0.2为什么不等于0.3</a>
-    </h1>
-  
-
-        
-        <a href="/2022/04/10/%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%980.1+0.2%E7%AD%89%E4%BA%8E%EF%BC%9F/" class="archive-article-date">
-  	<time datetime="2022-04-10T06:58:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>经典问题0.1+0.2为什么不等于0.3</p>
-<h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><p>在正常的数学逻辑思维中，0.1+0.2=0.3这个逻辑是正确的.但是在JavaScript中0.1+0.2！==0.3，在JavaScript中的二进制的浮点数0.1和0.2并不是十分精确，在他们相加的结果并非正好等于0.3，而是一个比较接近的数字 0.30000000000000004 ，所以条件判断结果为false。</p>
-        
-          <a class="article-more-a" href="/2022/04/10/%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%980.1+0.2%E7%AD%89%E4%BA%8E%EF%BC%9F/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/04/10/%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%980.1+0.2%E7%AD%89%E4%BA%8E%EF%BC%9F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Vue生命周期--Vue复习日记5" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/30/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B05/">Vue生命周期--Vue复习日记5</a>
-    </h1>
-  
-
-        
-        <a href="/2022/03/30/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B05/" class="archive-article-date">
-  	<time datetime="2022-03-30T06:58:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Vue生命周期"><a href="#Vue生命周期" class="headerlink" title="Vue生命周期"></a>Vue生命周期</h1><p>Vue的生命周期可以帮助我们在一些重要的节点（例如dom挂载前或是挂载后）去完成一些我们需要vue去完成的事。Vue生命周期包括：</p>
-<p>1.beforeCreate<br>2.created<br>3.beforeMount<br>4.mounted<br>5.beforeUpdate<br>6.updated<br>7.beforeDestroy<br>8.destroyed<br>9.activated<br>10.deactivated<br>11.errorCaptured</p>
-<p>生命周期流程图：</p>
-        
-          <a class="article-more-a" href="/2022/03/30/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B05/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/30/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B05/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-数据检测和数据代理--Vue复习日记4 - 副本" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/24/%E6%95%B0%E6%8D%AE%E6%A3%80%E6%B5%8B%E5%92%8C%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B04%20-%20%E5%89%AF%E6%9C%AC/">数据检测和数据代理--Vue复习日记4</a>
-    </h1>
-  
-
-        
-        <a href="/2022/03/24/%E6%95%B0%E6%8D%AE%E6%A3%80%E6%B5%8B%E5%92%8C%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B04%20-%20%E5%89%AF%E6%9C%AC/" class="archive-article-date">
-  	<time datetime="2022-03-24T06:58:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="数据检测和数据代理"><a href="#数据检测和数据代理" class="headerlink" title="数据检测和数据代理"></a>数据检测和数据代理</h1><p>数据代理是指通过一个对象去对另一个对象属进行操作，实现原理是 ES6语法中Object对象的defineProperties方法。</p>
-<h2 id="数据代理"><a href="#数据代理" class="headerlink" title="数据代理"></a>数据代理</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj=&#123;&#125;;</span><br><span class="line">    <span class="keyword">let</span> objName=<span class="string">&#x27;lisi&#x27;</span>;</span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(obj,<span class="string">&#x27;name&#x27;</span>,&#123;</span><br><span class="line">       </span><br><span class="line">        <span class="function"><span class="title">get</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;get&#x27;</span>);</span><br><span class="line">            <span class="keyword">return</span> objName;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="function"><span class="title">set</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;set&#x27;</span>);</span><br><span class="line">            objName=val;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">console</span>.log(obj.name);</span><br><span class="line">    obj.name=<span class="string">&#x27;我是新值&#x27;</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(obj.name);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>运行结果:</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">get</span></span><br><span class="line">lisi</span><br><span class="line"><span class="builtin-name">set</span></span><br><span class="line"><span class="builtin-name">get</span></span><br><span class="line">我是新值</span><br></pre></td></tr></table></figure>
-
-<p>可以看见上面实现了当有人读取obj.name时会调用get方法，然后通过get方法把objName的值返回回去，而有人更改了obj.name的值时，会调用set方法，并且更改objName的值。当再有人读取obj.name时，get方法又会把set方法新设的objName返回回去。由此完成了通过objName对obj.name的数据代理。</p>
-<h2 id="数据监测"><a href="#数据监测" class="headerlink" title="数据监测"></a>数据监测</h2><p>当数据发生改变被set操作监测到更新值并重新渲染页面时这就是数据监测。当有人更改了值时，set在更改数据的同时会去完成页面的渲染，从而完成数据监测。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/24/%E6%95%B0%E6%8D%AE%E6%A3%80%E6%B5%8B%E5%92%8C%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B04%20-%20%E5%89%AF%E6%9C%AC/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-组件通信方式--Vue复习日记3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/15/%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B03/">组件通信方式--Vue复习日记3</a>
-    </h1>
-  
-
-        
-        <a href="/2022/03/15/%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B03/" class="archive-article-date">
-  	<time datetime="2022-03-15T09:18:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="总结一下学习过的组件间通信方式"><a href="#总结一下学习过的组件间通信方式" class="headerlink" title="总结一下学习过的组件间通信方式"></a>总结一下学习过的组件间通信方式</h1><p>一.prop传递一个参数，<br>二、通过prop传递一个函数，<br>三.通过$emit触发自定义事件，<br>四、全局事件总线，<br>五.vuex，<br>六.provide inject，<br>七.$ref<br>八.$attrs 与 $listeners<br>九.$parent 与 $children</p>
-        
-          <a class="article-more-a" href="/2022/03/15/%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B03/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/15/%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B03/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
     </nav>
   
 
