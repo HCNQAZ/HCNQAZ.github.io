@@ -152,6 +152,83 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-vuex原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/08/13/vuex%E5%8E%9F%E7%90%86/">vuex原理</a>
+    </h1>
+  
+
+        
+        <a href="/2022/08/13/vuex%E5%8E%9F%E7%90%86/" class="archive-article-date">
+  	<time datetime="2022-08-13T09:31:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><p>vuex实际上就是一个小仓库，存储着很多东西可以供多个组件去使用，主要包含action 、 mutation 、state 、 getter 、 module五个模块。</p>
+<h2 id="原理实现"><a href="#原理实现" class="headerlink" title="原理实现"></a>原理实现</h2>
+        
+          <a class="article-more-a" href="/2022/08/13/vuex%E5%8E%9F%E7%90%86/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/08/13/vuex%E5%8E%9F%E7%90%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-keep-alive实现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -518,96 +595,9 @@
 
 
   
-    <article id="post-关于深拷贝的理解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/07/07/%E5%85%B3%E4%BA%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E7%90%86%E8%A7%A3/">关于深拷贝的理解</a>
-    </h1>
-  
-
-        
-        <a href="/2022/07/07/%E5%85%B3%E4%BA%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E7%90%86%E8%A7%A3/" class="archive-article-date">
-  	<time datetime="2022-07-07T05:24:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天复习以前的项目，发现之前遇到的一个关于深拷贝的问题，突发奇想想对深拷贝方法来一个总结。</p>
-<h2 id="对深拷贝和浅拷贝的理解"><a href="#对深拷贝和浅拷贝的理解" class="headerlink" title="对深拷贝和浅拷贝的理解"></a>对深拷贝和浅拷贝的理解</h2><ul>
-<li>浅拷贝：重新在堆中创建内存，拷贝前后对象的基本数据类型互不影响，但拷贝前后对象的引用类型因共享同一块内存，会相互影响。</li>
-<li>深拷贝：从堆内存中开辟一个新的区域存放新对象，对对象中的子对象进行递归拷贝,l拷贝前后的两个对象互不影响。</li>
-</ul>
-<h2 id="深拷贝实现方法"><a href="#深拷贝实现方法" class="headerlink" title="深拷贝实现方法"></a>深拷贝实现方法</h2><p>深拷贝开辟一个新的栈，两个对象属完成相同，但是对应两个不同的地址，修改一个对象的属性，不会改变另一个对象的属性</p>
-<p>常见的深拷贝方式有：</p>
-<ul>
-<li>_.cloneDeep()</li>
-<li>JSON.stringify()</li>
-<li>手写循环递归</li>
-</ul>
-        
-          <a class="article-more-a" href="/2022/07/07/%E5%85%B3%E4%BA%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E7%90%86%E8%A7%A3/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/07/07/%E5%85%B3%E4%BA%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E7%90%86%E8%A7%A3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
     </nav>
   
 

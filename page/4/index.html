@@ -152,6 +152,90 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-HTTP状态码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/04/25/HTTP%E7%8A%B6%E6%80%81%E7%A0%81/">HTTP 状态码总结</a>
+    </h1>
+  
+
+        
+        <a href="/2022/04/25/HTTP%E7%8A%B6%E6%80%81%E7%A0%81/" class="archive-article-date">
+  	<time datetime="2022-04-25T05:22:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="HTTP状态码总结："><a href="#HTTP状态码总结：" class="headerlink" title="HTTP状态码总结："></a>HTTP状态码总结：</h2><p>1xx 类状态码表示接受的请求正在处理，还需要后续的操作。</p>
+<p>「100  Continue」这个状态码是用来通知客户端它的部分请求已经被服务器接收，且仍未被拒绝，客户端应当继续发送请求的剩余部分。</p>
+<p>「101 Switching Protocols」：服务器根据客户端的请求切换协议，例如http2升级</p>
+<p>2xx 类状态码表示服务器成功处理了客户端的请求，也是我们最愿意看到的状态。</p>
+<p>「200 OK」表示⼀切正常。如果是⾮ HEAD 请求，服务器返回的响应头都会有 body数据。</p>
+<p>201（已创建）：请求成功并且服务器创建了新的资源</p>
+<p>202（已创建）：服务器已经接收请求，但尚未处理</p>
+<p>203（第三方）：服务器成功处理请求但将信息从另一个资源返回给请求的客户端</p>
+<p>「204 No Content」与 200 OK 基本相同，但响应头没有 body 数据。</p>
+        
+          <a class="article-more-a" href="/2022/04/25/HTTP%E7%8A%B6%E6%80%81%E7%A0%81/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/04/25/HTTP%E7%8A%B6%E6%80%81%E7%A0%81/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-http1.0 1.1 2.0" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -469,85 +553,9 @@
 
 
   
-    <article id="post-组件通信方式--Vue复习日记3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/15/%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B03/">组件通信方式--Vue复习日记3</a>
-    </h1>
-  
-
-        
-        <a href="/2022/03/15/%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B03/" class="archive-article-date">
-  	<time datetime="2022-03-15T09:18:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="总结一下学习过的组件间通信方式"><a href="#总结一下学习过的组件间通信方式" class="headerlink" title="总结一下学习过的组件间通信方式"></a>总结一下学习过的组件间通信方式</h1><p>一.prop传递一个参数，<br>二、通过prop传递一个函数，<br>三.通过$emit触发自定义事件，<br>四、全局事件总线，<br>五.vuex，<br>六.provide inject，<br>七.$ref<br>八.$attrs 与 $listeners<br>九.$parent 与 $children</p>
-        
-          <a class="article-more-a" href="/2022/03/15/%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B03/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/15/%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B03/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
     </nav>
   
 
