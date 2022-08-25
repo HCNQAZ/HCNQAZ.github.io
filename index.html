@@ -152,6 +152,96 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-keep-alive实现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/08/06/keep-alive%E5%AE%9E%E7%8E%B0/">keep-alive的实现</a>
+    </h1>
+  
+
+        
+        <a href="/2022/08/06/keep-alive%E5%AE%9E%E7%8E%B0/" class="archive-article-date">
+  	<time datetime="2022-08-06T04:14:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天看到自己以前用到的keep-alive，特地去看了下keep-alive的相关原理</p>
+<h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><p>如果需要在组件切换的时候，保存⼀些组件的状态防⽌多次渲染，就可以使⽤ keep-alive 组件包裹需 要保存的组件。 他是个抽象组件（虚拟、真实、抽象）keep-alive组件是不会出现在真实dom中的，但是不管他是否激活你都可以在vnode里面找到他</p>
+<p>keep-alive有以下三个属性： </p>
+<p>include 字符串或正则表达式，只有名称匹配的组件会被匹配； </p>
+<p>exclude 字符串或正则表达式，任何名称匹配的组件都不会被缓存； </p>
+<p>max 数字，最多可以缓存多少组件实例。 </p>
+<p>注意：keep-alive 包裹动态组件时，会缓存不活动的组件实例。  </p>
+<p>主要流程 </p>
+<ol>
+<li>判断组件 name ，不在 include 或者在 exclude 中，直接返回 vnode，说明该组件不被缓存。 </li>
+<li>获取组件实例 key ，如果有获取实例的 key，否则重新⽣成。</li>
+<li>如果缓存对象内存在，则直接从缓存对象中获取组件实例给 vnode ，不存在则添加到缓存对象 中。 </li>
+<li>最⼤缓存数量，当缓存组件数量超过 max 值时，清除 keys 数组内第⼀个组件。  </li>
+</ol>
+<h2 id="原理实现"><a href="#原理实现" class="headerlink" title="原理实现"></a>原理实现</h2>
+        
+          <a class="article-more-a" href="/2022/08/06/keep-alive%E5%AE%9E%E7%8E%B0/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/08/06/keep-alive%E5%AE%9E%E7%8E%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-async原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -486,84 +576,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/07/07/%E5%85%B3%E4%BA%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E7%90%86%E8%A7%A3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-vue响应式原理 Observer 、 Dep 、 Watcher" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/07/02/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86%20Observer%20%E3%80%81%20Dep%20%E3%80%81%20Watcher/">vue响应式原理 Observer 、 Dep 、 Watcher</a>
-    </h1>
-  
-
-        
-        <a href="/2022/07/02/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86%20Observer%20%E3%80%81%20Dep%20%E3%80%81%20Watcher/" class="archive-article-date">
-  	<time datetime="2022-07-02T06:58:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="vue响应式原理-Observer-、-Dep-、-Watcher"><a href="#vue响应式原理-Observer-、-Dep-、-Watcher" class="headerlink" title="vue响应式原理 Observer 、 Dep 、 Watcher"></a>vue响应式原理 Observer 、 Dep 、 Watcher</h2><p><img src="https://s2.loli.net/2022/06/18/TbIZDMcEj5XBvRu.png" alt="_@U9Q@69PGD9YZEODH@B_NA.png"></p>
-<h3 id="1、Observer"><a href="#1、Observer" class="headerlink" title="1、Observer"></a>1、Observer</h3><p>​        Observer主要是对data对象中的数据进行了劫持监听，利用Object.defineProperty，一个属性对应一个dep对象，name有一个dep对象，age有一个dep对象，他们是一一对应的关系。    </p>
-<p>​        每个dep对象里面都 有他的观察者对象，观察者1，观察者2…当属性值发生变化的时候就会去调用dep中的notify，通知watcher，利用watcher去更新视图。</p>
-        
-          <a class="article-more-a" href="/2022/07/02/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86%20Observer%20%E3%80%81%20Dep%20%E3%80%81%20Watcher/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/07/02/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86%20Observer%20%E3%80%81%20Dep%20%E3%80%81%20Watcher/">展开全文 >></a>
         </p>
       
 

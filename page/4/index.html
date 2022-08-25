@@ -152,6 +152,87 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-http1.0 1.1 2.0" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/04/20/http1.0%201.1%202.0/">HTTP 1.0 和 HTTP 1.1 和 HTTP2.0</a>
+    </h1>
+  
+
+        
+        <a href="/2022/04/20/http1.0%201.1%202.0/" class="archive-article-date">
+  	<time datetime="2022-04-20T06:58:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="HTTP-1-0-和-HTTP-1-1-之间有哪些区别？"><a href="#HTTP-1-0-和-HTTP-1-1-之间有哪些区别？" class="headerlink" title="HTTP 1.0 和 HTTP 1.1 之间有哪些区别？"></a>HTTP 1.0 和 HTTP 1.1 之间有哪些区别？</h2><p>HTTP 1.0和 HTTP 1.1 有以下区别： </p>
+<p>连接⽅⾯，http1.0 默认使⽤⾮持久连接，⽽ http1.1 默认使⽤持久连接。http1.1 通过使⽤持久连接来使多个 http 请求复⽤同⼀个 TCP 连接，以此来避免使⽤⾮持久连接时每次需要建⽴连接的时延。 </p>
+<p>HTTP1.1⽀持管道（pipeline）⽹络传输，只要第⼀个请求发出去了，不必等其回来，就可以发第⼆个请求出去，可以减少整体的响应时间。</p>
+<p>资源请求⽅⾯，在 http1.0 中，存在⼀些浪费带宽的现象，例如客户端只是需要某个对象的⼀部分，⽽服务器却将整个对象送过来了，并且不⽀持断点续传功能，http1.1 则在请求头引⼊了 range 头域，它允许只请求资源的某个部分，即返回码是 206（Partial Content），这样就⽅便了开发者⾃由的选择以便于充分利⽤带宽和连接。 </p>
+<p>http1.1 中新增了 host 字段，⽤来指定服务器的域名。http1.0 中认为每台服务器都绑定⼀个唯⼀的IP 地址，因此，请求消息中的 URL 并没有传递主机名（hostname）。但随着虚拟主机技术的发展，在⼀台物理服务器上可以存在多个虚拟主机，并且它们共享⼀个IP地址。因此有了 host 字段，这样就可以将请求发往到同⼀台服务器上的不同⽹站。 </p>
+<p>http1.1 相对于 http1.0 还新增了很多请求⽅法，如 PUT、HEAD、OPTIONS 等。 </p>
+        
+          <a class="article-more-a" href="/2022/04/20/http1.0%201.1%202.0/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/04/20/http1.0%201.1%202.0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-经典问题0.1+0.2等于？" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -435,83 +516,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/03/15/%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B03/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Vuex使用--Vue复习日记2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/04/Vuex%E4%BD%BF%E7%94%A8--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B02/">Vuex的使用--Vue复习日记2</a>
-    </h1>
-  
-
-        
-        <a href="/2022/03/04/Vuex%E4%BD%BF%E7%94%A8--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B02/" class="archive-article-date">
-  	<time datetime="2022-03-04T09:18:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Vuex使用"><a href="#Vuex使用" class="headerlink" title="Vuex使用"></a>Vuex使用</h1><h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><p>vuex是专门在Vue中实现集中式状态（数据）管理的一个Vue插件，对vue应用中的多个组件共享状态进行集中式管理（读/写），也是一种组件间通信的方式，且适用于任意组件间的通信</p>
-<h2 id="原理图"><a href="#原理图" class="headerlink" title="原理图"></a>原理图</h2><p><img src="https://img-blog.csdnimg.cn/20200521181420101.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ1MzE1Njk3,size_16,color_FFFFFF,t_70" alt="avatar"></p>
-        
-          <a class="article-more-a" href="/2022/03/04/Vuex%E4%BD%BF%E7%94%A8--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B02/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/04/Vuex%E4%BD%BF%E7%94%A8--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B02/">展开全文 >></a>
         </p>
       
 
