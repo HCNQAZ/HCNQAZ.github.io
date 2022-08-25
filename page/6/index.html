@@ -159,7 +159,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/02/10/css%E6%80%8E%E4%B9%88%E7%94%BB%E5%87%BA%E4%B8%80%E4%B8%AA%E4%B8%89%E8%A7%92%E5%BD%A2/">css画出一个三角形</a>
+      <a class="article-title" href="/2022/02/10/css%E6%80%8E%E4%B9%88%E7%94%BB%E5%87%BA%E4%B8%80%E4%B8%AA%E4%B8%89%E8%A7%92%E5%BD%A2/">css是怎么画出一个三角形的</a>
     </h1>
   
 
@@ -172,7 +172,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="css如何画出一个三角形"><a href="#css如何画出一个三角形" class="headerlink" title="css如何画出一个三角形"></a>css如何画出一个三角形</h2><p>首先先观察加粗边框会是什么效果</p>
+        <p>首先先观察加粗边框会是什么效果</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.triangle</span>&#123;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">50px</span>;</span><br><span class="line">	<span class="attribute">height</span>: <span class="number">50px</span>;</span><br><span class="line">	<span class="attribute">border-top</span>: <span class="number">200px</span> solid <span class="number">#00a497</span>;</span><br><span class="line">	<span class="attribute">border-bottom</span>: <span class="number">200px</span> solid <span class="number">#cc7eb1</span>;</span><br><span class="line">	<span class="attribute">border-left</span>: <span class="number">200px</span> solid <span class="number">#165e83</span>;</span><br><span class="line">	<span class="attribute">border-right</span>: <span class="number">200px</span> solid <span class="number">#c85179</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
         
           <a class="article-more-a" href="/2022/02/10/css%E6%80%8E%E4%B9%88%E7%94%BB%E5%87%BA%E4%B8%80%E4%B8%AA%E4%B8%89%E8%A7%92%E5%BD%A2/#more">more >></a>
@@ -281,6 +281,94 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/02/05/css%E5%8D%95%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E3%80%81%E4%BB%A5%E5%8F%8A%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-协商缓存和强缓存" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/02/03/%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98%E5%92%8C%E5%BC%BA%E7%BC%93%E5%AD%98/">协商缓存和强缓存</a>
+    </h1>
+  
+
+        
+        <a href="/2022/02/03/%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98%E5%92%8C%E5%BC%BA%E7%BC%93%E5%AD%98/" class="archive-article-date">
+  	<time datetime="2022-02-03T07:18:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="强缓存"><a href="#强缓存" class="headerlink" title="强缓存"></a>强缓存</h2><p>使⽤强缓存策略时，如果缓存资源有效，则直接使⽤缓存资源，不必再向服务器发起请求。 </p>
+<p>强缓存策略可以通过两种⽅式来设置，分别是 http 头信息中的 Expires 属性和 Cache-Control 属性。</p>
+<p>（1）服务器通过在响应头中添加 Expires 属性（绝对时间 服务器和客户端可能不一样），来指定资源的过期时间。在过期时间以内，该资源可以被缓存使⽤，不必再向服务器发送请求。这个时间是⼀个绝对时间，它是服务器的时间，因此可能存在这样的问题，就是客户端的时间和服务器端的时间不⼀致，或者⽤户可以对客户端时间进⾏修改的情况，这样就可能会影响缓存命中的结果。 </p>
+<p>（2）Expires 是 http1.0 中的⽅式，因为它的⼀些缺点，在 HTTP 1.1 中提出了⼀个新的头部属性就是 Cache-Control 属性，它提供了对资源的缓存的更精确的控制。它有很多不同的值， </p>
+<p>Cache-Control 可设置的字段： </p>
+<ul>
+<li>public ：设置了该字段值的资源表示可以被任何对象（包括：发送请求的客户端、代理服务器等等）缓存。这个字段值不常⽤，⼀般还是使⽤max-age=来精确控制； （代理服务器可缓存）</li>
+<li>private ：设置了该字段值的资源只能被⽤户浏览器缓存，不允许任何代理服务器缓存。在实际开发当中，对于⼀些含有⽤户信息的HTML，通常都要设置这个字段值，避免代理服务器(CDN)缓存；（代理服务器不可缓存）</li>
+<li>no-cache ：设置了该字段需要先和服务端确认返回的资源是否发⽣了变化，如果资源未发⽣变化，则直接使⽤缓存好的资源；<em>跳过</em>设置<em>强缓存</em>,但是不妨碍设置协商缓存; 。 </li>
+<li>no-store ：设置了该字段表示禁⽌任何缓存，每次都会向服务端发起新的请求，拉取最新的资源；客户端、服务器都不缓存,也就没有所谓的<em>强缓存</em>、协商缓存了。</li>
+<li>max-age= ：设置缓存的最⼤有效期，单位为秒；  </li>
+</ul>
+<p>⼀般来说只需要设置其中⼀种⽅式就可以实现强缓存策略，当两种⽅式⼀起使⽤时，Cache-Control 的优先级要⾼于 Expires。 </p>
+        
+          <a class="article-more-a" href="/2022/02/03/%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98%E5%92%8C%E5%BC%BA%E7%BC%93%E5%AD%98/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/02/03/%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98%E5%92%8C%E5%BC%BA%E7%BC%93%E5%AD%98/">展开全文 >></a>
         </p>
       
 

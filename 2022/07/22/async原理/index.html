@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>js实现一个深拷贝 | Hexo</title>
+  <title>async原理 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言今天复习以前的项目，发现之前遇到的一个关于深拷贝的问题，突发奇想想对深拷贝方法来一个总结。 对深拷贝和浅拷贝的理解 浅拷贝：重新在堆中创建内存，拷贝前后对象的基本数据类型互不影响，但拷贝前后对象的引用类型因共享同一块内存，会相互影响。 深拷贝：从堆内存中开辟一个新的区域存放新对象，对对象中的子对象进行递归拷贝,l拷贝前后的两个对象互不影响。  深拷贝实现方法深拷贝开辟一个新的栈，两个对象属完成">
+  <meta name="description" content="前言今天用到async，明明是Generator的语法糖，却感觉跟它又有比较大的区别，突然很好奇他的实现原理。 理解async函数对 Generator 函数的改进，体现在以下四点。 （1）内置执行器。 Generator 函数的执行必须靠执行器，所以才有了co模块，而async函数自带执行器。也就是说，async函数的执行，与普通函数一模一样，只要一行。 asyncReadFile();上面的代">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js实现一个深拷贝">
-<meta property="og:url" content="http://example.com/2022/07/07/%E5%AF%B9requestAnimationFrame%E7%9A%84%E7%90%86%E8%A7%A3%20-%20%E5%89%AF%E6%9C%AC/index.html">
+<meta property="og:title" content="async原理">
+<meta property="og:url" content="http://example.com/2022/07/22/async%E5%8E%9F%E7%90%86/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="前言今天复习以前的项目，发现之前遇到的一个关于深拷贝的问题，突发奇想想对深拷贝方法来一个总结。 对深拷贝和浅拷贝的理解 浅拷贝：重新在堆中创建内存，拷贝前后对象的基本数据类型互不影响，但拷贝前后对象的引用类型因共享同一块内存，会相互影响。 深拷贝：从堆内存中开辟一个新的区域存放新对象，对对象中的子对象进行递归拷贝,l拷贝前后的两个对象互不影响。  深拷贝实现方法深拷贝开辟一个新的栈，两个对象属完成">
+<meta property="og:description" content="前言今天用到async，明明是Generator的语法糖，却感觉跟它又有比较大的区别，突然很好奇他的实现原理。 理解async函数对 Generator 函数的改进，体现在以下四点。 （1）内置执行器。 Generator 函数的执行必须靠执行器，所以才有了co模块，而async函数自带执行器。也就是说，async函数的执行，与普通函数一模一样，只要一行。 asyncReadFile();上面的代">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-07-07T05:24:14.000Z">
-<meta property="article:modified_time" content="2022-07-24T11:12:34.945Z">
+<meta property="article:published_time" content="2022-07-22T05:24:14.000Z">
+<meta property="article:modified_time" content="2022-07-25T05:55:24.826Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="web">
 <meta name="twitter:card" content="summary">
@@ -155,85 +155,81 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-对requestAnimationFrame的理解 - 副本" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-async原理" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      js实现一个深拷贝
+      async原理
     </h1>
   
 
         
-        <a href="/2022/07/07/%E5%AF%B9requestAnimationFrame%E7%9A%84%E7%90%86%E8%A7%A3%20-%20%E5%89%AF%E6%9C%AC/" class="archive-article-date">
-  	<time datetime="2022-07-07T05:24:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-07</time>
+        <a href="/2022/07/22/async%E5%8E%9F%E7%90%86/" class="archive-article-date">
+  	<time datetime="2022-07-22T05:24:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天复习以前的项目，发现之前遇到的一个关于深拷贝的问题，突发奇想想对深拷贝方法来一个总结。</p>
-<h2 id="对深拷贝和浅拷贝的理解"><a href="#对深拷贝和浅拷贝的理解" class="headerlink" title="对深拷贝和浅拷贝的理解"></a>对深拷贝和浅拷贝的理解</h2><ul>
-<li>浅拷贝：重新在堆中创建内存，拷贝前后对象的基本数据类型互不影响，但拷贝前后对象的引用类型因共享同一块内存，会相互影响。</li>
-<li>深拷贝：从堆内存中开辟一个新的区域存放新对象，对对象中的子对象进行递归拷贝,l拷贝前后的两个对象互不影响。</li>
-</ul>
-<h2 id="深拷贝实现方法"><a href="#深拷贝实现方法" class="headerlink" title="深拷贝实现方法"></a>深拷贝实现方法</h2><p>深拷贝开辟一个新的栈，两个对象属完成相同，但是对应两个不同的地址，修改一个对象的属性，不会改变另一个对象的属性</p>
-<p>常见的深拷贝方式有：</p>
-<ul>
-<li>_.cloneDeep()</li>
-<li>JSON.stringify()</li>
-<li>手写循环递归</li>
-</ul>
-<span id="more"></span>
-<p>l<br>_.cloneDeep</p>
-<pre><code>const _ = require(&#39;lodash&#39;);
-const obj1 = &#123;
-    a: 1,
-    b: &#123; f: &#123; g: 1 &#125; &#125;,
-    c: [1, 2, 3]
-&#125;;
-const obj2 = _.cloneDeep(obj1);
-console.log(obj1.b.f === obj2.b.f);// false
-</code></pre>
-<p>JSON.stringify</p>
-<pre><code>const obj2=JSON.parse(JSON.stringify(obj1));
-</code></pre>
-<p>但是这种方式存在弊端，会忽略undefined、symbol和函数</p>
-<pre><code>const obj = &#123;
-    name: &#39;A&#39;,
-    name1: undefined,
-    name3: function() &#123;&#125;,
-    name4:  Symbol(&#39;A&#39;)
-&#125;
-const obj2 = JSON.parse(JSON.stringify(obj));
-console.log(obj2); // &#123;name: &quot;A&quot;&#125;
-</code></pre>
-<p>循环递归</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepClone</span>(<span class="params">obj, hash = <span class="keyword">new</span> <span class="built_in">WeakMap</span>()</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (obj === <span class="literal">null</span>) <span class="keyword">return</span> obj; <span class="comment">// 如果是null或者undefined我就不进行拷贝操作</span></span><br><span class="line">  <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="built_in">Date</span>) <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Date</span>(obj);</span><br><span class="line">  <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="built_in">RegExp</span>) <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">RegExp</span>(obj);</span><br><span class="line">  <span class="comment">// 可能是对象或者普通的值  如果是函数的话是不需要深拷贝</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> obj !== <span class="string">&quot;object&quot;</span>) <span class="keyword">return</span> obj;</span><br><span class="line">  <span class="comment">// 是对象的话就要进行深拷贝</span></span><br><span class="line">  <span class="keyword">if</span> (hash.get(obj)) <span class="keyword">return</span> hash.get(obj);</span><br><span class="line">  <span class="keyword">let</span> cloneObj = <span class="keyword">new</span> obj.constructor();</span><br><span class="line">  <span class="comment">// 找到的是所属类原型上的constructor,而原型上的 constructor指向的是当前类本身</span></span><br><span class="line">  hash.set(obj, cloneObj);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">    <span class="keyword">if</span> (obj.hasOwnProperty(key)) &#123;</span><br><span class="line">      <span class="comment">// 实现一个递归拷贝</span></span><br><span class="line">      cloneObj[key] = deepClone(obj[key], hash);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> cloneObj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天用到async，明明是Generator的语法糖，却感觉跟它又有比较大的区别，突然很好奇他的实现原理。</p>
+<h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><p>async函数对 Generator 函数的改进，体现在以下四点。</p>
+<p>（1）内置执行器。</p>
+<p>Generator 函数的执行必须靠执行器，所以才有了co模块，而async函数自带执行器。也就是说，async函数的执行，与普通函数一模一样，只要一行。</p>
+<p>asyncReadFile();<br>上面的代码调用了asyncReadFile函数，然后它就会自动执行，输出最后结果。这完全不像 Generator 函数，需要调用next方法，或者用co模块，才能真正执行，得到最后结果。</p>
+<p>（2）更好的语义。</p>
+<p>async和await，比起星号和yield，语义更清楚了。async表示函数里有异步操作，await表示紧跟在后面的表达式需要等待结果。</p>
+<p>（3）更广的适用性。</p>
+<p>co模块约定，yield命令后面只能是 Thunk 函数()或 Promise 对象，而async函数的await命令后面，可以是 Promise 对象和原始类型的值（数值、字符串和布尔值，但这时会自动转成立即 resolved 的 Promise 对象）。</p>
+<p>（4）返回值是 Promise。</p>
+<p>async函数的返回值是 Promise 对象，这比 Generator 函数的返回值是 Iterator 对象方便多了。你可以用then方法指定下一步的操作。</p>
+<p>进一步说，async函数完全可以看作多个异步操作，包装成的一个 Promise 对象，而await命令就是内部then命令的语法糖。</p>
+<h2 id="原理实现"><a href="#原理实现" class="headerlink" title="原理实现"></a>原理实现</h2><span id="more"></span>
 
-<h2 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h2><p>浅拷贝，指的是创建新的数据，这个数据有着原始数据属性值的一份精确拷贝</p>
-<p>如果属性是基本类型，拷贝的就是基本类型的值。如果属性是引用类型，拷贝的就是内存地址</p>
-<p>即浅拷贝是拷贝一层，深层次的引用类型则共享内存地址</p>
-<p>下面简单实现一个浅拷贝</p>
-<pre><code>function shallowClone(obj) &#123;
-    const newObj = &#123;&#125;;
-    for(let prop in obj) &#123;
-        if(obj.hasOwnProperty(prop))&#123;
-            newObj[prop] = obj[prop];
-        &#125;
+
+<p>Thunk</p>
+<p>编译器的“传名调用”实现，往往是将参数放到一个临时函数中，再将这个临时函数传入函数体。这个临时函数就被叫做 Thunk 函数。在 JavaScript 语言中，Thunk 函数替换的不是表达式，而是多参数函数，将其替换成一个只接受回调函数作为参数的单参数函数。（可以不说）直接说，大概就是generator函数需要generator.next()才能执行，现在我把他作为一个回调函数放进别的函数里，这样我之后只要执行这个回调函数就行了，不用再执行generator.next()</p>
+<pre><code>async function fn(args) &#123;
+    
+  // ...
+&#125;
+ 
+// 等同于
+ 
+function fn(args) &#123;
+  return spawn(function* () &#123;
+    // ...
+  &#125;);
+&#125;
+
+
+
+function spawn(genF) &#123;
+  return new Promise(function(resolve, reject) &#123;
+    const gen = genF();
+    function step(nextF) &#123;
+      let next;
+      try &#123;
+        next = nextF();
+      &#125; catch(e) &#123;
+        return reject(e);
+      &#125;
+      if(next.done) &#123;
+        return resolve(next.value);
+      &#125;
+      Promise.resolve(next.value).then(function(v) &#123;
+        step(function() &#123; return gen.next(v); &#125;);
+      &#125;, function(e) &#123;
+        step(function() &#123; return gen.throw(e); &#125;);
+      &#125;);
     &#125;
-    return newObj;
+    step(function() &#123; return gen.next(undefined); &#125;);
+  &#125;);
 &#125;
 </code></pre>
-<p>在JavaScript中，存在浅拷贝的现象有：</p>
-<ul>
-<li>Object.assign</li>
-<li>Array.prototype.slice(), Array.prototype.concat()</li>
-<li>使用拓展运算符实现的复制</li>
-</ul>
 
       
 
@@ -324,7 +320,7 @@ console.log(obj2); // &#123;name: &quot;A&quot;&#125;
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/07/07/%E5%AF%B9requestAnimationFrame%E7%9A%84%E7%90%86%E8%A7%A3%20-%20%E5%89%AF%E6%9C%AC/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/07/22/async%E5%8E%9F%E7%90%86/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -338,18 +334,9 @@ console.log(obj2); // &#123;name: &quot;A&quot;&#125;
   
 <nav id="article-nav">
   
-    <a href="/2022/07/08/vue%E4%B8%AD%E5%85%B3%E4%BA%8EnextTick%E7%9A%84%E5%8E%9F%E7%90%86/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          vue中关于nextTick的原理
-        
-      </div>
-    </a>
   
-  
-    <a href="/2022/07/02/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86%20Observer%20%E3%80%81%20Dep%20%E3%80%81%20Watcher/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">vue响应式原理 Observer 、 Dep 、 Watcher</div>
+    <a href="/2022/07/18/%E5%AF%B9requestAnimationFrame%E7%9A%84%E7%90%86%E8%A7%A3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">对requestAnimationFrame的理解</div>
       <i class="icon-circle-right"></i>
     </a>
   

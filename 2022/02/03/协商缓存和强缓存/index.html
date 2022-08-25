@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>js实现一个深拷贝 | Hexo</title>
+  <title>协商缓存和强缓存 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言今天复习以前的知识，突然发现requesAnimationFrame是个很有意思的东西，下面对他一些相关知识做一些总结。 理解window.requestAnimationFrame() 告诉浏览器——你希望执⾏⼀个动画，并且要求浏览器在下次重 绘之前调⽤指定的回调函数更新动画。该⽅法需要传⼊⼀个回调函数作为参数，该回调函数会在浏览 器下⼀次重绘之前执⾏。 语法： window.request">
+  <meta name="description" content="强缓存使⽤强缓存策略时，如果缓存资源有效，则直接使⽤缓存资源，不必再向服务器发起请求。  强缓存策略可以通过两种⽅式来设置，分别是 http 头信息中的 Expires 属性和 Cache-Control 属性。 （1）服务器通过在响应头中添加 Expires 属性（绝对时间 服务器和客户端可能不一样），来指定资源的过期时间。在过期时间以内，该资源可以被缓存使⽤，不必再向服务器发送请求。这个时间是">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js实现一个深拷贝">
-<meta property="og:url" content="http://example.com/2022/07/15/js%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E6%B7%B1%E6%8B%B7%E8%B4%9D/index.html">
+<meta property="og:title" content="协商缓存和强缓存">
+<meta property="og:url" content="http://example.com/2022/02/03/%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98%E5%92%8C%E5%BC%BA%E7%BC%93%E5%AD%98/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="前言今天复习以前的知识，突然发现requesAnimationFrame是个很有意思的东西，下面对他一些相关知识做一些总结。 理解window.requestAnimationFrame() 告诉浏览器——你希望执⾏⼀个动画，并且要求浏览器在下次重 绘之前调⽤指定的回调函数更新动画。该⽅法需要传⼊⼀个回调函数作为参数，该回调函数会在浏览 器下⼀次重绘之前执⾏。 语法： window.request">
+<meta property="og:description" content="强缓存使⽤强缓存策略时，如果缓存资源有效，则直接使⽤缓存资源，不必再向服务器发起请求。  强缓存策略可以通过两种⽅式来设置，分别是 http 头信息中的 Expires 属性和 Cache-Control 属性。 （1）服务器通过在响应头中添加 Expires 属性（绝对时间 服务器和客户端可能不一样），来指定资源的过期时间。在过期时间以内，该资源可以被缓存使⽤，不必再向服务器发送请求。这个时间是">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-07-15T05:24:14.000Z">
-<meta property="article:modified_time" content="2022-07-24T11:11:55.215Z">
+<meta property="article:published_time" content="2022-02-03T07:18:33.000Z">
+<meta property="article:modified_time" content="2022-07-24T11:25:15.951Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="web">
 <meta name="twitter:card" content="summary">
@@ -155,39 +155,59 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-js实现一个深拷贝" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-协商缓存和强缓存" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      js实现一个深拷贝
+      协商缓存和强缓存
     </h1>
   
 
         
-        <a href="/2022/07/15/js%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E6%B7%B1%E6%8B%B7%E8%B4%9D/" class="archive-article-date">
-  	<time datetime="2022-07-15T05:24:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-15</time>
+        <a href="/2022/02/03/%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98%E5%92%8C%E5%BC%BA%E7%BC%93%E5%AD%98/" class="archive-article-date">
+  	<time datetime="2022-02-03T07:18:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天复习以前的知识，突然发现requesAnimationFrame是个很有意思的东西，下面对他一些相关知识做一些总结。</p>
-<h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><p>window.requestAnimationFrame() 告诉浏览器——你希望执⾏⼀个动画，并且要求浏览器在下次重 绘之前调⽤指定的回调函数更新动画。该⽅法需要传⼊⼀个回调函数作为参数，该回调函数会在浏览 器下⼀次重绘之前执⾏。</p>
-<p>语法： window.requestAnimationFrame(callback); 其中，callback是下⼀次重绘之前更新 动画帧所调⽤的函数(即上⾯所说的回调函数)。该回调函数会被传⼊DOMHighResTimeStamp参数，它 表示requestAnimationFrame() 开始去执⾏回调函数的时刻。该⽅法属于宏任务，所以会在执⾏完微任 务之后再去执⾏。</p>
-<p>其中callback中会自动含有一个参数，callback的参数是一个高精度时间戳（毫秒级），就是回调执行的时间戳,用法：</p>
+        <h2 id="强缓存"><a href="#强缓存" class="headerlink" title="强缓存"></a>强缓存</h2><p>使⽤强缓存策略时，如果缓存资源有效，则直接使⽤缓存资源，不必再向服务器发起请求。 </p>
+<p>强缓存策略可以通过两种⽅式来设置，分别是 http 头信息中的 Expires 属性和 Cache-Control 属性。</p>
+<p>（1）服务器通过在响应头中添加 Expires 属性（绝对时间 服务器和客户端可能不一样），来指定资源的过期时间。在过期时间以内，该资源可以被缓存使⽤，不必再向服务器发送请求。这个时间是⼀个绝对时间，它是服务器的时间，因此可能存在这样的问题，就是客户端的时间和服务器端的时间不⼀致，或者⽤户可以对客户端时间进⾏修改的情况，这样就可能会影响缓存命中的结果。 </p>
+<p>（2）Expires 是 http1.0 中的⽅式，因为它的⼀些缺点，在 HTTP 1.1 中提出了⼀个新的头部属性就是 Cache-Control 属性，它提供了对资源的缓存的更精确的控制。它有很多不同的值， </p>
+<p>Cache-Control 可设置的字段： </p>
+<ul>
+<li>public ：设置了该字段值的资源表示可以被任何对象（包括：发送请求的客户端、代理服务器等等）缓存。这个字段值不常⽤，⼀般还是使⽤max-age=来精确控制； （代理服务器可缓存）</li>
+<li>private ：设置了该字段值的资源只能被⽤户浏览器缓存，不允许任何代理服务器缓存。在实际开发当中，对于⼀些含有⽤户信息的HTML，通常都要设置这个字段值，避免代理服务器(CDN)缓存；（代理服务器不可缓存）</li>
+<li>no-cache ：设置了该字段需要先和服务端确认返回的资源是否发⽣了变化，如果资源未发⽣变化，则直接使⽤缓存好的资源；<em>跳过</em>设置<em>强缓存</em>,但是不妨碍设置协商缓存; 。 </li>
+<li>no-store ：设置了该字段表示禁⽌任何缓存，每次都会向服务端发起新的请求，拉取最新的资源；客户端、服务器都不缓存,也就没有所谓的<em>强缓存</em>、协商缓存了。</li>
+<li>max-age= ：设置缓存的最⼤有效期，单位为秒；  </li>
+</ul>
+<p>⼀般来说只需要设置其中⼀种⽅式就可以实现强缓存策略，当两种⽅式⼀起使⽤时，Cache-Control 的优先级要⾼于 Expires。 </p>
 <span id="more"></span>
-<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">to</span><span class="constructor">TopAnimation(<span class="params">target</span>, <span class="params">scrollDom</span>, <span class="params">ms</span> = 500)</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> start</span><br><span class="line">  <span class="keyword">let</span> <span class="keyword">begin</span> = scrollDom.scrollTop</span><br><span class="line">  <span class="keyword">let</span> size =<span class="function"> (<span class="params">begin - target)</span> / <span class="params">ms</span></span></span><br><span class="line"><span class="params"><span class="function"></span>  <span class="params">const step = (timestamp)</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (start<span class="operator"> === </span>undefined) start = timestamp</span><br><span class="line">    const elapsed = timestamp - start</span><br><span class="line">    <span class="comment">/* 防止上滑过头 */</span></span><br><span class="line">    scrollDom.scrollTop = <span class="module-access"><span class="module"><span class="identifier">Math</span>.</span></span>max(<span class="keyword">begin</span> - size<span class="operator"> * </span>elapsed, target)</span><br><span class="line">    <span class="keyword">if</span> (elapsed &lt; ms) &#123;</span><br><span class="line">      <span class="comment">// 在ms毫秒后停止动画</span></span><br><span class="line">      window.request<span class="constructor">AnimationFrame(<span class="params">step</span>)</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  window.request<span class="constructor">AnimationFrame(<span class="params">step</span>)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="取消动画"><a href="#取消动画" class="headerlink" title="取消动画"></a>取消动画</h2><p>使⽤cancelAnimationFrame()来取消执⾏动画，该⽅法接收⼀个参数—— requestAnimationFrame默认返回的id，只需要传⼊这个id就可以取消动画了。</p>
-<h2 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h2><p>● CPU节能：使⽤SetTinterval 实现的动画，当⻚⾯被隐藏或最⼩化时，SetTinterval 仍然在后台执 ⾏动画任务，由于此时⻚⾯处于不可⻅或不可⽤状态，刷新动画是没有意义的，完全是浪费CPU资 源。⽽RequestAnimationFrame则完全不同，当⻚⾯处理未激活的状态下，该⻚⾯的屏幕刷新任务 也会被系统暂停，因此跟着系统⾛的RequestAnimationFrame也会停⽌渲染，当⻚⾯被激活时，动 画就从上次停留的地⽅继续执⾏，有效节省了CPU开销。 </p>
-<p>● 函数节流：在⾼频率事件( resize, scroll 等)中，为了防⽌在⼀个刷新间隔内发⽣多次函数执⾏， RequestAnimationFrame可保证每个刷新间隔内，函数只被执⾏⼀次，这样既能保证流畅性，也能 更好的节省函数执⾏的开销，⼀个刷新间隔内函数执⾏多次时没有意义的，因为多数显示器每 16.7ms刷新⼀次，多次绘制并不会在屏幕上体现出来。 </p>
-<p>● 减少DOM操作：requestAnimationFrame 会把每⼀帧中的所有DOM操作集中起来，在⼀次重绘或 回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率，⼀般来说，这个频率为每 秒60帧。 </p>
-<h2 id="为什么不用setTimeout去执行动画"><a href="#为什么不用setTimeout去执行动画" class="headerlink" title="为什么不用setTimeout去执行动画"></a>为什么不用setTimeout去执行动画</h2><p>setTimeout执⾏动画的缺点：它通过设定间隔时间来不断改变图像位置，达到动画效果。但是容易出现 卡顿、抖动的现象；原因是： </p>
-<p>● settimeout任务被放⼊异步队列，只有当主线程任务执⾏完后才会执⾏队列中的任务，因此实际执 ⾏时间总是⽐设定时间要晚； </p>
-<p>● settimeout的固定时间间隔不⼀定与屏幕刷新间隔时间相同，会引起丢帧。</p>
+
+
+
+<p>no-cache和no-store很容易混淆： </p>
+<p>no-cache 是指先要和服务器确认是否有资源更新，再进⾏判断。也就是说没有强缓存，但是会有协商缓存； </p>
+<p>no-store 是指不使⽤任何缓存，每次请求都直接从服务器获取资源。 </p>
+<h2 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h2><p>如果命中强制缓存，我们⽆需发起新的请求，直接使⽤缓存内容，如果没有命中强制缓存，如果设置了协商缓存，这个时候协商缓存就会发挥作⽤了。 </p>
+<p>上⾯已经说到了，命中协商缓存的条件有两个： </p>
+<ul>
+<li>max-age=xxx 过期了 </li>
+<li>值为 no-store </li>
+</ul>
+<p>使⽤协商缓存策略时，会先向服务器发送⼀个请求，如果资源没有发⽣修改，则返回⼀个 304 状态，让浏览器使⽤本地的缓存副本。如果资源发⽣了修改，则返回修改后的资源。 </p>
+<p>协商缓存也可以通过两种⽅式来设置，分别是 http 头信息中的 Etag 和 Last-Modified 属性。 </p>
+<p>（1）服务器通过在响应头中添加 Last-Modified 属性来指出资源最后⼀次修改的时间，当浏览器下⼀次发起请求时，会在请求头中添加⼀个 If-Modified-Since 的属性，属性值为上⼀次资源返回时的Last-Modified 的值。当请求发送到服务器后服务器会通过这个属性来和资源的最后⼀次的修改时间来进⾏⽐较，以此来判断资源是否做了修改。如果资源没有修改，那么返回 304 状态，让客户端使⽤本地的缓存。如果资源已经被修改了，则返回修改后的资源。使⽤这种⽅法有⼀个缺点，就是 Last-Modified 标注的最后修改时间只能精确到秒级，如果某些⽂件在1秒钟以内，被修改多次的话，那么⽂件已将改变了但是 Last-Modified 却没有改变，这样会造成缓存命中的不准确。 </p>
+<p>（2）因为 Last-Modified 的这种可能发⽣的不准确性，http 中提供了另外⼀种⽅式，那就是 Etag 属性。服务器在返回资源的时候，在头信息中添加了 Etag 属性，这个属性是资源⽣成的唯⼀标识符，当资源发⽣改变的时候，这个值也会发⽣改变。在下⼀次资源请求时，浏览器会在请求头中添加⼀个 If-None-Match 属性，这个属性的值就是上次返回的资源的 Etag 的值。服务接收到请求后会根据这个值来和资源当前的 Etag 的值来进⾏⽐较，以此来判断资源是否发⽣改变，是否需要返回资源。通过这种⽅式，⽐ Last-Modified 的⽅式更加精确。 </p>
+<p>当 Last-Modified 和 Etag 属性同时出现的时候，Etag 的优先级更⾼。使⽤协商缓存的时候，服务器需要考虑负载平衡的问题，因此多个服务器上资源的 Last-Modified 应该保持⼀致，因为每个服务器上 Etag 的值都不⼀样，因此在考虑负载平衡时，最好不要设置 Etag 属性。 </p>
+<p>总结： </p>
+<p>强缓存策略和协商缓存策略在缓存命中时都会直接使⽤本地的缓存副本，区别只在于协商缓存会向服务器发送⼀次请求。它们缓存不命中时，都会向服务器发送请求来获取资源。在实际的缓存机制中，强缓存策略和协商缓存策略是⼀起合作使⽤的。浏览器⾸先会根据请求的信息判断，强缓存是否命中，如果命中则直接使⽤资源。如果不命中则根据头信息向服务器发起请求，使⽤协商缓存，如果协商缓存命中的话，则服务器不返回资源，浏览器直接使⽤本地资源的副本</p>
 
       
 
@@ -278,7 +298,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/07/15/js%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E6%B7%B1%E6%8B%B7%E8%B4%9D/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/02/03/%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98%E5%92%8C%E5%BC%BA%E7%BC%93%E5%AD%98/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -292,18 +312,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/07/20/async%E5%8E%9F%E7%90%86/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/02/05/css%E5%8D%95%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E3%80%81%E4%BB%A5%E5%8F%8A%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          async原理
+          css单行文本溢出、以及多行文本溢出显示省略号
         
       </div>
     </a>
   
   
-    <a href="/2022/07/08/vue%E4%B8%AD%E5%85%B3%E4%BA%8EnextTick%E7%9A%84%E5%8E%9F%E7%90%86/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">vue中关于nextTick的原理</div>
+    <a href="/2022/02/01/hexo%E5%8D%9A%E5%AE%A2%E4%B8%8A%E4%BC%A0%E5%88%B0github/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hexo博客上传到github</div>
       <i class="icon-circle-right"></i>
     </a>
   
