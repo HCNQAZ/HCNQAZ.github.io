@@ -152,6 +152,87 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-数据检测和数据代理--Vue复习日记4 - 副本" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/03/24/%E6%95%B0%E6%8D%AE%E6%A3%80%E6%B5%8B%E5%92%8C%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B04%20-%20%E5%89%AF%E6%9C%AC/">数据检测和数据代理--Vue复习日记4</a>
+    </h1>
+  
+
+        
+        <a href="/2022/03/24/%E6%95%B0%E6%8D%AE%E6%A3%80%E6%B5%8B%E5%92%8C%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B04%20-%20%E5%89%AF%E6%9C%AC/" class="archive-article-date">
+  	<time datetime="2022-03-24T06:58:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="数据检测和数据代理"><a href="#数据检测和数据代理" class="headerlink" title="数据检测和数据代理"></a>数据检测和数据代理</h1><p>数据代理是指通过一个对象去对另一个对象属进行操作，实现原理是 ES6语法中Object对象的defineProperties方法。</p>
+<h2 id="数据代理"><a href="#数据代理" class="headerlink" title="数据代理"></a>数据代理</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj=&#123;&#125;;</span><br><span class="line">    <span class="keyword">let</span> objName=<span class="string">&#x27;lisi&#x27;</span>;</span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(obj,<span class="string">&#x27;name&#x27;</span>,&#123;</span><br><span class="line">       </span><br><span class="line">        <span class="function"><span class="title">get</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;get&#x27;</span>);</span><br><span class="line">            <span class="keyword">return</span> objName;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="function"><span class="title">set</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;set&#x27;</span>);</span><br><span class="line">            objName=val;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">console</span>.log(obj.name);</span><br><span class="line">    obj.name=<span class="string">&#x27;我是新值&#x27;</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(obj.name);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>运行结果:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">get</span></span><br><span class="line">lisi</span><br><span class="line"><span class="builtin-name">set</span></span><br><span class="line"><span class="builtin-name">get</span></span><br><span class="line">我是新值</span><br></pre></td></tr></table></figure>
+
+<p>可以看见上面实现了当有人读取obj.name时会调用get方法，然后通过get方法把objName的值返回回去，而有人更改了obj.name的值时，会调用set方法，并且更改objName的值。当再有人读取obj.name时，get方法又会把set方法新设的objName返回回去。由此完成了通过objName对obj.name的数据代理。</p>
+<h2 id="数据监测"><a href="#数据监测" class="headerlink" title="数据监测"></a>数据监测</h2><p>当数据发生改变被set操作监测到更新值并重新渲染页面时这就是数据监测。当有人更改了值时，set在更改数据的同时会去完成页面的渲染，从而完成数据监测。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/03/24/%E6%95%B0%E6%8D%AE%E6%A3%80%E6%B5%8B%E5%92%8C%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B04%20-%20%E5%89%AF%E6%9C%AC/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-组件通信方式--Vue复习日记3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -429,90 +510,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/02/20/vue/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-跨域问题解决方案" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/02/18/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">跨域问题</a>
-    </h1>
-  
-
-        
-        <a href="/2022/02/18/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="archive-article-date">
-  	<time datetime="2022-02-18T07:18:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="跨域问题是什么？"><a href="#跨域问题是什么？" class="headerlink" title="跨域问题是什么？"></a>跨域问题是什么？</h2><p>在了解跨域之前，首先要知道什么是同源策略（same-origin policy）。简单来讲同源策略就是浏览器为了保证用户信息的安全，防止恶意的网站窃取数据，禁止不同域之间的JS进行交互。对于浏览器而言只要域名、协议、端口其中一个不同就会引发同源策略，从而限制他们之间如下的交互行为：</p>
-<p>1.Cookie、LocalStorage和IndexDB无法读取；</p>
-<p>2.DOM无法获得；</p>
-<p>3.AJAX请求不能发送。</p>
-<p>跨域的严格一点的定义是：只要协议，域名，端口有任何一个的不同，就被当作是跨域。</p>
-<h2 id="解决跨域问题办法"><a href="#解决跨域问题办法" class="headerlink" title="解决跨域问题办法"></a>解决跨域问题办法</h2><p>解决跨域的三种方法: jsonp、cors 、代理</p>
-<h3 id="jsonp方法"><a href="#jsonp方法" class="headerlink" title="jsonp方法"></a>jsonp方法</h3><p>jsonp是前端解决跨域最实用的方法，原理是src属性是不受跨域影响</p>
-<p>前台请求代码：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="function"><span class="keyword">function</span> <span class="title">func1</span>(<span class="params">ret</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">			<span class="built_in">console</span>.log(ret)</span></span><br><span class="line"><span class="javascript">		&#125;</span></span><br><span class="line"><span class="javascript">		</span></span><br><span class="line"><span class="javascript">	</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;http://192.168.100.150:8081/zhxZone/webmana/dict/jsonp?callback=func1&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2022/02/18/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/02/18/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">展开全文 >></a>
         </p>
       
 

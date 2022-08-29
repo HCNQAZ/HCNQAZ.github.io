@@ -6,15 +6,37 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2022 | Hexo</title>
+  <title>vuex原理 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2022/page/4/index.html">
+  <meta name="description" content="理解vuex实际上就是一个小仓库，存储着很多东西可以供多个组件去使用，主要包含action 、 mutation 、state 、 getter 、 module五个模块。 原理实现">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vuex原理">
+<meta property="og:url" content="http://example.com/2022/08/20/vuex%E5%8E%9F%E7%90%86/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="理解vuex实际上就是一个小仓库，存储着很多东西可以供多个组件去使用，主要包含action 、 mutation 、state 、 getter 、 module五个模块。 原理实现">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/08/20/vuex%E5%8E%9F%E7%90%86/images/vuex/vuex1.png">
+<meta property="og:image" content="http://example.com/2022/08/20/vuex%E5%8E%9F%E7%90%86/images/vuex/vuex2.png">
+<meta property="og:image" content="http://example.com/2022/08/20/vuex%E5%8E%9F%E7%90%86/images/vuex/vuex3.png">
+<meta property="og:image" content="http://example.com/2022/08/20/vuex%E5%8E%9F%E7%90%86/images/vuex/vuex4.png">
+<meta property="og:image" content="http://example.com/2022/08/20/vuex%E5%8E%9F%E7%90%86/images/vuex/vuex5.png">
+<meta property="og:image" content="http://example.com/2022/08/20/vuex%E5%8E%9F%E7%90%86/images/vuex/vuex6.png">
+<meta property="og:image" content="http://example.com/2022/08/20/vuex%E5%8E%9F%E7%90%86/images/vuex/vuex7.png">
+<meta property="og:image" content="http://example.com/2022/08/20/vuex%E5%8E%9F%E7%90%86/images/vuex/vuex8.png">
+<meta property="og:image" content="http://example.com/2022/08/20/vuex%E5%8E%9F%E7%90%86/images/vuex/vuex9.png">
+<meta property="og:image" content="http://example.com/2022/08/20/vuex%E5%8E%9F%E7%90%86/images/vuex/vuex10.png">
+<meta property="og:image" content="http://example.com/2022/08/20/vuex%E5%8E%9F%E7%90%86/images/vuex/vuex11.png">
+<meta property="og:image" content="http://example.com/2022/08/20/vuex%E5%8E%9F%E7%90%86/images/vuex/vuex12.png">
+<meta property="og:image" content="http://example.com/2022/08/20/vuex%E5%8E%9F%E7%90%86/images/vuex/vuex13.png">
+<meta property="og:image" content="http://example.com/2022/08/20/vuex%E5%8E%9F%E7%90%86/images/vuex/vuex14.png">
+<meta property="og:image" content="http://example.com/2022/08/20/vuex%E5%8E%9F%E7%90%86/images/vuex/vuex15.png">
+<meta property="og:image" content="http://example.com/2022/08/20/vuex%E5%8E%9F%E7%90%86/images/vuex/vuex16.png">
+<meta property="article:published_time" content="2022-08-20T09:31:16.000Z">
+<meta property="article:modified_time" content="2022-08-29T10:35:33.040Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="web">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/08/20/vuex%E5%8E%9F%E7%90%86/images/vuex/vuex1.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,36 +172,85 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-vuex原理" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vuex原理
+    </h1>
+  
+
+        
+        <a href="/2022/08/20/vuex%E5%8E%9F%E7%90%86/" class="archive-article-date">
+  	<time datetime="2022-08-20T09:31:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-20</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><p>vuex实际上就是一个小仓库，存储着很多东西可以供多个组件去使用，主要包含action 、 mutation 、state 、 getter 、 module五个模块。</p>
+<h2 id="原理实现"><a href="#原理实现" class="headerlink" title="原理实现"></a>原理实现</h2><span id="more"></span>
+
+<h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><p>vue.use()时触发的install</p>
+<p><img src="images/vuex/vuex1.png" alt="Demo"></p>
+<p>然后开始定义store类，定义构造函数，定义包括里面的module、state、action、mutation（格式化数据、安装模块）</p>
+<h4 id="定义响应式state"><a href="#定义响应式state" class="headerlink" title="定义响应式state"></a>定义响应式state</h4><p>主要是利用vue中的data返回的数据是响应式的，不过要获取store就需要this.vm.store去进行（但是可以利用ES6 里面的访问器 get store，可以看到大致流程就是设置响应式state、将用户传入数据格式化、递归地安装模块</p>
+<p><img src="images/vuex/vuex2.png" alt="Demo"></p>
+<p><img src="images/vuex/vuex3.png" alt="Demo"></p>
+<h4 id="模块化（module）"><a href="#模块化（module）" class="headerlink" title="模块化（module）"></a>模块化（module）</h4><p>1、将用户传入的数据进行格式化（格式化为以下结构）</p>
+<p><img src="images/vuex/vuex4.png" alt="Demo"></p>
+<p>2、定义格式化类</p>
+<p><img src="images/vuex/vuex5.png" alt="Demo"></p>
+<p><img src="images/vuex/vuex6.png" alt="Demo"></p>
+<h4 id="定义安装各个模块的函数installModule（包括getter-state-action-mutation）"><a href="#定义安装各个模块的函数installModule（包括getter-state-action-mutation）" class="headerlink" title="定义安装各个模块的函数installModule（包括getter state action mutation）"></a>定义安装各个模块的函数installModule（包括getter state action mutation）</h4><p>把state安装在组件上（相当于模块化）</p>
+<p><img src="images/vuex/vuex7.png" alt="Demo"></p>
+<p><img src="images/vuex/vuex8.png" alt="Demo"></p>
+<h5 id="getter"><a href="#getter" class="headerlink" title="getter"></a>getter</h5><p><img src="images/vuex/vuex9.png" alt="Demo"></p>
+<h5 id="mutation"><a href="#mutation" class="headerlink" title="mutation"></a>mutation</h5><p>参数接收的是state ， 因为 mutation中要对state进行直接的操作</p>
+<p><img src="images/vuex/vuex10.png" alt="Demo"></p>
+<p>（简写）</p>
+<p><img src="images/vuex/vuex11.png" alt="Demo"></p>
+<p><img src="images/vuex/vuex12.png" alt="Demo"></p>
+<p>action</p>
+<p>传入的是一个store实例，所以在用的时候函数里的参数我们用解构{commit}获取commit方法其实就是解构store对象内的commit方法</p>
+<p><img src="images/vuex/vuex13.png" alt="Demo"></p>
+<p><img src="images/vuex/vuex14.png" alt="Demo"></p>
+<p>检查有没有children（子模块），有的话再递归一次</p>
+<p><img src="images/vuex/vuex15.png" alt="Demo"></p>
+<h5 id="模块动态注册（可能有BUG说getter重复定义，一个解决方案就是去检查getter没有再进行挂载。）"><a href="#模块动态注册（可能有BUG说getter重复定义，一个解决方案就是去检查getter没有再进行挂载。）" class="headerlink" title="模块动态注册（可能有BUG说getter重复定义，一个解决方案就是去检查getter没有再进行挂载。）"></a>模块动态注册（可能有BUG说getter重复定义，一个解决方案就是去检查getter没有再进行挂载。）</h5><p><img src="images/vuex/vuex16.png" alt="Demo"></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/04/30/HTTP%E7%BC%BA%E7%82%B9%E5%92%8CHTTPS%E5%A6%82%E4%BD%95%E6%94%B9%E8%BF%9B/" class="archive-article-date">
-  	<time datetime="2022-04-30T05:22:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/04/30/HTTP%E7%BC%BA%E7%82%B9%E5%92%8CHTTPS%E5%A6%82%E4%BD%95%E6%94%B9%E8%BF%9B/">HTTP缺点和HTTPS如何改进</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -191,174 +262,105 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/08/20/vuex%E5%8E%9F%E7%90%86/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/04/25/HTTP%E7%8A%B6%E6%80%81%E7%A0%81/" class="archive-article-date">
-  	<time datetime="2022-04-25T05:22:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-25</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2022/08/13/vueRouter%E5%8E%9F%E7%90%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vueRouter原理</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/04/25/HTTP%E7%8A%B6%E6%80%81%E7%A0%81/">HTTP 状态码总结</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/04/20/http1.0%201.1%202.0/" class="archive-article-date">
-  	<time datetime="2022-04-20T06:58:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/04/20/http1.0%201.1%202.0/">HTTP 1.0 和 HTTP 1.1 和 HTTP2.0</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/04/10/%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%980.1+0.2%E7%AD%89%E4%BA%8E%EF%BC%9F/" class="archive-article-date">
-  	<time datetime="2022-04-10T06:58:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/04/10/%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%980.1+0.2%E7%AD%89%E4%BA%8E%EF%BC%9F/">经典问题0.1+0.2为什么不等于0.3</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/30/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B05/" class="archive-article-date">
-  	<time datetime="2022-03-30T06:58:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/30/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F--Vue%E5%A4%8D%E4%B9%A0%E6%97%A5%E8%AE%B05/">Vue生命周期--Vue复习日记5</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2022/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2022/">1</a><a class="page-number" href="/archives/2022/page/2/">2</a><a class="page-number" href="/archives/2022/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/2022/page/5/">5</a><a class="page-number" href="/archives/2022/page/6/">6</a><a class="page-number" href="/archives/2022/page/7/">7</a><a class="extend next" rel="next" href="/archives/2022/page/5/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -382,8 +384,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

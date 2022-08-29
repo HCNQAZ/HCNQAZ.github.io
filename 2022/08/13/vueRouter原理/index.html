@@ -6,26 +6,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>keep-alive的实现 | Hexo</title>
+  <title>vueRouter原理 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言今天看到自己以前用到的keep-alive，特地去看了下keep-alive的相关原理 理解如果需要在组件切换的时候，保存⼀些组件的状态防⽌多次渲染，就可以使⽤ keep-alive 组件包裹需 要保存的组件。 他是个抽象组件（虚拟、真实、抽象）keep-alive组件是不会出现在真实dom中的，但是不管他是否激活你都可以在vnode里面找到他 keep-alive有以下三个属性：  incl">
+  <meta name="description" content="理解路由就是用来跟后端服务器进行交互的一种方式，通过不同的路径，来请求不同的资源，请求不同的页面是路由的其中一种功能。 vue-router是vue.js官方路由管理器。vue的单页应用是基于路由和组件的，路由用于设定访问路径，并将路径和组件映射起来。（传统页面切换是用超链接a标签进行切换） 路由的两种模式主要分为哈希模式和历史模式， 哈希存在url中，但是发送请求的时候并不会被带上，通过监听ha">
 <meta property="og:type" content="article">
-<meta property="og:title" content="keep-alive的实现">
-<meta property="og:url" content="http://example.com/2022/08/06/keep-alive%E5%AE%9E%E7%8E%B0/index.html">
+<meta property="og:title" content="vueRouter原理">
+<meta property="og:url" content="http://example.com/2022/08/13/vueRouter%E5%8E%9F%E7%90%86/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="前言今天看到自己以前用到的keep-alive，特地去看了下keep-alive的相关原理 理解如果需要在组件切换的时候，保存⼀些组件的状态防⽌多次渲染，就可以使⽤ keep-alive 组件包裹需 要保存的组件。 他是个抽象组件（虚拟、真实、抽象）keep-alive组件是不会出现在真实dom中的，但是不管他是否激活你都可以在vnode里面找到他 keep-alive有以下三个属性：  incl">
+<meta property="og:description" content="理解路由就是用来跟后端服务器进行交互的一种方式，通过不同的路径，来请求不同的资源，请求不同的页面是路由的其中一种功能。 vue-router是vue.js官方路由管理器。vue的单页应用是基于路由和组件的，路由用于设定访问路径，并将路径和组件映射起来。（传统页面切换是用超链接a标签进行切换） 路由的两种模式主要分为哈希模式和历史模式， 哈希存在url中，但是发送请求的时候并不会被带上，通过监听ha">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="c:/Users/40919/AppData/Roaming/Typora/typora-user-images/image-20220815152524927.png">
-<meta property="og:image" content="c:/Users/40919/AppData/Roaming/Typora/typora-user-images/image-20220815155235345.png">
-<meta property="og:image" content="c:/Users/40919/AppData/Roaming/Typora/typora-user-images/image-20220815155331380.png">
-<meta property="og:image" content="c:/Users/40919/AppData/Roaming/Typora/typora-user-images/image-20220815155552843.png">
-<meta property="og:image" content="c:/Users/40919/AppData/Roaming/Typora/typora-user-images/image-20220815155421075.png">
-<meta property="article:published_time" content="2022-08-06T04:14:14.000Z">
-<meta property="article:modified_time" content="2022-08-25T05:12:20.411Z">
+<meta property="og:image" content="c:/Users/40919/AppData/Roaming/Typora/typora-user-images/image-20220815161159731.png">
+<meta property="og:image" content="c:/Users/40919/AppData/Roaming/Typora/typora-user-images/image-20220815161824691.png">
+<meta property="og:image" content="c:/Users/40919/AppData/Roaming/Typora/typora-user-images/image-20220815162052863.png">
+<meta property="og:image" content="c:/Users/40919/AppData/Roaming/Typora/typora-user-images/image-20220815162201813.png">
+<meta property="og:image" content="c:/Users/40919/AppData/Roaming/Typora/typora-user-images/image-20220815161331177.png">
+<meta property="og:image" content="c:/Users/40919/AppData/Roaming/Typora/typora-user-images/image-20220818154111551.png">
+<meta property="og:image" content="c:/Users/40919/AppData/Roaming/Typora/typora-user-images/image-20220815161459774.png">
+<meta property="og:image" content="c:/Users/40919/AppData/Roaming/Typora/typora-user-images/image-20220815161649306.png">
+<meta property="article:published_time" content="2022-08-13T09:31:16.000Z">
+<meta property="article:modified_time" content="2022-08-25T05:27:53.619Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="web">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="c:/Users/40919/AppData/Roaming/Typora/typora-user-images/image-20220815152524927.png">
+<meta name="twitter:image" content="c:/Users/40919/AppData/Roaming/Typora/typora-user-images/image-20220815161159731.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -161,59 +164,51 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-keep-alive实现" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-vueRouter原理" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      keep-alive的实现
+      vueRouter原理
     </h1>
   
 
         
-        <a href="/2022/08/06/keep-alive%E5%AE%9E%E7%8E%B0/" class="archive-article-date">
-  	<time datetime="2022-08-06T04:14:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-06</time>
+        <a href="/2022/08/13/vueRouter%E5%8E%9F%E7%90%86/" class="archive-article-date">
+  	<time datetime="2022-08-13T09:31:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天看到自己以前用到的keep-alive，特地去看了下keep-alive的相关原理</p>
-<h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><p>如果需要在组件切换的时候，保存⼀些组件的状态防⽌多次渲染，就可以使⽤ keep-alive 组件包裹需 要保存的组件。 他是个抽象组件（虚拟、真实、抽象）keep-alive组件是不会出现在真实dom中的，但是不管他是否激活你都可以在vnode里面找到他</p>
-<p>keep-alive有以下三个属性： </p>
-<p>include 字符串或正则表达式，只有名称匹配的组件会被匹配； </p>
-<p>exclude 字符串或正则表达式，任何名称匹配的组件都不会被缓存； </p>
-<p>max 数字，最多可以缓存多少组件实例。 </p>
-<p>注意：keep-alive 包裹动态组件时，会缓存不活动的组件实例。  </p>
-<p>主要流程 </p>
-<ol>
-<li>判断组件 name ，不在 include 或者在 exclude 中，直接返回 vnode，说明该组件不被缓存。 </li>
-<li>获取组件实例 key ，如果有获取实例的 key，否则重新⽣成。</li>
-<li>如果缓存对象内存在，则直接从缓存对象中获取组件实例给 vnode ，不存在则添加到缓存对象 中。 </li>
-<li>最⼤缓存数量，当缓存组件数量超过 max 值时，清除 keys 数组内第⼀个组件。  </li>
-</ol>
+        <h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><p>路由就是用来跟后端服务器进行交互的一种方式，通过不同的路径，来请求不同的资源，请求不同的页面是路由的其中一种功能。</p>
+<p>vue-router是vue.js官方路由管理器。vue的单页应用是基于路由和组件的，路由用于设定访问路径，并将路径和组件映射起来。（传统页面切换是用超链接a标签进行切换）</p>
+<h4 id="路由的两种模式"><a href="#路由的两种模式" class="headerlink" title="路由的两种模式"></a>路由的两种模式</h4><p>主要分为哈希模式和历史模式，</p>
+<p>哈希存在url中，但是发送请求的时候并不会被带上，通过监听<code>hashchange</code>事件得到hash值的变化，来实现更新页面部分内容的操作。</p>
+<p>history模式： html5 history接口：pushState() 和 replaceState()，向历史记录中添加或替换而无须重新加载页面。</p>
+<h4 id="哈希模式和历史模式的区别"><a href="#哈希模式和历史模式的区别" class="headerlink" title="哈希模式和历史模式的区别"></a>哈希模式和历史模式的区别</h4><p>不同之处有三点。</p>
+<p>1.原理不同。<br>hash模式的实现原理是通过监听hashChange事件来实现的，前端js把当前hash地址对应的组件渲染到浏览器中。history模式是通过调用 history.pushState方法(或者replaceState) 并且 监听popstate事件来实现的。history.pushState会追加历史记录，并更换地址栏地址信息，但是页面不会刷新，需要手动调用地址变化之后的处理函数，并在处理函数内部决定跳转逻辑；监听popstate事件是为了响应浏览器的前进后退功能。</p>
+<p>2.表现不同。<br>hash模式会在地址栏中有#号，而history模式没有；同时由于history模式的实现原理用到H5的新特性，所以它对浏览器的兼容性有要求(IE &gt;= 10)。</p>
+<p>3.history模式特点<br>history模式开发的SPA项目，需要服务器端做额外的配置，否则会出现刷新白屏（链接分享失效）。原因是页面刷新时，浏览器会向服务器真的发出对这个地址的请求，而这个文件资源又不存在，所以就报404。处理方式就由后端做一个保底映射:所有的请求全部拦截到index.html上。</p>
 <h2 id="原理实现"><a href="#原理实现" class="headerlink" title="原理实现"></a>原理实现</h2><span id="more"></span>
 
-<p>首先完成各个生命周期该做的事情，包括初始化、监听自身include 和 exclude属性变化 以及销毁缓存的组件等。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> patternTypes: <span class="built_in">Array</span>&lt;<span class="built_in">Function</span>&gt; = [<span class="built_in">String</span>, <span class="built_in">RegExp</span>, <span class="built_in">Array</span>] <span class="comment">// 接收：字符串， 正则，数组 </span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123; </span><br><span class="line"> 	<span class="attr">name</span>: <span class="string">&#x27;keep-alive&#x27;</span>, </span><br><span class="line">	<span class="attr">abstract</span>: <span class="literal">true</span>, <span class="comment">// 抽象组件，是⼀个抽象组件：它⾃身不会渲染⼀个 DOM 元素，也不会出现在 ⽗组件链中。 </span></span><br><span class="line">	<span class="attr">props</span>: &#123; </span><br><span class="line">		<span class="attr">include</span>: patternTypes, <span class="comment">// 匹配的组件，缓存 </span></span><br><span class="line">		<span class="attr">exclude</span>: patternTypes, <span class="comment">// 不去匹配的组件，不缓存 </span></span><br><span class="line">		<span class="attr">max</span>: [<span class="built_in">String</span>, <span class="built_in">Number</span>], <span class="comment">// 缓存组件的最⼤实例数量, 由于缓存的是组件实例（vnode）， 数量过多的时候，会占⽤过多的内存，可以⽤max指定上限 &#125;,</span></span><br><span class="line">	<span class="function"><span class="title">created</span>(<span class="params"></span>)</span> &#123; <span class="comment">// ⽤于初始化缓存虚拟DOM数组和vnode的key </span></span><br><span class="line">	<span class="built_in">this</span>.cache = <span class="built_in">Object</span>.create(<span class="literal">null</span>) </span><br><span class="line">	<span class="built_in">this</span>.keys = [] &#125;,</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="title">destroyed</span>(<span class="params"></span>)</span> &#123; <span class="comment">// 销毁缓存cache的组件实例 </span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">in</span> <span class="built_in">this</span>.cache) &#123; </span><br><span class="line">			pruneCacheEntry(<span class="built_in">this</span>.cache, key, <span class="built_in">this</span>.keys) &#125; </span><br><span class="line">		&#125;,</span><br><span class="line">	<span class="function"><span class="title">mounted</span>(<span class="params"></span>)</span> &#123; <span class="comment">// prune 削减精简[v.] // 去监控include和exclude的改变，根据最新的include和exclude的内容，来实时削减缓存 的组件的内容 </span></span><br><span class="line">		<span class="built_in">this</span>.$watch(<span class="string">&#x27;include&#x27;</span>, <span class="function">(<span class="params">val</span>) =&gt;</span> &#123; pruneCache(<span class="built_in">this</span>, <span class="function">(<span class="params">name</span>) =&gt;</span> matches(val, name)) &#125;)</span><br><span class="line">		<span class="built_in">this</span>.$watch(<span class="string">&#x27;exclude&#x27;</span>, <span class="function">(<span class="params">val</span>) =&gt;</span> &#123; pruneCache(<span class="built_in">this</span>, <span class="function">(<span class="params">name</span>) =&gt;</span> !matches(val, name)) &#125;) &#125;, &#125; </span><br></pre></td></tr></table></figure>
-
-<p>其次是要去完成render函数，render函数： 1. 会在 keep-alive 组件内部去写⾃⼰的内容，所以可以去获取默认 slot 的内容，然后根据这个去获 取组件 2. keep-alive 只对第⼀个组件有效，所以获取第⼀个⼦组件。 3. 和 keep-alive 搭配使⽤的⼀般有：动态组件 和router-view</p>
-<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">render () &#123; <span class="comment">//</span></span><br><span class="line">	function getFirstComponentChild (children: ?<span class="keyword">Array</span>&lt;VNode&gt;): ?VNode &#123; 		</span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">Array</span>.isArray(children)) &#123; </span><br><span class="line">		<span class="keyword">for</span> (let i = <span class="number">0</span>; i &lt; children.length; i++) &#123; </span><br><span class="line">			<span class="keyword">const</span> c = children[i] </span><br><span class="line">			<span class="keyword">if</span> (isDef(c) &amp;&amp; (isDef(c.componentOptions) || isAsyncPlaceholder(c))) </span><br><span class="line">				&#123;</span><br><span class="line">                	<span class="keyword">return</span> c </span><br><span class="line">				&#125; </span><br><span class="line">	&#125;&#125;&#125;</span><br><span class="line">	<span class="keyword">const</span> slot = <span class="keyword">this</span>.$slots.<span class="keyword">default</span> <span class="comment">// 获取默认插槽 </span></span><br><span class="line">	<span class="keyword">const</span> vnode: VNode = getFirstComponentChild(slot)<span class="comment">// 获取第⼀个⼦组件 		</span></span><br><span class="line">	<span class="keyword">const</span> componentOptions: ?VNodeComponentOptions = vnode &amp;&amp; vnode.componentOptions <span class="comment">// 组件参数 </span></span><br><span class="line">	<span class="keyword">if</span> (componentOptions) &#123;</span><br><span class="line">    	<span class="comment">// 是否有组件参数 </span></span><br><span class="line">    	<span class="comment">// check pattern </span></span><br><span class="line">		<span class="keyword">const</span> name: ?string = getComponentName(componentOptions) <span class="comment">// 获取组件名 </span></span><br><span class="line">		<span class="keyword">const</span> &#123; include, exclude &#125; = <span class="keyword">this</span> </span><br><span class="line">		<span class="comment">// 不包含在include或者在exclude里面</span></span><br><span class="line">		<span class="keyword">if</span> ((include &amp;&amp; (!name || !matches(include, name))) || (exclude &amp;&amp; name &amp;&amp; matches(exclude, name)) ) &#123;</span><br><span class="line">		<span class="comment">// 如果不匹配当前组件的名字和include以及exclude </span></span><br><span class="line">		<span class="comment">// 那么直接返回组件的实例 不走缓存</span></span><br><span class="line">		<span class="keyword">return</span> vnode </span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">const</span> &#123; cache, keys &#125; = <span class="keyword">this</span> <span class="comment">// 获取这个组件的key </span></span><br><span class="line">		<span class="keyword">const</span> <span class="built_in">key</span> = vnode.<span class="built_in">key</span> == <span class="keyword">null</span> ? componentOptions.Ctor.cid + (componentOptions.tag ? `::$&#123;componentOptions.tag&#125;` : <span class="string">&#x27;&#x27;</span>) : vnode.<span class="built_in">key</span> </span><br><span class="line">		<span class="keyword">if</span> (cache[<span class="built_in">key</span>]) &#123; <span class="comment">// LRU缓存策略执⾏ </span></span><br><span class="line">			<span class="comment">// 组件初次渲染的时 候componentInstance为undefined</span></span><br><span class="line">			vnode.componentInstance = cache[<span class="built_in">key</span>].componentInstance 		</span><br><span class="line">            <span class="comment">// make current key freshest 								</span></span><br><span class="line">			remove(keys, <span class="built_in">key</span>)</span><br><span class="line">			keys.push(<span class="built_in">key</span>) <span class="comment">// 根据LRU缓存策略执⾏，将key从原来的位置移除，然后将这个key值放到最后⾯ 		  &#125; else &#123; </span></span><br><span class="line">			<span class="comment">// 在缓存列表⾥⾯没有的话，则加⼊，同时判断当前加⼊之后，是否超过了max所设定的范围， 如果是，则去除 </span></span><br><span class="line">			<span class="comment">// 使⽤时间间隔最⻓的⼀个 </span></span><br><span class="line">			cache[<span class="built_in">key</span>] = vnode </span><br><span class="line">			keys.push(<span class="built_in">key</span>) <span class="comment">// prune oldest entry </span></span><br><span class="line">			<span class="keyword">if</span> (<span class="keyword">this</span>.<span class="built_in">max</span> &amp;&amp; keys.length &gt; parseInt(<span class="keyword">this</span>.<span class="built_in">max</span>)) &#123; 			  							pruneCacheEntry(cache, keys[<span class="number">0</span>], keys, <span class="keyword">this</span>._vnode) &#125; </span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">// 将组件的keepAlive属性设置为true </span></span><br><span class="line">			<span class="comment">// 作⽤：判断是否要执⾏组件的created、mounted⽣命周 期函数</span></span><br><span class="line">			vnode.data.keepAlive = <span class="keyword">true</span> &#125;</span><br><span class="line">			<span class="keyword">return</span> vnode || (slot &amp;&amp; slot[<span class="number">0</span>]) </span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="destroy"><a href="#destroy" class="headerlink" title="destroy"></a>destroy</h4><p>v-if会销毁组件触发destroy，如果有keepAlive标志的话会触发destroy生命周期，不然的话会触发deactivate周期，deactivateCihld厘米那还会对子组件进行逐一触发deactivate</p>
-<p><img src="C:\Users\40919\AppData\Roaming\Typora\typora-user-images\image-20220815152524927.png" alt="image-20220815152524927"></p>
-<p>判断是否是直接失活组件（即刚才在keepalive里面的组件），如果不是的话（是他的子组件）则再对他子组件进行deavtivateChioeComponent，然后进入deactivate周期</p>
-<h4 id="activated"><a href="#activated" class="headerlink" title="activated"></a>activated</h4><p>走render 获取到缓存的vnode ， 然后会走patch（根据vnode创建节点），走createElm，回发现是keepAlive组件，走reactivateComponent</p>
-<p><img src="C:\Users\40919\AppData\Roaming\Typora\typora-user-images\image-20220815155235345.png" alt="image-20220815155235345"></p>
-<p>调用insert插入，则重新赋予活性，在insert里面触发进入activated</p>
-<p><img src="C:\Users\40919\AppData\Roaming\Typora\typora-user-images\image-20220815155331380.png" alt="image-20220815155331380"></p>
-<p><img src="C:\Users\40919\AppData\Roaming\Typora\typora-user-images\image-20220815155552843.png" alt="image-20220815155552843"></p>
-<p>其他普通元素（不是keepalive哪个）</p>
-<p><img src="C:\Users\40919\AppData\Roaming\Typora\typora-user-images\image-20220815155421075.png" alt="image-20220815155421075"></p>
-<p>会在insert中触发activated</p>
+<h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p><img src="C:\Users\40919\AppData\Roaming\Typora\typora-user-images\image-20220815161159731.png" alt="image-20220815161159731"></p>
+<p>在使用vueRouter前会先vue.use（）触发install方法</p>
+<p><img src="C:\Users\40919\AppData\Roaming\Typora\typora-user-images\image-20220815161824691.png" alt="image-20220815161824691"></p>
+<p>通过混入把$router放进各个组件里，并且把$route编程响应式，每次变化触发get 和 set,每次route修改，router-view的render函数就会重新执行渲染出视图 ，并注册router-link和router-view为全局组件，如下是两个全局组件实现（哈希模式），router-view即把我们匹配到的组件传入render函数渲染出来，而router-link是在render中创建出相应的跳转a标签</p>
+<p><img src="C:\Users\40919\AppData\Roaming\Typora\typora-user-images\image-20220815162052863.png" alt="image-20220815162052863"></p>
+<p><img src="C:\Users\40919\AppData\Roaming\Typora\typora-user-images\image-20220815162201813.png" alt="image-20220815162201813"></p>
+<p>因为之前会new vueRouter里面会有配置项，所以options会拿到用户配置</p>
+<p><img src="C:\Users\40919\AppData\Roaming\Typora\typora-user-images\image-20220815161331177.png" alt="image-20220815161331177"></p>
+<p>监听路有变化</p>
+<p><img src="C:\Users\40919\AppData\Roaming\Typora\typora-user-images\image-20220818154111551.png" alt="image-20220818154111551"></p>
+<p>createRouterMap 会生成pathList（存放各个path），pathMap（通过path到对应的路由对象） ， nameMap （通过name到对应的路由对象），</p>
+<p><img src="C:\Users\40919\AppData\Roaming\Typora\typora-user-images\image-20220815161459774.png" alt="image-20220815161459774"></p>
+<p>match函数是根据相应的path找到对应路由对象</p>
+<p><img src="C:\Users\40919\AppData\Roaming\Typora\typora-user-images\image-20220815161649306.png" alt="image-20220815161649306"></p>
 
       
 
@@ -304,7 +299,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/08/06/keep-alive%E5%AE%9E%E7%8E%B0/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/08/13/vueRouter%E5%8E%9F%E7%90%86/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -318,7 +313,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/08/13/vuex%E5%8E%9F%E7%90%86/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/08/20/vuex%E5%8E%9F%E7%90%86/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -328,8 +323,8 @@
     </a>
   
   
-    <a href="/2022/07/22/async%E5%8E%9F%E7%90%86/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">async原理</div>
+    <a href="/2022/08/09/keep-alive%E5%AE%9E%E7%8E%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">keep-alive的实现</div>
       <i class="icon-circle-right"></i>
     </a>
   

@@ -152,6 +152,90 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-跨域问题解决方案" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/02/18/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">跨域问题</a>
+    </h1>
+  
+
+        
+        <a href="/2022/02/18/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="archive-article-date">
+  	<time datetime="2022-02-18T07:18:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="跨域问题是什么？"><a href="#跨域问题是什么？" class="headerlink" title="跨域问题是什么？"></a>跨域问题是什么？</h2><p>在了解跨域之前，首先要知道什么是同源策略（same-origin policy）。简单来讲同源策略就是浏览器为了保证用户信息的安全，防止恶意的网站窃取数据，禁止不同域之间的JS进行交互。对于浏览器而言只要域名、协议、端口其中一个不同就会引发同源策略，从而限制他们之间如下的交互行为：</p>
+<p>1.Cookie、LocalStorage和IndexDB无法读取；</p>
+<p>2.DOM无法获得；</p>
+<p>3.AJAX请求不能发送。</p>
+<p>跨域的严格一点的定义是：只要协议，域名，端口有任何一个的不同，就被当作是跨域。</p>
+<h2 id="解决跨域问题办法"><a href="#解决跨域问题办法" class="headerlink" title="解决跨域问题办法"></a>解决跨域问题办法</h2><p>解决跨域的三种方法: jsonp、cors 、代理</p>
+<h3 id="jsonp方法"><a href="#jsonp方法" class="headerlink" title="jsonp方法"></a>jsonp方法</h3><p>jsonp是前端解决跨域最实用的方法，原理是src属性是不受跨域影响</p>
+<p>前台请求代码：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="function"><span class="keyword">function</span> <span class="title">func1</span>(<span class="params">ret</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">			<span class="built_in">console</span>.log(ret)</span></span><br><span class="line"><span class="javascript">		&#125;</span></span><br><span class="line"><span class="javascript">		</span></span><br><span class="line"><span class="javascript">	</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;http://192.168.100.150:8081/zhxZone/webmana/dict/jsonp?callback=func1&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2022/02/18/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/02/18/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-css两栏布局，三栏布局" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -437,94 +521,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/02/05/css%E5%8D%95%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E3%80%81%E4%BB%A5%E5%8F%8A%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-协商缓存和强缓存" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/02/03/%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98%E5%92%8C%E5%BC%BA%E7%BC%93%E5%AD%98/">协商缓存和强缓存</a>
-    </h1>
-  
-
-        
-        <a href="/2022/02/03/%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98%E5%92%8C%E5%BC%BA%E7%BC%93%E5%AD%98/" class="archive-article-date">
-  	<time datetime="2022-02-03T07:18:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="强缓存"><a href="#强缓存" class="headerlink" title="强缓存"></a>强缓存</h2><p>使⽤强缓存策略时，如果缓存资源有效，则直接使⽤缓存资源，不必再向服务器发起请求。 </p>
-<p>强缓存策略可以通过两种⽅式来设置，分别是 http 头信息中的 Expires 属性和 Cache-Control 属性。</p>
-<p>（1）服务器通过在响应头中添加 Expires 属性（绝对时间 服务器和客户端可能不一样），来指定资源的过期时间。在过期时间以内，该资源可以被缓存使⽤，不必再向服务器发送请求。这个时间是⼀个绝对时间，它是服务器的时间，因此可能存在这样的问题，就是客户端的时间和服务器端的时间不⼀致，或者⽤户可以对客户端时间进⾏修改的情况，这样就可能会影响缓存命中的结果。 </p>
-<p>（2）Expires 是 http1.0 中的⽅式，因为它的⼀些缺点，在 HTTP 1.1 中提出了⼀个新的头部属性就是 Cache-Control 属性，它提供了对资源的缓存的更精确的控制。它有很多不同的值， </p>
-<p>Cache-Control 可设置的字段： </p>
-<ul>
-<li>public ：设置了该字段值的资源表示可以被任何对象（包括：发送请求的客户端、代理服务器等等）缓存。这个字段值不常⽤，⼀般还是使⽤max-age=来精确控制； （代理服务器可缓存）</li>
-<li>private ：设置了该字段值的资源只能被⽤户浏览器缓存，不允许任何代理服务器缓存。在实际开发当中，对于⼀些含有⽤户信息的HTML，通常都要设置这个字段值，避免代理服务器(CDN)缓存；（代理服务器不可缓存）</li>
-<li>no-cache ：设置了该字段需要先和服务端确认返回的资源是否发⽣了变化，如果资源未发⽣变化，则直接使⽤缓存好的资源；<em>跳过</em>设置<em>强缓存</em>,但是不妨碍设置协商缓存; 。 </li>
-<li>no-store ：设置了该字段表示禁⽌任何缓存，每次都会向服务端发起新的请求，拉取最新的资源；客户端、服务器都不缓存,也就没有所谓的<em>强缓存</em>、协商缓存了。</li>
-<li>max-age= ：设置缓存的最⼤有效期，单位为秒；  </li>
-</ul>
-<p>⼀般来说只需要设置其中⼀种⽅式就可以实现强缓存策略，当两种⽅式⼀起使⽤时，Cache-Control 的优先级要⾼于 Expires。 </p>
-        
-          <a class="article-more-a" href="/2022/02/03/%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98%E5%92%8C%E5%BC%BA%E7%BC%93%E5%AD%98/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/02/03/%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98%E5%92%8C%E5%BC%BA%E7%BC%93%E5%AD%98/">展开全文 >></a>
         </p>
       
 
