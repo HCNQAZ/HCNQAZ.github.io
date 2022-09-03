@@ -152,6 +152,225 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-v-modol原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/06/25/v-modol%E5%8E%9F%E7%90%86/">v-model 原理</a>
+    </h1>
+  
+
+        
+        <a href="/2022/06/25/v-modol%E5%8E%9F%E7%90%86/" class="archive-article-date">
+  	<time datetime="2022-06-25T06:58:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="v-model-是如何实现的，语法糖实际是什么？"><a href="#v-model-是如何实现的，语法糖实际是什么？" class="headerlink" title="v-model 是如何实现的，语法糖实际是什么？"></a>v-model 是如何实现的，语法糖实际是什么？</h2><p>（1）作⽤在表单元素上 动态绑定了 input 的 value 指向了 messgae 变量，并且在触发 input 事件的时候去动态把 message设 置为⽬标值： </p>
+<pre><code>&lt;input v-model=&quot;sth&quot; /&gt;
+// 等同于
+&lt;input
+v-bind:value=&quot;message&quot;
+v-on:input=&quot;message=$event.target.value&quot;
+&gt;
+//$event 指代当前触发的事件对象;
+//$event.target 指代当前触发的事件对象的dom;
+//$event.target.value 就是当前dom的value值;
+//在@input⽅法中，value =&gt; sth;
+//在:value中,sth =&gt; value;
+</code></pre>
+<p>（2）作⽤在组件上 在⾃定义组件中，v-model 默认会利⽤名为 value 的 prop和名为 input 的事件 </p>
+<p>本质是⼀个⽗⼦组件通信的语法糖，通过prop和$.emit实现。因此⽗组件 v-model 语法糖本质上可以 修改为：  </p>
+<pre><code>&lt;child :value=&quot;message&quot; @input=&quot;function(e)&#123;message = e&#125;&quot;&gt;&lt;/child&gt;
+</code></pre>
+<p>在组件的实现中，可以通过 v-model属性来配置⼦组件接收的prop名称，以及派发的事件名称。 例⼦： </p>
+<pre><code>// ⽗组件
+&lt;aa-input v-model=&quot;aa&quot;&gt;&lt;/aa-input&gt;
+// 等价于
+&lt;aa-input v-bind:value=&quot;aa&quot; v-on:input=&quot;aa=$event.target.value&quot;&gt;&lt;/aa-input&gt;
+// ⼦组件：
+&lt;input v-bind:value=&quot;aa&quot; v-on:input=&quot;onmessage&quot;&gt;&lt;/aa-input&gt;
+props:&#123;value:aa,&#125;
+methods:&#123;
+onmessage(e)&#123;
+$emit(&#39;input&#39;,e.target.value)
+&#125;
+&#125;
+</code></pre>
+<p>默认情况下，⼀个组件上的v-model 会把 value ⽤作 prop且把 input ⽤作 event。但是⼀些输⼊类型 ⽐如单选框和复选框按钮可能想使⽤ value prop 来达到不同的⽬的。使⽤ model 选项可以回避这些情 况产⽣的冲突。js 监听input 输⼊框输⼊数据改变，⽤oninput，数据改变以后就会⽴刻出发这个事件。 通过input事件把数据$emit 出去，在⽗组件接受。⽗组件设置v-model的值为input $emit过来的值。 </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/06/25/v-modol%E5%8E%9F%E7%90%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Vue中封装的数组⽅法有哪些，其如何实现⻚⾯更新 " class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/06/15/Vue%E4%B8%AD%E5%B0%81%E8%A3%85%E7%9A%84%E6%95%B0%E7%BB%84%E2%BD%85%E6%B3%95%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%8C%E5%85%B6%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E2%BB%9A%E2%BE%AF%E6%9B%B4%E6%96%B0%20/">Vue中封装的数组⽅法有哪些，其如何实现⻚⾯更新</a>
+    </h1>
+  
+
+        
+        <a href="/2022/06/15/Vue%E4%B8%AD%E5%B0%81%E8%A3%85%E7%9A%84%E6%95%B0%E7%BB%84%E2%BD%85%E6%B3%95%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%8C%E5%85%B6%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E2%BB%9A%E2%BE%AF%E6%9B%B4%E6%96%B0%20/" class="archive-article-date">
+  	<time datetime="2022-06-15T06:58:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在Vue中，对响应式处理利⽤的是Object.defineProperty对数据进⾏拦截，⽽这个⽅法并不能监听到数组内部变化，数组⻓度变化，数组的截取变化等，所以需要对这些操作进⾏hack，让Vue能监听到其中的变化。</p>
+<p>push()     pop()     shift()     unshift()     splice()     sort()     reverse()</p>
+<p>那Vue是如何实现让这些数组⽅法实现元素的实时更新的呢，下⾯是Vue中对这些⽅法的封装：</p>
+<pre><code>// 缓存数组原型 
+const arrayProto = Array.prototype; 
+// 实现 arrayMethods.__proto__ === Array.prototype 
+export const arrayMethods = Object.create(arrayProto); 
+// 需要进⾏功能拓展的⽅法 
+const methodsToPatch = [ &quot;push&quot;, &quot;pop&quot;, &quot;shift&quot;, &quot;unshift&quot;, &quot;splice&quot;, &quot;sort&quot;, &quot;reverse&quot; ];
+
+/**
+* Intercept mutating methods and emit events 
+*/ 
+methodsToPatch.forEach(function(method) &#123; 
+// 缓存原⽣数组⽅法 
+const original = arrayProto[method]; 
+def(arrayMethods, method, function mutator(...args) &#123; 
+    // 执⾏并缓存原⽣数组功能 
+    const result = original.apply(this, args); 
+    // 响应式处理 
+    const ob = this.__ob__; 
+    let inserted; 
+    switch (method) &#123; 
+    // push、unshift会新增索引，所以要⼿动observer 
+    case &quot;push&quot;: 
+    case &quot;unshift&quot;: 
+    inserted = args; 
+    break; 
+    // splice⽅法，如果传⼊了第三个参数，也会有索引加⼊，也要⼿动observer。 
+    case &quot;splice&quot;: 
+        inserted = args.slice(2); 
+        break; 
+        &#125;
+    //
+    if (inserted) ob.observeArray(inserted);// 获取插⼊的值，并设置响应式监听 // notify change 
+    ob.dep.notify();// 通知依赖更新 // 返回原⽣数组⽅法的执⾏结果 
+    return result; 
+    &#125;); 
+&#125;);
+</code></pre>
+<p>简单来说就是，重写了数组中的那些原⽣⽅法，⾸先获取到这个数组的ob，也就是它的Observer对象，如果有新的值，就调⽤observeArray继续对新的值观察变化（也就是通过 targetproto == arrayMethods 来改变了数组实例的型），然后⼿动调⽤notify，通知渲染watcher，执⾏update。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/06/15/Vue%E4%B8%AD%E5%B0%81%E8%A3%85%E7%9A%84%E6%95%B0%E7%BB%84%E2%BD%85%E6%B3%95%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%8C%E5%85%B6%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E2%BB%9A%E2%BE%AF%E6%9B%B4%E6%96%B0%20/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-vue双向绑定原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -406,173 +625,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/05/25/TCP%E7%9A%84%E9%87%8D%E4%BC%A0%E6%9C%BA%E5%88%B6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-HTTPS通信（握⼿）过程（ ECDHE算法）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/16/HTTPS%E9%80%9A%E4%BF%A1%EF%BC%88%E6%8F%A1%E2%BC%BF%EF%BC%89%E8%BF%87%E7%A8%8B%EF%BC%88%20ECDHE%E7%AE%97%E6%B3%95%EF%BC%89/">HTTPS通信（握⼿）过程（ ECDHE算法）</a>
-    </h1>
-  
-
-        
-        <a href="/2022/05/16/HTTPS%E9%80%9A%E4%BF%A1%EF%BC%88%E6%8F%A1%E2%BC%BF%EF%BC%89%E8%BF%87%E7%A8%8B%EF%BC%88%20ECDHE%E7%AE%97%E6%B3%95%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2022-05-16T05:22:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>ECDHE 算法</p>
-<p>ECDHE 算法是利⽤了 ECC 椭圆曲线特性，⽤更少的计算量计算出公钥，以及最终的会话密钥。</p>
-<p>⼩红和⼩明使⽤ ECDHE 密钥交换算法的过程：</p>
-<p>双⽅事先确定好使⽤哪种椭圆曲线，和曲线上的基点 G，这两个参数都是公开的；</p>
-<p>双⽅各⾃随机⽣成⼀个随机数作为私钥d，并与基点G相乘得到公钥Q（Q = dG），此时⼩红的公私钥为 Q1和 d1，⼩明的公私钥为 Q2 和 d2；</p>
-<p>双⽅交换各⾃的公钥，最后⼩红计算点（x1，y1） = d1Q2，⼩明计算点（x2，y2） = d2Q1，由于椭圆曲线上是可以满⾜乘法交换和结合律，所以 d1Q2 = d1d2G = d2d1G = d2Q1 ，因此双⽅的 x 坐标是⼀样的，所以它是共享密钥，也就是会话密钥。</p>
-<p>这个过程中，双⽅的私钥都是随机、临时⽣成的，都是不公开的，即使根据公开的信息（椭圆曲线、公钥、基点G）也是很难计算出椭圆曲线上的离散对数（私钥）。</p>
-        
-          <a class="article-more-a" href="/2022/05/16/HTTPS%E9%80%9A%E4%BF%A1%EF%BC%88%E6%8F%A1%E2%BC%BF%EF%BC%89%E8%BF%87%E7%A8%8B%EF%BC%88%20ECDHE%E7%AE%97%E6%B3%95%EF%BC%89/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/16/HTTPS%E9%80%9A%E4%BF%A1%EF%BC%88%E6%8F%A1%E2%BC%BF%EF%BC%89%E8%BF%87%E7%A8%8B%EF%BC%88%20ECDHE%E7%AE%97%E6%B3%95%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-HTTPS通信（握⼿）过程（RSA 算法）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/08/HTTPS%E9%80%9A%E4%BF%A1%EF%BC%88%E6%8F%A1%E2%BC%BF%EF%BC%89%E8%BF%87%E7%A8%8B%EF%BC%88RSA%20%E7%AE%97%E6%B3%95%EF%BC%89/">HTTPS通信（握⼿）过程（RSA 算法）</a>
-    </h1>
-  
-
-        
-        <a href="/2022/05/08/HTTPS%E9%80%9A%E4%BF%A1%EF%BC%88%E6%8F%A1%E2%BC%BF%EF%BC%89%E8%BF%87%E7%A8%8B%EF%BC%88RSA%20%E7%AE%97%E6%B3%95%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2022-05-08T05:22:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>事实上，不同的密钥交换算法，TLS 的握⼿过程可能会有⼀些区别。</p>
-<p>密钥交换算法-RSA 算法</p>
-<p>SSL/TLS 的「握⼿阶段」涉及四次通信（ SSL/TLS1.2版本为如下的四次握手， SSL/TLS 1.3 优化了过程，只需要 3 次握⼿）</p>
-<ol>
-<li>ClientHello</li>
-</ol>
-<p>⾸先，由客户端向服务器发起加密通信请求，也就是 ClientHello 请求。在这⼀步，客户端主要向服务器发送以下信息：</p>
-<p>（1）客户端⽀持的 SSL/TLS 协议版本，如 TLS 1.2 版本。</p>
-<p>（2）客户端⽣产的随机数（ Client Random ），后⾯⽤于⽣产「会话秘钥」。</p>
-<p>（3）客户端⽀持的密码套件列表，如 RSA 加密算法。</p>
-        
-          <a class="article-more-a" href="/2022/05/08/HTTPS%E9%80%9A%E4%BF%A1%EF%BC%88%E6%8F%A1%E2%BC%BF%EF%BC%89%E8%BF%87%E7%A8%8B%EF%BC%88RSA%20%E7%AE%97%E6%B3%95%EF%BC%89/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/08/HTTPS%E9%80%9A%E4%BF%A1%EF%BC%88%E6%8F%A1%E2%BC%BF%EF%BC%89%E8%BF%87%E7%A8%8B%EF%BC%88RSA%20%E7%AE%97%E6%B3%95%EF%BC%89/">展开全文 >></a>
         </p>
       
 

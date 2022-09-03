@@ -152,6 +152,173 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-async原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/07/22/async%E5%8E%9F%E7%90%86/">async原理</a>
+    </h1>
+  
+
+        
+        <a href="/2022/07/22/async%E5%8E%9F%E7%90%86/" class="archive-article-date">
+  	<time datetime="2022-07-22T05:24:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天用到async，明明是Generator的语法糖，却感觉跟它又有比较大的区别，突然很好奇他的实现原理。</p>
+<h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><p>async函数对 Generator 函数的改进，体现在以下四点。</p>
+<p>（1）内置执行器。</p>
+<p>Generator 函数的执行必须靠执行器，所以才有了co模块，而async函数自带执行器。也就是说，async函数的执行，与普通函数一模一样，只要一行。</p>
+<p>asyncReadFile();<br>上面的代码调用了asyncReadFile函数，然后它就会自动执行，输出最后结果。这完全不像 Generator 函数，需要调用next方法，或者用co模块，才能真正执行，得到最后结果。</p>
+<p>（2）更好的语义。</p>
+<p>async和await，比起星号和yield，语义更清楚了。async表示函数里有异步操作，await表示紧跟在后面的表达式需要等待结果。</p>
+<p>（3）更广的适用性。</p>
+<p>co模块约定，yield命令后面只能是 Thunk 函数()或 Promise 对象，而async函数的await命令后面，可以是 Promise 对象和原始类型的值（数值、字符串和布尔值，但这时会自动转成立即 resolved 的 Promise 对象）。</p>
+<p>（4）返回值是 Promise。</p>
+<p>async函数的返回值是 Promise 对象，这比 Generator 函数的返回值是 Iterator 对象方便多了。你可以用then方法指定下一步的操作。</p>
+<p>进一步说，async函数完全可以看作多个异步操作，包装成的一个 Promise 对象，而await命令就是内部then命令的语法糖。</p>
+<h2 id="原理实现"><a href="#原理实现" class="headerlink" title="原理实现"></a>原理实现</h2>
+        
+          <a class="article-more-a" href="/2022/07/22/async%E5%8E%9F%E7%90%86/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/07/22/async%E5%8E%9F%E7%90%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-对requestAnimationFrame的理解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/07/18/%E5%AF%B9requestAnimationFrame%E7%9A%84%E7%90%86%E8%A7%A3/">对requestAnimationFrame的理解</a>
+    </h1>
+  
+
+        
+        <a href="/2022/07/18/%E5%AF%B9requestAnimationFrame%E7%9A%84%E7%90%86%E8%A7%A3/" class="archive-article-date">
+  	<time datetime="2022-07-18T05:24:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天复习以前的知识，突然发现requesAnimationFrame是个很有意思的东西，下面对他一些相关知识做一些总结。</p>
+<h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><p>window.requestAnimationFrame() 告诉浏览器——你希望执⾏⼀个动画，并且要求浏览器在下次重 绘之前调⽤指定的回调函数更新动画。该⽅法需要传⼊⼀个回调函数作为参数，该回调函数会在浏览 器下⼀次重绘之前执⾏。</p>
+<p>语法： window.requestAnimationFrame(callback); 其中，callback是下⼀次重绘之前更新 动画帧所调⽤的函数(即上⾯所说的回调函数)。该回调函数会被传⼊DOMHighResTimeStamp参数，它 表示requestAnimationFrame() 开始去执⾏回调函数的时刻。该⽅法属于宏任务，所以会在执⾏完微任 务之后再去执⾏。</p>
+<p>其中callback中会自动含有一个参数，callback的参数是一个高精度时间戳（毫秒级），就是回调执行的时间戳,用法：</p>
+        
+          <a class="article-more-a" href="/2022/07/18/%E5%AF%B9requestAnimationFrame%E7%9A%84%E7%90%86%E8%A7%A3/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/07/18/%E5%AF%B9requestAnimationFrame%E7%9A%84%E7%90%86%E8%A7%A3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-vue中关于nextTick的原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -397,225 +564,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/07/02/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86%20Observer%20%E3%80%81%20Dep%20%E3%80%81%20Watcher/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-v-modol原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/06/25/v-modol%E5%8E%9F%E7%90%86/">v-model 原理</a>
-    </h1>
-  
-
-        
-        <a href="/2022/06/25/v-modol%E5%8E%9F%E7%90%86/" class="archive-article-date">
-  	<time datetime="2022-06-25T06:58:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="v-model-是如何实现的，语法糖实际是什么？"><a href="#v-model-是如何实现的，语法糖实际是什么？" class="headerlink" title="v-model 是如何实现的，语法糖实际是什么？"></a>v-model 是如何实现的，语法糖实际是什么？</h2><p>（1）作⽤在表单元素上 动态绑定了 input 的 value 指向了 messgae 变量，并且在触发 input 事件的时候去动态把 message设 置为⽬标值： </p>
-<pre><code>&lt;input v-model=&quot;sth&quot; /&gt;
-// 等同于
-&lt;input
-v-bind:value=&quot;message&quot;
-v-on:input=&quot;message=$event.target.value&quot;
-&gt;
-//$event 指代当前触发的事件对象;
-//$event.target 指代当前触发的事件对象的dom;
-//$event.target.value 就是当前dom的value值;
-//在@input⽅法中，value =&gt; sth;
-//在:value中,sth =&gt; value;
-</code></pre>
-<p>（2）作⽤在组件上 在⾃定义组件中，v-model 默认会利⽤名为 value 的 prop和名为 input 的事件 </p>
-<p>本质是⼀个⽗⼦组件通信的语法糖，通过prop和$.emit实现。因此⽗组件 v-model 语法糖本质上可以 修改为：  </p>
-<pre><code>&lt;child :value=&quot;message&quot; @input=&quot;function(e)&#123;message = e&#125;&quot;&gt;&lt;/child&gt;
-</code></pre>
-<p>在组件的实现中，可以通过 v-model属性来配置⼦组件接收的prop名称，以及派发的事件名称。 例⼦： </p>
-<pre><code>// ⽗组件
-&lt;aa-input v-model=&quot;aa&quot;&gt;&lt;/aa-input&gt;
-// 等价于
-&lt;aa-input v-bind:value=&quot;aa&quot; v-on:input=&quot;aa=$event.target.value&quot;&gt;&lt;/aa-input&gt;
-// ⼦组件：
-&lt;input v-bind:value=&quot;aa&quot; v-on:input=&quot;onmessage&quot;&gt;&lt;/aa-input&gt;
-props:&#123;value:aa,&#125;
-methods:&#123;
-onmessage(e)&#123;
-$emit(&#39;input&#39;,e.target.value)
-&#125;
-&#125;
-</code></pre>
-<p>默认情况下，⼀个组件上的v-model 会把 value ⽤作 prop且把 input ⽤作 event。但是⼀些输⼊类型 ⽐如单选框和复选框按钮可能想使⽤ value prop 来达到不同的⽬的。使⽤ model 选项可以回避这些情 况产⽣的冲突。js 监听input 输⼊框输⼊数据改变，⽤oninput，数据改变以后就会⽴刻出发这个事件。 通过input事件把数据$emit 出去，在⽗组件接受。⽗组件设置v-model的值为input $emit过来的值。 </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/06/25/v-modol%E5%8E%9F%E7%90%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Vue中封装的数组⽅法有哪些，其如何实现⻚⾯更新 " class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/06/15/Vue%E4%B8%AD%E5%B0%81%E8%A3%85%E7%9A%84%E6%95%B0%E7%BB%84%E2%BD%85%E6%B3%95%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%8C%E5%85%B6%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E2%BB%9A%E2%BE%AF%E6%9B%B4%E6%96%B0%20/">Vue中封装的数组⽅法有哪些，其如何实现⻚⾯更新</a>
-    </h1>
-  
-
-        
-        <a href="/2022/06/15/Vue%E4%B8%AD%E5%B0%81%E8%A3%85%E7%9A%84%E6%95%B0%E7%BB%84%E2%BD%85%E6%B3%95%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%8C%E5%85%B6%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E2%BB%9A%E2%BE%AF%E6%9B%B4%E6%96%B0%20/" class="archive-article-date">
-  	<time datetime="2022-06-15T06:58:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在Vue中，对响应式处理利⽤的是Object.defineProperty对数据进⾏拦截，⽽这个⽅法并不能监听到数组内部变化，数组⻓度变化，数组的截取变化等，所以需要对这些操作进⾏hack，让Vue能监听到其中的变化。</p>
-<p>push()     pop()     shift()     unshift()     splice()     sort()     reverse()</p>
-<p>那Vue是如何实现让这些数组⽅法实现元素的实时更新的呢，下⾯是Vue中对这些⽅法的封装：</p>
-<pre><code>// 缓存数组原型 
-const arrayProto = Array.prototype; 
-// 实现 arrayMethods.__proto__ === Array.prototype 
-export const arrayMethods = Object.create(arrayProto); 
-// 需要进⾏功能拓展的⽅法 
-const methodsToPatch = [ &quot;push&quot;, &quot;pop&quot;, &quot;shift&quot;, &quot;unshift&quot;, &quot;splice&quot;, &quot;sort&quot;, &quot;reverse&quot; ];
-
-/**
-* Intercept mutating methods and emit events 
-*/ 
-methodsToPatch.forEach(function(method) &#123; 
-// 缓存原⽣数组⽅法 
-const original = arrayProto[method]; 
-def(arrayMethods, method, function mutator(...args) &#123; 
-    // 执⾏并缓存原⽣数组功能 
-    const result = original.apply(this, args); 
-    // 响应式处理 
-    const ob = this.__ob__; 
-    let inserted; 
-    switch (method) &#123; 
-    // push、unshift会新增索引，所以要⼿动observer 
-    case &quot;push&quot;: 
-    case &quot;unshift&quot;: 
-    inserted = args; 
-    break; 
-    // splice⽅法，如果传⼊了第三个参数，也会有索引加⼊，也要⼿动observer。 
-    case &quot;splice&quot;: 
-        inserted = args.slice(2); 
-        break; 
-        &#125;
-    //
-    if (inserted) ob.observeArray(inserted);// 获取插⼊的值，并设置响应式监听 // notify change 
-    ob.dep.notify();// 通知依赖更新 // 返回原⽣数组⽅法的执⾏结果 
-    return result; 
-    &#125;); 
-&#125;);
-</code></pre>
-<p>简单来说就是，重写了数组中的那些原⽣⽅法，⾸先获取到这个数组的ob，也就是它的Observer对象，如果有新的值，就调⽤observeArray继续对新的值观察变化（也就是通过 targetproto == arrayMethods 来改变了数组实例的型），然后⼿动调⽤notify，通知渲染watcher，执⾏update。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/06/15/Vue%E4%B8%AD%E5%B0%81%E8%A3%85%E7%9A%84%E6%95%B0%E7%BB%84%E2%BD%85%E6%B3%95%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%8C%E5%85%B6%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E2%BB%9A%E2%BE%AF%E6%9B%B4%E6%96%B0%20/">展开全文 >></a>
         </p>
       
 
